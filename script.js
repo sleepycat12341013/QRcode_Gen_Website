@@ -1,161 +1,123 @@
 'use strict';
 
-const elInput     = document.getElementById('input-url');
-const elClearBtn  = document.getElementById('btn-clear');
-const elQrcode    = document.getElementById('qrcode');
-const elQrEmpty   = document.getElementById('qr-empty');
-const elQrFrame   = document.getElementById('qr-frame');
-const elUrlLabel  = document.getElementById('qr-url-label');
-const elErrorMsg  = document.getElementById('error-msg');
-const btnGenerate = document.getElementById('btn-generate');
-const btnDownload = document.getElementById('btn-download');
-const swatches    = document.querySelectorAll('.swatch:not(.swatch--custom)');
-const customColor = document.getElementById('custom-color');
+// ── QR URL generation (index.html only) ──
+const elInput = document.getElementById('input-url');
+if (elInput) {
+  const elClearBtn  = document.getElementById('btn-clear');
+  const elQrcode    = document.getElementById('qrcode');
+  const elQrEmpty   = document.getElementById('qr-empty');
+  const elQrFrame   = document.getElementById('qr-frame');
+  const elUrlLabel  = document.getElementById('qr-url-label');
+  const elErrorMsg  = document.getElementById('error-msg');
+  const btnGenerate = document.getElementById('btn-generate');
+  const btnDownload = document.getElementById('btn-download');
+  const swatches    = document.querySelectorAll('.swatch:not(.swatch--custom)');
+  const customColor = document.getElementById('custom-color');
 
-let qrInstance = null;
-let currentColor = '#B91C1C';
+  let qrInstance = null;
+  let currentColor = '#B91C1C';
 
-// ── Input clear button ──
-elInput.addEventListener('input', () => {
-  elClearBtn.hidden = elInput.value.length === 0;
-  clearError();
-});
-
-elClearBtn.addEventListener('click', () => {
-  elInput.value = '';
-  elClearBtn.hidden = true;
-  elInput.focus();
-  clearQR();
-  clearError();
-});
-
-// ── Generate on button click ──
-btnGenerate.addEventListener('click', generate);
-
-elInput.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') generate();
-});
-
-function generate() {
-  const raw = elInput.value.trim();
-  clearError();
-
-  if (!raw) {
-    showError('URLを入力してください');
-    return;
-  }
-
-  const err = validate(raw);
-  if (err) { showError(err); clearQR(); return; }
-
-  renderQR(raw);
-}
-
-function validate(val) {
-  try {
-    new URL(val);
-    return null;
-  } catch {
-    return 'URLの形式が正しくありません（例: https://example.com）';
-  }
-}
-
-function renderQR(text) {
-  const SIZE = 180;
-
-  if (qrInstance) {
-    qrInstance.clear();
-    elQrcode.innerHTML = '';
-    qrInstance = null;
-  }
-
-  qrInstance = new QRCode(elQrcode, {
-    text,
-    width: SIZE,
-    height: SIZE,
-    colorDark: currentColor,
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.M,
+  elInput.addEventListener('input', () => {
+    elClearBtn.hidden = elInput.value.length === 0;
+    clearError();
   });
 
-  elQrEmpty.hidden = true;
-  elQrFrame.classList.add('has-qr');
-  elUrlLabel.textContent = text;
-  elUrlLabel.hidden = false;
-  btnDownload.disabled = false;
-}
+  elClearBtn.addEventListener('click', () => {
+    elInput.value = '';
+    elClearBtn.hidden = true;
+    elInput.focus();
+    clearQR();
+    clearError();
+  });
 
-// ── Color swatches ──
-swatches.forEach(btn => {
-  btn.addEventListener('click', () => {
-    selectColor(btn.dataset.color);
+  btnGenerate.addEventListener('click', generate);
+  elInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
+
+  function generate() {
+    const raw = elInput.value.trim();
+    clearError();
+    if (!raw) { showError('URLを入力してください'); return; }
+    const err = validate(raw);
+    if (err) { showError(err); clearQR(); return; }
+    renderQR(raw);
+  }
+
+  function validate(val) {
+    try { new URL(val); return null; }
+    catch { return 'URLの形式が正しくありません（例: https://example.com）'; }
+  }
+
+  function renderQR(text) {
+    const SIZE = 180;
+    if (qrInstance) { qrInstance.clear(); elQrcode.innerHTML = ''; qrInstance = null; }
+    qrInstance = new QRCode(elQrcode, {
+      text, width: SIZE, height: SIZE,
+      colorDark: currentColor, colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M,
+    });
+    elQrEmpty.hidden = true;
+    elQrFrame.classList.add('has-qr');
+    elUrlLabel.textContent = text;
+    elUrlLabel.hidden = false;
+    btnDownload.disabled = false;
+  }
+
+  swatches.forEach(btn => {
+    btn.addEventListener('click', () => {
+      selectColor(btn.dataset.color);
+      swatches.forEach(s => s.classList.remove('swatch--active'));
+      document.querySelector('.swatch--custom').classList.remove('swatch--active');
+      btn.classList.add('swatch--active');
+    });
+  });
+
+  customColor.addEventListener('input', () => {
+    selectColor(customColor.value);
     swatches.forEach(s => s.classList.remove('swatch--active'));
-    document.querySelector('.swatch--custom').classList.remove('swatch--active');
-    btn.classList.add('swatch--active');
+    document.querySelector('.swatch--custom').classList.add('swatch--active');
   });
-});
 
-customColor.addEventListener('input', () => {
-  selectColor(customColor.value);
-  swatches.forEach(s => s.classList.remove('swatch--active'));
-  document.querySelector('.swatch--custom').classList.add('swatch--active');
-});
-
-function selectColor(color) {
-  currentColor = color;
-  // Re-render if QR already exists
-  const url = elUrlLabel.textContent;
-  if (url && !elQrEmpty || (elUrlLabel && !elUrlLabel.hidden)) {
+  function selectColor(color) {
+    currentColor = color;
     const currentUrl = elUrlLabel.textContent;
-    if (currentUrl) renderQR(currentUrl);
+    if (currentUrl && !elUrlLabel.hidden) renderQR(currentUrl);
   }
-}
 
-// ── Download ──
-btnDownload.addEventListener('click', () => {
-  // Small delay so QRCode library finishes painting
-  setTimeout(() => {
-    const canvas = elQrcode.querySelector('canvas');
-    const img    = elQrcode.querySelector('img');
+  btnDownload.addEventListener('click', () => {
+    setTimeout(() => {
+      const canvas = elQrcode.querySelector('canvas');
+      const img    = elQrcode.querySelector('img');
+      if (canvas) {
+        save(canvas);
+      } else if (img) {
+        const tmp = document.createElement('canvas');
+        tmp.width  = img.naturalWidth  || 180;
+        tmp.height = img.naturalHeight || 180;
+        tmp.getContext('2d').drawImage(img, 0, 0);
+        save(tmp);
+      }
+    }, 100);
+  });
 
-    if (canvas) {
-      save(canvas);
-    } else if (img) {
-      const tmp = document.createElement('canvas');
-      tmp.width  = img.naturalWidth  || 180;
-      tmp.height = img.naturalHeight || 180;
-      tmp.getContext('2d').drawImage(img, 0, 0);
-      save(tmp);
-    }
-  }, 100);
-});
+  function save(canvas) {
+    const ts   = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
+    const link = document.createElement('a');
+    link.download = `qrcode_${ts}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
 
-function save(canvas) {
-  const ts   = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
-  const link = document.createElement('a');
-  link.download = `qrcode_${ts}.png`;
-  link.href = canvas.toDataURL('image/png');
-  link.click();
-}
+  function clearQR() {
+    if (qrInstance) { qrInstance.clear(); qrInstance = null; }
+    elQrcode.innerHTML = '';
+    elQrEmpty.hidden = false;
+    elQrFrame.classList.remove('has-qr');
+    elUrlLabel.hidden = true;
+    btnDownload.disabled = true;
+  }
 
-// ── Helpers ──
-function clearQR() {
-  if (qrInstance) { qrInstance.clear(); qrInstance = null; }
-  elQrcode.innerHTML = '';
-  elQrEmpty.hidden = false;
-  elQrFrame.classList.remove('has-qr');
-  elUrlLabel.hidden = true;
-  btnDownload.disabled = true;
-}
-
-function showError(msg) {
-  elErrorMsg.textContent = msg;
-  elErrorMsg.hidden = false;
-}
-
-function clearError() {
-  elErrorMsg.hidden = true;
-  elErrorMsg.textContent = '';
+  function showError(msg) { elErrorMsg.textContent = msg; elErrorMsg.hidden = false; }
+  function clearError() { elErrorMsg.hidden = true; elErrorMsg.textContent = ''; }
 }
 
 // ── Prevent mock links from scrolling to top ──
