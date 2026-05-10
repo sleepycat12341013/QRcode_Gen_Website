@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sleepycat12341013.github.io/QRcode_Gen_Website/sitemap.xml
