@@ -407,6 +407,11 @@ body {
   background: var(--surface);
   box-shadow: 0 0 0 3px rgba(185,28,28,.1);
 }
+.url-input--error {
+  border-color: var(--red) !important;
+  background: #FFF1F1 !important;
+  box-shadow: 0 0 0 3px rgba(185,28,28,.15) !important;
+}
 
 .clear-btn {
   position: absolute;

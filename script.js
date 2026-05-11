@@ -58,6 +58,14 @@ if (document.getElementById('panel-link')) {
     clearError();
   });
 
+  // 連絡先パネル - 入力時にエラー解除
+  ['contact-name', 'contact-phone', 'contact-email'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById(id).classList.remove('url-input--error');
+      clearError();
+    });
+  });
+
   // 動画パネル
   const elVideoInput = document.getElementById('input-video');
   const elClearVideo = document.getElementById('btn-clear-video');
@@ -87,23 +95,34 @@ if (document.getElementById('panel-link')) {
       label = content.length > 32 ? content.slice(0, 32) + '…' : content;
 
     } else if (activeTab === 'contact') {
-      const name  = document.getElementById('contact-name').value.trim();
-      const phone = document.getElementById('contact-phone').value.trim();
-      const email = document.getElementById('contact-email').value.trim();
+      const nameEl  = document.getElementById('contact-name');
+      const phoneEl = document.getElementById('contact-phone');
+      const emailEl = document.getElementById('contact-email');
+      const name  = nameEl.value.trim();
+      const phone = phoneEl.value.trim();
+      const email = emailEl.value.trim();
       const org   = document.getElementById('contact-org').value.trim();
       const url   = document.getElementById('contact-url').value.trim();
-      if (!name && !phone && !email) {
-        showError('氏名・電話番号・メールアドレスのいずれかを入力してください'); return;
+
+      let hasError = false;
+      if (!name) { nameEl.classList.add('url-input--error'); hasError = true; }
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailEl.classList.add('url-input--error'); hasError = true;
       }
-      let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
-      if (name)  vcard += `FN:${name}\n`;
-      if (phone) vcard += `TEL;TYPE=CELL:${phone}\n`;
-      if (email) vcard += `EMAIL:${email}\n`;
-      if (org)   vcard += `ORG:${org}\n`;
-      if (url)   vcard += `URL:${url}\n`;
+      if (phone && !/^[0-9+\-\s()]+$/.test(phone)) {
+        phoneEl.classList.add('url-input--error'); hasError = true;
+      }
+      if (hasError) { showError('入力内容を確認してください'); return; }
+
+      const CRLF = '\r\n';
+      let vcard = `BEGIN:VCARD${CRLF}VERSION:3.0${CRLF}FN:${name}${CRLF}`;
+      if (phone) vcard += `TEL;TYPE=CELL:${phone}${CRLF}`;
+      if (email) vcard += `EMAIL:${email}${CRLF}`;
+      if (org)   vcard += `ORG:${org}${CRLF}`;
+      if (url)   vcard += `URL:${url}${CRLF}`;
       vcard += 'END:VCARD';
       content = vcard;
-      label = name ? `連絡先: ${name}` : '連絡先QR';
+      label = `連絡先: ${name}`;
 
     } else if (activeTab === 'video') {
       content = elVideoInput.value.trim();
@@ -125,7 +144,7 @@ if (document.getElementById('panel-link')) {
       colorDark: currentColor, colorLight: '#ffffff',
       correctLevel: QRCode.CorrectLevel.M,
     });
-    elQrEmpty.hidden = false;
+    elQrEmpty.hidden = true;
     elQrEmpty.style.display = 'none';
     elQrFrame.classList.add('has-qr');
     const display = lastLabel.length > 40 ? lastLabel.slice(0, 40) + '…' : lastLabel;
