@@ -114,12 +114,12 @@ if (document.getElementById('panel-link')) {
       }
       if (hasError) { showError('入力内容を確認してください'); return; }
 
-      const CRLF = '\r\n';
-      let vcard = `BEGIN:VCARD${CRLF}VERSION:3.0${CRLF}FN:${name}${CRLF}`;
-      if (phone) vcard += `TEL;TYPE=CELL:${phone}${CRLF}`;
-      if (email) vcard += `EMAIL:${email}${CRLF}`;
-      if (org)   vcard += `ORG:${org}${CRLF}`;
-      if (url)   vcard += `URL:${url}${CRLF}`;
+      let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
+      vcard += `FN:${name}\n`;
+      if (phone) vcard += `TEL;TYPE=CELL:${phone}\n`;
+      if (email) vcard += `EMAIL:${email}\n`;
+      if (org)   vcard += `ORG:${org}\n`;
+      if (url)   vcard += `URL:${url}\n`;
       vcard += 'END:VCARD';
       content = vcard;
       label = `連絡先: ${name}`;
@@ -139,12 +139,17 @@ if (document.getElementById('panel-link')) {
     lastLabel   = label || text;
     const SIZE  = 180;
     if (qrInstance) { qrInstance.clear(); elQrcode.innerHTML = ''; qrInstance = null; }
-    qrInstance = new QRCode(elQrcode, {
-      text, width: SIZE, height: SIZE,
-      colorDark: currentColor, colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.M,
-    });
-    elQrEmpty.hidden = true;
+    try {
+      qrInstance = new QRCode(elQrcode, {
+        text, width: SIZE, height: SIZE,
+        colorDark: currentColor, colorLight: '#ffffff',
+        correctLevel: QRCode.CorrectLevel.M,
+      });
+    } catch (e) {
+      showError('QRコードの生成に失敗しました。入力内容を確認してください。');
+      lastContent = '';
+      return;
+    }
     elQrEmpty.style.display = 'none';
     elQrFrame.classList.add('has-qr');
     const display = lastLabel.length > 40 ? lastLabel.slice(0, 40) + '…' : lastLabel;
@@ -198,7 +203,6 @@ if (document.getElementById('panel-link')) {
     lastContent = '';
     if (qrInstance) { qrInstance.clear(); qrInstance = null; }
     elQrcode.innerHTML = '';
-    elQrEmpty.hidden = false;
     elQrEmpty.style.display = '';
     elQrFrame.classList.remove('has-qr');
     elUrlLabel.hidden = true;
