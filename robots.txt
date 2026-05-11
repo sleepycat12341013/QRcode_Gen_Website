@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sleepycat12341013.github.io/QRcode_Gen_Website/sitemap.xml
+# Cloudflare Pages 移行後にURLを実際のドメインに更新してください
+Sitemap: https://YOUR-DOMAIN/sitemap.xml

@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QRコード マーケティング活用ガイド — SmartQR Studio</title>
+  <title>QRコード マーケティング活用ガイド — ぽちっとQR工房</title>
   <meta name="description" content="QRコードをマーケティングに活用する方法を解説。チラシ・名刺・SNS・店舗など場所別の効果的な配置戦略と成功のコツを紹介します。">
   <link rel="canonical" href="https://sleepycat12341013.github.io/QRcode_Gen_Website/marketing.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://sleepycat12341013.github.io/QRcode_Gen_Website/marketing.html">
-  <meta property="og:title" content="QRコード マーケティング活用ガイド — SmartQR Studio">
+  <meta property="og:title" content="QRコード マーケティング活用ガイド — ぽちっとQR工房">
   <meta property="og:description" content="QRコードをマーケティングに活用する方法。チラシ・名刺・SNS・店舗など場所別の効果的な配置戦略を解説。">
   <meta property="og:image" content="https://sleepycat12341013.github.io/QRcode_Gen_Website/og-image.svg">
-  <meta property="og:site_name" content="SmartQR Studio">
+  <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="QRコード マーケティング活用ガイド — SmartQR Studio">
+  <meta name="twitter:title" content="QRコード マーケティング活用ガイド — ぽちっとQR工房">
   <meta name="twitter:description" content="QRコードをマーケティングに活用する方法。チラシ・名刺・SNS・店舗など場所別の配置戦略を解説。">
   <meta name="twitter:image" content="https://sleepycat12341013.github.io/QRcode_Gen_Website/og-image.svg">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -55,6 +56,9 @@
 
   <header class="site-header">
     <div class="header-inner">
+      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
       <a href="index.html" class="site-logo">
         <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
           <rect x="1.5" y="1.5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
@@ -68,7 +72,7 @@
           <rect x="17" y="23" width="4" height="4" fill="currentColor"/>
           <rect x="23" y="23" width="4" height="4" fill="currentColor"/>
         </svg>
-        SmartQR Studio
+        ぽちっとQR工房
       </a>
       <nav class="header-nav" aria-label="メインナビ">
         <a href="news.html" class="nav-link">新着情報</a>
@@ -80,35 +84,69 @@
       <div class="header-actions">
         <a href="login.html" class="btn-login">新規登録 / ログイン</a>
       </div>
-      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </header>
 
   <div class="mobile-nav-backdrop" aria-hidden="true"></div>
   <nav class="mobile-nav" aria-label="モバイルナビ">
-    <button class="mobile-nav-close" aria-label="閉じる">✕</button>
-    <a href="news.html" class="mnav-link">新着情報</a>
-    <a href="pricing.html" class="mnav-link">料金プラン</a>
-    <a href="how-to.html" class="mnav-link">使い方</a>
-    <a href="about.html" class="mnav-link">会社案内</a>
-    <a href="faq.html" class="mnav-link">サポート窓口</a>
+    <div class="mnav-header">
+      <span class="mnav-logo">ぽちっとQR工房</span>
+      <button class="mobile-nav-close" aria-label="閉じる">✕</button>
+    </div>
+    <div class="mnav-section">
+      <p class="mnav-section-label">QR作成</p>
+      <a href="index.html" class="mnav-link">＋ 新規QR作成</a>
+      <a href="login.html" class="mnav-link">⊞ ダッシュボード</a>
+      <a href="url-shortener.html" class="mnav-link">🔗 短縮URL</a>
+      <a href="text-qr.html" class="mnav-link">📝 テキスト変換</a>
+      <a href="contact-management.html" class="mnav-link">👥 連絡先管理</a>
+      <a href="qr-email.html" class="mnav-link">✉️ メール作成</a>
+      <a href="qr-map.html" class="mnav-link">📍 地図リンク</a>
+    </div>
     <hr class="mnav-divider">
-    <a href="login.html" class="mnav-link mnav-link--primary">新規登録 / ログイン</a>
+    <div class="mnav-section">
+      <p class="mnav-section-label">カスタマイズ</p>
+      <a href="templates.html" class="mnav-link">☰ テンプレート一覧</a>
+      <a href="login.html" class="mnav-link">✏️ デザイン編集</a>
+    </div>
+    <hr class="mnav-divider">
+    <div class="mnav-section">
+      <p class="mnav-section-label">情報・サポート</p>
+      <a href="news.html" class="mnav-link">新着情報</a>
+      <a href="pricing.html" class="mnav-link">料金プラン</a>
+      <a href="how-to.html" class="mnav-link">使い方</a>
+      <a href="about.html" class="mnav-link">会社案内</a>
+      <a href="faq.html" class="mnav-link">サポート窓口</a>
+      <a href="contact.html" class="mnav-link">お問い合わせ</a>
+    </div>
+    <hr class="mnav-divider">
+    <div class="mnav-section">
+      <a href="login.html" class="mnav-link mnav-link--primary">新規登録 / ログイン</a>
+    </div>
   </nav>
 
   <div class="layout">
 
     <aside class="sidebar sidebar--left">
       <section class="sidebar-group">
-        <p class="sidebar-group-label">QR作成メニュー</p>
+        <p class="sidebar-group-label">QR作成</p>
         <nav>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
           <a href="index.html" class="sidebar-link"><span class="sidebar-icon">＋</span>新規QR作成</a>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">☰</span>テンプレート一覧</a>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">◈</span>ブランド管理</a>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">↗</span>アクセス解析</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
+          <a href="url-shortener.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
+          <a href="text-qr.html" class="sidebar-link"><span class="sidebar-icon">📝</span>テキスト変換</a>
+          <a href="contact-management.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
+          <a href="qr-email.html" class="sidebar-link"><span class="sidebar-icon">✉️</span>メール作成</a>
+          <a href="qr-map.html" class="sidebar-link"><span class="sidebar-icon">📍</span>地図リンク</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">カスタマイズ</p>
+        <nav>
+          <a href="templates.html" class="sidebar-link"><span class="sidebar-icon">☰</span>テンプレート一覧</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">✏️</span>デザイン編集</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>画像ギャラリー</a>
         </nav>
       </section>
       <section class="sidebar-group">
@@ -120,21 +158,10 @@
         </nav>
       </section>
       <section class="sidebar-group">
-        <p class="sidebar-group-label">カスタマイズ</p>
-        <nav>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">✏️</span>デザイン編集</a>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>画像ギャラリー</a>
-        </nav>
-      </section>
-      <section class="sidebar-group">
         <p class="sidebar-group-label">便利ツール</p>
         <nav>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
-          <a href="text-qr.html" class="sidebar-link"><span class="sidebar-icon">📝</span>テキスト変換</a>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
-          <a href="qr-email.html" class="sidebar-link"><span class="sidebar-icon">✉️</span>メール作成</a>
-          <a href="qr-map.html" class="sidebar-link"><span class="sidebar-icon">📍</span>地図リンク</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">◈</span>ブランド管理</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">↗</span>アクセス解析</a>
           <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⚙️</span>その他ツール</a>
         </nav>
       </section>
@@ -178,7 +205,7 @@
             <div class="strategy-num">3</div>
             <div class="strategy-body">
               <p class="strategy-title">ブランドカラーでQRコードをカスタマイズ</p>
-              <p class="strategy-desc">デフォルトの黒いQRコードより、ブランドカラーに合わせた色付きQRコードは視認性と信頼感が高まります。SmartQR Studioのカラーピッカーで簡単にカスタマイズできます。</p>
+              <p class="strategy-desc">デフォルトの黒いQRコードより、ブランドカラーに合わせた色付きQRコードは視認性と信頼感が高まります。ぽちっとQR工房のカラーピッカーで簡単にカスタマイズできます。</p>
             </div>
           </div>
           <div class="strategy-item">
@@ -332,7 +359,13 @@
 
   <footer class="site-footer">
     <p>すべての処理はブラウザ内で完結。入力内容はサーバーに送信されません。</p>
-    <p class="footer-copy">© 2026 SmartQR Studio</p>
+    <nav class="footer-links">
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+      <a href="privacy.html">個人情報の取り扱いについて</a>
+      <a href="terms.html">利用規約</a>
+      <a href="about.html">運営会社</a>
+    </nav>
+    <p class="footer-copy">© 2026 ぽちっとQR工房</p>
   </footer>
 
   <script src="script.js"></script>

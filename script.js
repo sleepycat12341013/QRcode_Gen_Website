@@ -146,7 +146,14 @@ if (document.getElementById('panel-link')) {
         correctLevel: QRCode.CorrectLevel.M,
       });
     } catch (e) {
-      showError('QRコードの生成に失敗しました。入力内容を確認してください。');
+      const msg = (e && e.message) ? e.message : '';
+      if (msg.toLowerCase().includes('overflow') || msg.toLowerCase().includes('length')) {
+        showError('データが長すぎてQRコードを生成できません。内容を短くしてください。');
+      } else if (msg) {
+        showError(`QR生成に失敗しました: ${msg}`);
+      } else {
+        showError('QRコードの生成に失敗しました。入力内容を確認してください。');
+      }
       lastContent = '';
       return;
     }
@@ -220,11 +227,24 @@ const backdrop  = document.querySelector('.mobile-nav-backdrop');
 const closeBtn  = document.querySelector('.mobile-nav-close');
 
 if (hamburger) {
-  const openNav  = () => { mobileNav.classList.add('is-open'); backdrop.classList.add('is-open'); hamburger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
-  const closeNav = () => { mobileNav.classList.remove('is-open'); backdrop.classList.remove('is-open'); hamburger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+  const openNav  = () => {
+    mobileNav.classList.add('is-open');
+    backdrop.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    sessionStorage.setItem('mobileNavOpen', '1');
+  };
+  const closeNav = () => {
+    mobileNav.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    sessionStorage.removeItem('mobileNavOpen');
+  };
   hamburger.addEventListener('click', openNav);
   closeBtn.addEventListener('click', closeNav);
   backdrop.addEventListener('click', closeNav);
+  if (sessionStorage.getItem('mobileNavOpen') === '1') openNav();
 }
 
 // href="#" のスクロール防止

@@ -3,20 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新着情報 — ぽちっとQR工房</title>
-  <meta name="description" content="ぽちっとQR工房の最新情報・アップデート・機能追加のお知らせ。無料QRコード生成サービスの新着情報はこちら。">
-  <link rel="canonical" href="https://sleepycat12341013.github.io/QRcode_Gen_Website/news.html">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sleepycat12341013.github.io/QRcode_Gen_Website/news.html">
-  <meta property="og:title" content="新着情報 — ぽちっとQR工房">
-  <meta property="og:description" content="ぽちっとQR工房の最新情報・アップデート・機能追加のお知らせ。">
-  <meta property="og:image" content="https://sleepycat12341013.github.io/QRcode_Gen_Website/og-image.svg">
-  <meta property="og:site_name" content="ぽちっとQR工房">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="新着情報 — ぽちっとQR工房">
-  <meta name="twitter:description" content="ぽちっとQR工房の最新情報・アップデート・機能追加のお知らせ。">
-  <meta name="twitter:image" content="https://sleepycat12341013.github.io/QRcode_Gen_Website/og-image.svg">
+  <title>短縮URL — ぽちっとQR工房</title>
+  <meta name="description" content="ぽちっとQR工房 の短縮URL機能。近日公開予定です。">
+  <meta name="robots" content="noindex">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,17 +14,26 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1G6VC4NMYL');</script>
   <style>
-    .news-list { display: flex; flex-direction: column; gap: 0; }
-    .news-item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
-    .news-item:last-child { border-bottom: none; padding-bottom: 0; }
-    .news-date { font-size: 12px; color: var(--fg-faint); white-space: nowrap; padding-top: 2px; min-width: 80px; }
-    .news-body { flex: 1; }
-    .news-tag { display: inline-block; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-bottom: 6px; }
-    .news-tag--update { background: #DBEAFE; color: #1E40AF; }
-    .news-tag--feature { background: #DCFCE7; color: #166534; }
-    .news-tag--notice { background: #FEF9C3; color: #854D0E; }
-    .news-title { font-size: 14px; font-weight: 700; color: var(--fg); margin-bottom: 4px; }
-    .news-desc { font-size: 13px; color: var(--fg-muted); line-height: 1.7; }
+    .coming-soon-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 56px 20px;
+      text-align: center;
+    }
+    .coming-soon-box h2 { font-size: 20px; font-weight: 700; color: var(--fg); }
+    .coming-soon-box p { font-size: 14px; color: var(--fg-muted); max-width: 360px; line-height: 1.7; }
+    .coming-soon-badge {
+      display: inline-block;
+      background: var(--red-light);
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 99px;
+      letter-spacing: .05em;
+    }
   </style>
 </head>
 <body>
@@ -83,7 +81,7 @@
       <p class="mnav-section-label">QR作成</p>
       <a href="index.html" class="mnav-link">＋ 新規QR作成</a>
       <a href="login.html" class="mnav-link">⊞ ダッシュボード</a>
-      <a href="url-shortener.html" class="mnav-link">🔗 短縮URL</a>
+      <a href="url-shortener.html" class="mnav-link mnav-link--active">🔗 短縮URL</a>
       <a href="text-qr.html" class="mnav-link">📝 テキスト変換</a>
       <a href="contact-management.html" class="mnav-link">👥 連絡先管理</a>
       <a href="qr-email.html" class="mnav-link">✉️ メール作成</a>
@@ -119,7 +117,7 @@
         <nav>
           <a href="index.html" class="sidebar-link"><span class="sidebar-icon">＋</span>新規QR作成</a>
           <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
-          <a href="url-shortener.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
+          <a href="url-shortener.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">🔗</span>短縮URL</a>
           <a href="text-qr.html" class="sidebar-link"><span class="sidebar-icon">📝</span>テキスト変換</a>
           <a href="contact-management.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
           <a href="qr-email.html" class="sidebar-link"><span class="sidebar-icon">✉️</span>メール作成</a>
@@ -164,93 +162,84 @@
 
     <main class="main-content">
       <div class="page-heading">
-        <h1 class="page-title">新着情報</h1>
-        <p class="page-subtitle">アップデート・機能追加のお知らせ</p>
+        <h1 class="page-title">短縮URL</h1>
+        <p class="page-subtitle">無料の外部サービスを使って今すぐURLを短縮できます</p>
       </div>
 
-      <section class="card" aria-labelledby="news-title">
+      <section class="card" aria-labelledby="why-title">
         <div class="card-header">
-          <h2 class="card-title" id="news-title">最新のお知らせ</h2>
+          <h2 class="card-title" id="why-title">短縮URLをQRコードに使う理由</h2>
         </div>
-        <div class="news-list">
-
-          <div class="news-item">
-            <span class="news-date">2026-05-11</span>
-            <div class="news-body">
-              <span class="news-tag news-tag--feature">新機能</span>
-              <p class="news-title">連絡先・動画QRコード生成に対応しました</p>
-              <p class="news-desc">トップページのタブから、連絡先（vCard形式）と動画URLのQRコードを生成できるようになりました。メール作成・地図リンクの専用ページも追加しています。</p>
-            </div>
+        <p style="font-size:13px;color:var(--fg-muted);line-height:1.8;margin-bottom:12px;">
+          長いURLをそのままQRコードにすると、QRのドットが密になりすぎてスキャンエラーが起きやすくなります。短縮URLを使うことで読み取り精度が上がり、印刷時も見た目がスッキリします。
+        </p>
+        <div style="display:flex;gap:24px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:180px;background:var(--red-pale);border-radius:var(--radius-sm);padding:14px 16px;">
+            <p style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px;">短縮前</p>
+            <p style="font-size:11px;color:var(--fg-muted);word-break:break-all;line-height:1.6;">https://example.com/products/category/item?ref=campaign&utm_source=qr&utm_medium=print</p>
           </div>
-
-          <div class="news-item">
-            <span class="news-date">2026-05-11</span>
-            <div class="news-body">
-              <span class="news-tag news-tag--update">アップデート</span>
-              <p class="news-title">ぽちっとQR工房 正式リリース</p>
-              <p class="news-desc">ぽちっとQR工房を正式にリリースしました。URLをQRコードに変換する基本機能、カラーカスタマイズ、PNGダウンロードに対応しています。完全無料・登録不要でご利用いただけます。</p>
-            </div>
+          <div style="flex:1;min-width:180px;background:#F0FDF4;border-radius:var(--radius-sm);padding:14px 16px;">
+            <p style="font-size:12px;font-weight:700;color:#15803D;margin-bottom:6px;">短縮後</p>
+            <p style="font-size:13px;font-weight:600;color:var(--fg);">https://bit.ly/3xAbc12</p>
           </div>
-
-          <div class="news-item">
-            <span class="news-date">近日公開</span>
-            <div class="news-body">
-              <span class="news-tag news-tag--notice">予告</span>
-              <p class="news-title">プレミアムプラン・アカウント機能を準備中</p>
-              <p class="news-desc">QRコードの保存・管理・アクセス解析・ロゴ埋め込みなどの高度な機能を含むプレミアムプランを準備中です。<a href="login.html" style="color:var(--red);">メール登録</a>でリリース通知を受け取れます。</p>
-            </div>
-          </div>
-
-          <div class="news-item">
-            <span class="news-date">近日公開</span>
-            <div class="news-body">
-              <span class="news-tag news-tag--feature">新機能予告</span>
-              <p class="news-title">ファイル共有QRコードを開発中</p>
-              <p class="news-desc">PDF・画像・Officeファイルをアップロードしてダウンロードリンク付きQRコードを生成する機能を開発中です。</p>
-            </div>
-          </div>
-
         </div>
       </section>
 
-      <section class="card" aria-labelledby="cta-title">
+      <section class="card" aria-labelledby="services-title">
         <div class="card-header">
-          <h2 class="card-title" id="cta-title">今すぐ無料で使う</h2>
+          <h2 class="card-title" id="services-title">おすすめ無料サービス</h2>
         </div>
-        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:16px;">登録不要・完全無料。URLを入力するだけでQRコードを即時生成できます。</p>
-        <a href="index.html" class="btn-primary" style="align-self:flex-start;">QRコードを作成する</a>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+
+          <div style="border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:8px;">
+              <p style="font-size:14px;font-weight:700;color:var(--fg);">Bitly</p>
+              <span style="font-size:11px;background:var(--red-light);color:var(--red);padding:2px 10px;border-radius:99px;font-weight:700;">おすすめ</span>
+            </div>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-bottom:10px;">無料プランで月50件まで短縮可能。クリック数の基本統計も確認できます。登録不要でも使えます。</p>
+            <a href="https://bitly.com" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:12px;padding:7px 16px;">Bitlyを使う →</a>
+          </div>
+
+          <div style="border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;">
+            <p style="font-size:14px;font-weight:700;color:var(--fg);margin-bottom:8px;">TinyURL</p>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-bottom:10px;">登録不要で即座に使えるシンプルな短縮サービス。件数制限なし。カスタムURLも設定可能。</p>
+            <a href="https://tinyurl.com" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:12px;padding:7px 16px;">TinyURLを使う →</a>
+          </div>
+
+          <div style="border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:16px 18px;">
+            <p style="font-size:14px;font-weight:700;color:var(--fg);margin-bottom:8px;">Rebrandly</p>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;margin-bottom:10px;">独自ドメインで短縮URLを作れるサービス。ブランドイメージを保ちたいビジネス向け。無料プランあり。</p>
+            <a href="https://rebrandly.com" target="_blank" rel="noopener noreferrer" class="btn-primary" style="font-size:12px;padding:7px 16px;">Rebrandlyを使う →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="howto-title">
+        <div class="card-header">
+          <h2 class="card-title" id="howto-title">短縮URL → QRコード 作成手順</h2>
+        </div>
+        <ol style="display:flex;flex-direction:column;gap:12px;padding-left:0;list-style:none;">
+          <li style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;">1</span>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;padding-top:3px;">上記のサービスで元URLを短縮し、短縮URLをコピーする</p>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;">2</span>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;padding-top:3px;"><a href="index.html" style="color:var(--red);">ぽちっとQR工房 のQR作成ページ</a>を開き、「リンク」タブに短縮URLを貼り付ける</p>
+          </li>
+          <li style="display:flex;gap:14px;align-items:flex-start;">
+            <span style="flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--red);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;">3</span>
+            <p style="font-size:13px;color:var(--fg-muted);line-height:1.7;padding-top:3px;">「生成する」を押してQRコードを作成・ダウンロード</p>
+          </li>
+        </ol>
+        <div style="margin-top:16px;">
+          <a href="index.html" class="btn-primary">QRコードを作成する →</a>
+        </div>
       </section>
     </main>
 
     <aside class="sidebar sidebar--right">
       <a href="login.html" class="btn-login btn-login--mobile">新規登録 / ログイン</a>
-      <section class="right-panel">
-        <p class="right-panel-title">QR管理</p>
-        <a href="login.html" class="right-panel-link">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="14" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="7" width="14" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1" y="13" width="8" height="2" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
-          マイQR一覧
-        </a>
-        <a href="login.html" class="right-panel-link">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M5 8h6M8 5v6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          フォルダ管理
-        </a>
-        <a href="login.html" class="right-panel-link">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M3 5h10M3 11h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          共有履歴
-        </a>
-        <a href="login.html" class="right-panel-link">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 12V5l5-3 4 2 4-2v9l-4 2-4-2-5 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-          アクセスレポート
-        </a>
-      </section>
-      <section class="right-panel right-panel--account">
-        <p class="right-panel-title">アカウント情報</p>
-        <div class="account-info">
-          <div class="account-row"><span class="account-key">プラン</span><span class="account-val account-val--empty">ログインして確認</span></div>
-          <div class="account-row"><span class="account-key">残り作成数</span><span class="account-val account-val--empty">—</span></div>
-          <div class="account-row"><span class="account-key">有効期限</span><span class="account-val account-val--empty">—</span></div>
-        </div>
-      </section>
       <section class="right-panel right-panel--promo">
         <div class="promo-content">
           <p class="promo-text">プレミアムプランで<br><strong>もっと便利に！</strong></p>
@@ -258,24 +247,16 @@
         </div>
       </section>
       <section class="right-panel">
-        <p class="right-panel-title">おすすめリンク</p>
-        <a href="how-to.html" class="right-panel-link">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          デザインのコツ
+        <p class="right-panel-title">おすすめ機能</p>
+        <a href="index.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="7.5" y="1.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="1.5" y="7.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/><rect x="7.5" y="7.5" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.2"/></svg>
+          QRコード生成
         </a>
-        <a href="use-cases.html" class="right-panel-link">
+        <a href="text-qr.html" class="right-panel-link">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 6h6M4 8.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          活用事例集
-        </a>
-        <a href="marketing.html" class="right-panel-link">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10V5l4-3 3 2 3-2v7l-3 1-3-2-4 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
-          マーケティング情報
+          テキスト変換
         </a>
       </section>
-      <a href="contact.html" class="btn-chat">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 3h12a1 1 0 011 1v8a1 1 0 01-1 1H6l-4 3V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        お問い合わせ
-      </a>
     </aside>
 
   </div>
