@@ -57,6 +57,21 @@
 
 ---
 
+## デプロイ・インフラ作業（午後）
+
+- **Cloudflare Pages デプロイ完了**
+  - `https://qrcode-gen-website.pages.dev/` で公開
+  - GitHub push → 自動デプロイ設定済み
+  - `_headers` によるセキュリティヘッダー適用済み
+  - `404.html` カスタムエラーページ動作確認済み
+- **canonical URL・sitemap 一括更新**: 全HTMLと sitemap.xml を `pages.dev` ドメインに書き換え
+- **robots.txt** の Sitemap 行を正式URLに更新
+- **Google Search Console 登録**: URLプレフィックスで `qrcode-gen-website.pages.dev` を登録、GA4で所有権確認
+- **sitemap.xml 送信**: GSC でサイトマップ送信（取得完了は翌日以降）
+- **.gitattributes 追加**: LF/CRLF 警告を解消
+
+---
+
 ## 次にやること（優先順）
 
 1. **Cloudflare Pages 移行**（商用利用のため必須）
