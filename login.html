@@ -14,7 +14,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1G6VC4NMYL');</script>
   <style>
-    .login-page { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
+    .login-page { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
     .login-box { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 40px 36px; max-width: 420px; width: 100%; text-align: center; }
     .login-logo { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 20px; font-weight: 700; color: var(--red); margin-bottom: 28px; }
     .login-title { font-size: 22px; font-weight: 700; color: var(--fg); margin-bottom: 10px; }
@@ -82,7 +82,59 @@
     <a href="login.html" class="mnav-link mnav-link--primary">新規登録 / ログイン</a>
   </nav>
 
-  <div class="login-page">
+  <div class="layout">
+
+    <aside class="sidebar sidebar--left">
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">QR作成メニュー</p>
+        <nav>
+          <a href="login.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
+          <a href="index.html" class="sidebar-link"><span class="sidebar-icon">＋</span>新規QR作成</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">☰</span>テンプレート一覧</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">◈</span>ブランド管理</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">↗</span>アクセス解析</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">設定メニュー</p>
+        <nav>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">👤</span>アカウント設定</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🔒</span>セキュリティ</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⚡</span>API連携設定</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">カスタマイズ</p>
+        <nav>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">✏️</span>デザイン編集</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>画像ギャラリー</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">便利ツール</p>
+        <nav>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
+          <a href="text-qr.html" class="sidebar-link"><span class="sidebar-icon">📝</span>テキスト変換</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
+          <a href="qr-email.html" class="sidebar-link"><span class="sidebar-icon">✉️</span>メール作成</a>
+          <a href="qr-map.html" class="sidebar-link"><span class="sidebar-icon">📍</span>地図リンク</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⚙️</span>その他ツール</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">サポート</p>
+        <nav>
+          <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">❓</span>ヘルプセンター</a>
+          <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">💬</span>よくある質問</a>
+          <a href="how-to.html" class="sidebar-link"><span class="sidebar-icon">📖</span>ガイドブック</a>
+          <a href="contact.html" class="sidebar-link"><span class="sidebar-icon">📩</span>お問い合わせ</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="main-content">
+    <div class="login-page">
     <div class="login-box">
       <div class="login-logo">
         <svg width="32" height="32" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -124,6 +176,9 @@
 
       <a href="index.html" class="back-link">← 今すぐ無料でQRコードを作成する</a>
     </div>
+  </div>
+  </main>
+
   </div>
 
   <footer class="site-footer">
