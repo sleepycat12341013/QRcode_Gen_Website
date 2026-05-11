@@ -227,7 +227,16 @@ body {
   top: calc(var(--header-h) + 16px);
   max-height: calc(100vh - var(--header-h) - 32px);
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(185,28,28,.35) transparent;
 }
+.sidebar--left::-webkit-scrollbar { width: 4px; }
+.sidebar--left::-webkit-scrollbar-track { background: transparent; }
+.sidebar--left::-webkit-scrollbar-thumb {
+  background: rgba(185,28,28,.35);
+  border-radius: 99px;
+}
+.sidebar--left::-webkit-scrollbar-thumb:hover { background: rgba(185,28,28,.6); }
 
 .sidebar-group { padding: 8px 0; }
 .sidebar-group + .sidebar-group { border-top: 1px solid var(--border); }
