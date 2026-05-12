@@ -1,41 +1,79 @@
 # ぽちっとQR工房
 
 URLを入力するだけでQRコードを即時生成・ダウンロードできる静的Webアプリ。  
-GitHub Pages でホスティング: https://sleepycat12341013.github.io/QRcode_Gen_Website/
+**本番URL**: https://qrcode-gen-website.pages.dev/
+
+---
+
+## 現在の状態（2026-05-12）
+
+| 項目 | 状態 |
+|------|------|
+| ホスティング | ✅ Cloudflare Pages（GitHub push → 自動デプロイ） |
+| canonical URL / sitemap | ✅ pages.dev ドメインに統一済み |
+| Google Search Console | ✅ 登録済み・sitemap 送信済み |
+| Google Analytics | ✅ G-1G6VC4NMYL |
+| セキュリティヘッダー | ✅ `_headers`（X-Frame-Options / CSP / Referrer-Policy 等） |
+| SRI（CDN整合性検証） | ✅ qrcodejs CDN に integrity 属性付き |
+| 特定商取引法表記 | ✅ 記入済み |
+| EmailJS フォーム | ✅ 動作確認済み |
+| PNG ダウンロード | ✅ 全 QR ページで動作 |
+| SVG ダウンロード | ✅ UI実装済み・Pro ゲート（pricing.html へ誘導） |
+| Stripe 決済 | ❌ 未設置（次のステップ） |
+| 認証 / ログイン | ❌ 未実装（Supabase 予定） |
+| 独自ドメイン | ❌ 未取得 |
 
 ---
 
 ## 機能
 
-- URL / テキスト / メール / 地図リンク の4タブでQR生成
+### 現在無料で使える機能（登録不要）
+
+- URL / テキスト / 連絡先（vCard）/ 動画 / メール / 地図 の QR 生成
 - カラーカスタマイズ（6色スウォッチ + カスタムカラーピッカー）
-- PNGダウンロード（タイムスタンプ付きファイル名）
+- PNG ダウンロード（タイムスタンプ付きファイル名）
 - 全処理ブラウザ完結（サーバーへのデータ送信なし）
-- レスポンシブ対応（モバイルナビ付き）
-- Google Analytics (G-1G6VC4NMYL) 計測済み
+- レスポンシブ対応・モバイルナビ
+
+### Pro 機能（¥580/月・Stripe 設置後に有効化予定）
+
+- SVG ダウンロード（印刷・看板向け高解像度ベクター）← UI実装済み、課金ゲート待ち
+- ロゴ・アイコン埋め込み QR（Canvas API）← 未実装
+- デザインテンプレート全解放 ← モックのみ
+- QR 履歴管理（100件）← 未実装
+
+### Business 機能（¥1,980/月）
+
+- 動的 QR（URL を後から変更可能）← 未実装・バックエンド必須
+- 詳細アクセス解析
+- 一括 QR 作成・API アクセス
 
 ---
 
-## ページ一覧（全16ページ）
+## ページ一覧（全20ページ）
 
 | ページ | ファイル | 備考 |
 |--------|---------|------|
-| TOP（ホーム） | index.html | タブ切り替え QR 生成（URL/テキスト/メール/地図） |
-| テキストQR作成 | text-qr.html | URLタブ + テキストタブ切り替え対応 |
+| TOP（ホーム） | index.html | タブ切り替え QR 生成（URL/テキスト/連絡先/動画/ファイル） |
+| テキストQR作成 | text-qr.html | URL タブ + テキストタブ切り替え |
 | メールQR作成 | qr-email.html | mailto: URL → QR |
 | 地図QR作成 | qr-map.html | 住所 or Google Maps URL → QR |
+| 連絡先管理 | contact-management.html | vCard QR |
+| テンプレート一覧 | templates.html | 6無料 + 6プレミアムカラープリセット |
 | 使い方ガイド | how-to.html | ステップ解説 |
-| よくある質問 | faq.html | FAQ（アコーディオン） |
-| 料金プラン | pricing.html | Free / Pro ¥580 / Business ¥1,980（有料は近日公開） |
+| よくある質問 | faq.html | FAQ |
+| 料金プラン | pricing.html | Free / Pro ¥580 / Business ¥1,980 |
 | 新着情報 | news.html | お知らせ一覧 |
 | 会社案内 | about.html | ミッション・サービス概要 |
 | お問い合わせ | contact.html | EmailJS フォーム（設定済み） |
 | ログイン | login.html | 通知受付 + ダッシュボードモックアップ（noindex） |
 | 活用事例 | use-cases.html | 業種別ユースケース6種 |
-| マーケティング情報 | marketing.html | QR活用の戦略・設置場所ガイド |
+| マーケティング情報 | marketing.html | QR 活用の戦略・設置場所ガイド |
 | 短縮URL | url-shortener.html | 外部サービス紹介（Bitly / TinyURL 等） |
-| テンプレート一覧 | templates.html | 6無料 + 6プレミアムカラープリセット + アイコン入りQR紹介 |
-| カスタム404 | 404.html | Cloudflare Pages 用カスタムエラーページ |
+| 特定商取引法表記 | tokushoho.html | ✅ 記入済み |
+| プライバシーポリシー | privacy.html | |
+| 利用規約 | terms.html | |
+| カスタム404 | 404.html | Cloudflare Pages 用 |
 
 ---
 
@@ -47,6 +85,8 @@ QRcode_Gen_Website/
 ├── text-qr.html            テキスト/URLタブQR
 ├── qr-email.html           メールQR
 ├── qr-map.html             地図QR
+├── contact-management.html 連絡先QR
+├── templates.html          テンプレート一覧
 ├── how-to.html             使い方
 ├── faq.html                よくある質問
 ├── pricing.html            料金プラン（3階層）
@@ -57,14 +97,18 @@ QRcode_Gen_Website/
 ├── use-cases.html          活用事例
 ├── marketing.html          マーケティング情報
 ├── url-shortener.html      短縮URL外部サービス紹介
-├── templates.html          テンプレート一覧（カラー + プレミアム）
+├── tokushoho.html          特定商取引法表記（記入済み）
+├── privacy.html            プライバシーポリシー
+├── terms.html              利用規約
 ├── 404.html                カスタム404ページ
 ├── styles.css              共通スタイル
-├── script.js               タブ切り替え・モバイルナビ
+├── script.js               タブ切り替え・モバイルナビ・DL処理
 ├── sitemap.xml             全ページ sitemap
 ├── robots.txt              クローラー設定
 ├── _headers                Cloudflare Pages セキュリティヘッダー
+├── .gitattributes          LF 統一
 ├── og-image.svg/png        OGP画像
+├── favicon.svg             ファビコン
 └── README.md               このファイル
 ```
 
@@ -75,137 +119,83 @@ QRcode_Gen_Website/
 | 種別 | 内容 |
 |------|------|
 | 言語 | HTML5 / CSS3 / Vanilla JS |
-| QR生成 | [qrcodejs](https://github.com/davidshimjs/qrcodejs) 1.0.0（CDN） |
+| QR生成 | qrcodejs 1.0.0（CDN・SRI付き） |
 | フォント | Noto Sans JP（Google Fonts） |
-| ホスティング | Cloudflare Pages（移行予定）/ 現 GitHub Pages |
+| ホスティング | Cloudflare Pages（GitHub 連携・自動デプロイ） |
 | 計測 | Google Analytics 4（G-1G6VC4NMYL） |
+| メール | EmailJS（PUBLIC_KEY=UlBt4NvCcEAZSlnX_） |
 
 ---
 
 ## ローカル確認
 
-`index.html` をブラウザで直接開くか、VS Code の Live Server で起動。
-
-```bash
-# Live Server（VS Code 拡張）
-# index.html を右クリック → "Open with Live Server"
+```powershell
+# VS Code の Live Server 拡張で index.html を右クリック → Open with Live Server
+# または index.html をブラウザに直接ドラッグ
 ```
 
 ---
 
-## Git コミット履歴
+## プラン別機能一覧
 
-| ハッシュ | 内容 |
-|---------|------|
-| 5f4f26f | Initial release: ぽちっとQR工房 MOCK v1 |
-| ce258af | Add Google Analytics (G-1G6VC4NMYL) |
-| 73653a2 | Add 8 new pages and update all nav/sidebar links site-wide |
-
----
-
-## プラン別機能一覧 <sub>2026-05-11</sub>
-
-### Free（現在リリース済み・登録不要）
+### Free（リリース済み・登録不要）
 
 | 機能 | 状態 |
 |------|------|
-| URL リンク QR 生成 | ✅ 無制限 |
-| テキスト QR 生成（最大500文字） | ✅ 無制限 |
-| メール QR 生成（mailto:） | ✅ 無制限 |
-| 地図リンク QR 生成（住所 / Google Maps URL） | ✅ 無制限 |
-| 連絡先 QR 生成（vCard 3.0） | ✅ 無制限 |
+| URL / テキスト / 連絡先 / メール / 地図 QR 生成 | ✅ 無制限 |
 | カラーカスタマイズ（6色 + カスタムピッカー） | ✅ |
 | PNG ダウンロード | ✅ 無制限 |
 | ブラウザ完結・データ非送信 | ✅ |
 | スマートフォン対応 | ✅ |
-| アカウント登録 | ❌ 不要 |
 
----
+### Pro（¥580/月）
 
-### Pro（¥580/月・近日公開）
+| 機能 | 実装状態 |
+|------|---------|
+| SVG ダウンロード | ✅ UI 実装済み・Pro バッジ表示・pricing.html へ誘導中 |
+| ロゴ・アイコン埋め込み QR | ❌ 未実装 |
+| デザインテンプレート全種類 | ⚠️ モックのみ |
+| QR 履歴管理（100件） | ❌ 未実装（要認証） |
+| 基本アクセス解析 | ❌ 未実装（要認証） |
 
-Free の全機能に加えて：
+### Business（¥1,980/月）
 
-| 機能 | 内容 |
-|------|------|
-| SVG・高解像度 PNG 出力 | 印刷・看板向け高品質出力 |
-| ロゴ・アイコン埋め込み | QR コード中央に画像を配置 |
-| デザインテンプレート（全種類） | 業種別・色テーマプリセット全解放 |
-| QR 履歴管理（100件） | 作成済み QR の保存・再利用 |
-| 基本アクセス解析 | スキャン数・デバイス統計 |
-
-### Business（¥1,980/月・近日公開）
-
-Pro の全機能に加えて：
-
-| 機能 | 内容 |
-|------|------|
-| 動的 QR（URL 後から変更可） | QR 印刷後も飛び先を変更できる最重要機能 |
-| QR 履歴管理（無制限） | 件数制限なし |
-| 詳細アクセス解析 | 地域・デバイス・時間帯の詳細統計 |
-| 一括 QR 作成 | CSV 入力で複数 QR を一括生成 |
-| API アクセス | 外部システムからの QR 生成連携 |
-
----
-
-### 実装ステータス対照表
-
-| 機能 | 画面上の表示 | 実装状態 |
-|------|------------|---------|
-| URL QR | タブ「リンク」 | ✅ 動作する |
-| テキスト QR | タブ「文字入力」 | ✅ 動作する |
-| メール QR | タブ（index.html）/ qr-email.html | ✅ 動作する |
-| 地図 QR | タブ（index.html）/ qr-map.html | ✅ 動作する |
-| 連絡先 QR | タブ「連絡先」 | ✅ 動作する |
-| 動画 QR | タブ「動画」 | ⚠️ URL 入力のみ（テンプレートなし） |
-| ファイル QR | タブ「ファイル」 | 🔒 近日公開スタブ |
-| ダッシュボード / 履歴管理 | 左サイドバー | 🔒 login.html へ誘導（未実装） |
-| アクセス解析 | 左サイドバー | 🔒 login.html へ誘導（未実装） |
-| テンプレート / ブランド管理 | 左サイドバー | 🔒 login.html へ誘導（未実装） |
+| 機能 | 実装状態 |
+|------|---------|
+| 動的 QR（URL 後から変更可） | ❌ 未実装（要バックエンド） |
+| QR 履歴（無制限）/ 詳細解析 | ❌ 未実装 |
+| 一括 QR 作成 / API | ❌ 未実装 |
 
 ---
 
 ## 次にやること（優先順）
 
-### 【すぐ】ホスティング移行
-- [ ] Vercel のプロジェクトを削除（→ 削除手順は下記）
-- [ ] Cloudflare Pages に移行（商用利用OK・帯域無制限・無料）
-  1. cloudflare.com → Pages → Create a project → Connect to Git
-  2. リポジトリ: `QRcode_Gen_Website`
-  3. Framework: None / Build command: 空欄 / Output: 空欄
-- [ ] sitemap.xml と全ページの canonical URL を新しいURLに更新
-- [ ] tokushoho.html の [氏名/住所/電話番号] プレースホルダーを記入
-  （有料プラン開始前にバーチャルオフィスを契約して住所取得）
+### Phase 1 — 今週（決済開始）
+- [ ] Stripe アカウント作成
+- [ ] Pro（¥580/月）・Business（¥1,980/月）の Payment Links 作成
+- [ ] pricing.html のボタンに Stripe URL を設置
+- [ ] 独自ドメイン取得（Cloudflare Registrar・約 $10/年）
 
-### 【有料プラン追加前】
-- [ ] 独自ドメイン取得（Cloudflare Registrar で .com 年 $10〜11 程度）
-- [ ] EmailJS の公式キーを contact.html / login.html に設定済み ✅
-- [ ] 決済手段の選定（Stripe 推奨・Vercel 不要で導入可能）
+### Phase 2 — 1ヶ月以内（課金ゲート）
+- [ ] Supabase Auth でログイン機能実装
+- [ ] Stripe Webhook → Supabase で課金フラグ管理
+- [ ] SVG ダウンロード・テンプレートを課金チェックで自動解放
 
-### 【将来】主要機能
-- [ ] アイコン入りQR（Canvas API でロゴ合成、エラー訂正 H 固定）
-- [ ] デザイン編集ページ（design-editor.html）
-- [ ] 動的QR（URL 後から変更可能 → DB 必須、最重要マネタイズ機能）
-- [ ] アクセス解析ダッシュボード（スキャン数・地域・デバイス）
-- [ ] SVG/PDF 高画質ダウンロード
-- [ ] ログイン・アカウント管理（Supabase Auth 推奨）
+### Phase 3 — 2ヶ月以内（Pro 機能完成）
+- [ ] ロゴ・アイコン埋め込み QR（Canvas API）
+- [ ] QR 履歴管理（localStorage → Supabase）
+- [ ] 基本アクセス解析ダッシュボード
 
-### 【確定プラン】
-```
-Free     : 静的QR・基本色・PNG（登録不要・無制限）        ← 現在リリース済み
-Pro      : ¥580/月  — アイコン入り・全テンプレート・SVG・履歴100件
-Business : ¥1,980/月 — 動的QR・詳細解析・API・一括作成・履歴無制限
-```
-- 決済: Stripe Payment Links（バックエンド不要）
-- 課金開始前に独自ドメイン + 特定商取引法表記の記入が必要
+### Phase 4 — 将来（Business 機能）
+- [ ] 動的 QR（サーバーサイドリダイレクト・最重要マネタイズ機能）
+- [ ] 詳細アクセス解析・一括作成・API
 
 ---
 
-## Vercel 削除手順
+## マネタイズ見込み
 
-1. [vercel.com/dashboard](https://vercel.com/dashboard) にログイン
-2. 削除したいプロジェクトを選択
-3. **Settings** タブ → 最下部 **"Delete Project"**
-4. プロジェクト名を入力して確認 → 削除完了
-
-> チームではなく個人アカウントのプロジェクトであれば上記で完結。
+| タイミング | 内容 |
+|-----------|------|
+| 今週 | Stripe リンク設置 → 形式上の販売開始可能 |
+| 1ヶ月後 | 認証 + 課金ゲート → SVG 等を自動で解放 |
+| 2ヶ月後 | Pro 機能が出揃いリテンション向上 |

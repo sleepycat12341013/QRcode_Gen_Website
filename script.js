@@ -15,7 +15,9 @@ if (document.getElementById('panel-link')) {
   const elUrlLabel  = document.getElementById('qr-url-label');
   const elErrorMsg  = document.getElementById('error-msg');
   const btnGenerate = document.getElementById('btn-generate');
-  const btnDownload = document.getElementById('btn-download');
+  const btnDownload    = document.getElementById('btn-download');
+  const btnDownloadSvg = document.getElementById('btn-download-svg');
+  btnDownloadSvg.addEventListener('click', () => { window.location.href = 'pricing.html'; });
   const swatches    = document.querySelectorAll('.swatch:not(.swatch--custom)');
   const customColor = document.getElementById('custom-color');
 

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
@@ -22,8 +22,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1G6VC4NMYL');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GFVKCRLEW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7GFVKCRLEW');</script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" integrity="sha384-3zSEDfvllQohrq0PHL1fOXJuC/jSOO34H46t6UQfobFOmxE5BpjjaIJY5F2/bMnU" crossorigin="anonymous"></script>
   <style>
     .email-form { display: flex; flex-direction: column; gap: 14px; }
@@ -238,10 +238,17 @@
           </div>
           <p id="qr-url-label" class="qr-url-label" hidden></p>
         </div>
-        <button id="btn-download" class="btn-primary btn-full" disabled>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          PNGダウンロード
-        </button>
+        <div class="download-row">
+          <button id="btn-download" class="btn-primary" disabled>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            PNGダウンロード
+          </button>
+          <button id="btn-download-svg" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            SVGダウンロード
+            <span class="pro-badge"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg>Pro</span>
+          </button>
+        </div>
       </section>
 
       <section class="card" aria-labelledby="info-title">
@@ -337,7 +344,8 @@
     var elQrEmpty  = document.getElementById('qr-empty');
     var elQrFrame  = document.getElementById('qr-frame');
     var elUrlLabel = document.getElementById('qr-url-label');
-    var elDownload = document.getElementById('btn-download');
+    var elDownload    = document.getElementById('btn-download');
+    document.getElementById('btn-download-svg').addEventListener('click', function() { window.location.href = 'pricing.html'; });
     var swatches   = document.querySelectorAll('.swatch:not(.swatch--custom)');
     var customColor = document.getElementById('custom-color');
 
