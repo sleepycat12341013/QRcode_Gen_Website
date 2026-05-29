@@ -8,12 +8,9 @@
   <link rel="canonical" href="https://qrcode-gen-website.pages.dev/login.html">
   <meta name="robots" content="noindex">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7GFVKCRLEW"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-7GFVKCRLEW');</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
+  <script src="analytics-init.js"></script>
   <!--
     EmailJS 通知登録 — contact.html と同じ設定値を使います。
     同じ SERVICE_ID, PUBLIC_KEY を使い、別テンプレートを作成してください:
@@ -21,7 +18,7 @@
       Body:    新規通知登録がありました。\nメール: {{user_email}}
     EMAILJS_NOTIFY_TEMPLATE_ID に通知用テンプレートIDをセットしてください。
   -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
   <style>
     .login-page { min-height: 60vh; display: flex; align-items: center; justify-content: center; padding: 40px 16px; }
     .login-box { background: var(--surface); border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 40px 36px; max-width: 420px; width: 100%; text-align: center; }
@@ -298,63 +295,7 @@
     <p class="footer-copy">© 2026 ぽちっとQR工房</p>
   </footer>
 
-  <script>
-  (function() {
-    'use strict';
-
-    /* ── EmailJS 設定 (contact.html と同じ PUBLIC_KEY / SERVICE_ID) ── */
-    var EMAILJS_PUBLIC_KEY       = 'YOUR_PUBLIC_KEY';
-    var EMAILJS_SERVICE_ID       = 'YOUR_SERVICE_ID';
-    var EMAILJS_NOTIFY_TEMPLATE  = 'YOUR_NOTIFY_TEMPLATE_ID'; // 通知登録用テンプレート
-
-    var configured = EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY';
-    if (configured) emailjs.init(EMAILJS_PUBLIC_KEY);
-
-    var btn     = document.getElementById('notify-btn');
-    var input   = document.getElementById('notify-email');
-    var success = document.getElementById('notify-success');
-
-    btn.addEventListener('click', function() {
-      var email = input.value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        input.style.borderColor = 'var(--red)';
-        input.focus();
-        return;
-      }
-      input.style.borderColor = '';
-
-      if (!configured) {
-        success.classList.add('show');
-        input.value = '';
-        btn.disabled = true;
-        btn.textContent = '登録済み';
-        return;
-      }
-
-      btn.disabled = true;
-      btn.textContent = '送信中...';
-
-      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_NOTIFY_TEMPLATE, {
-        user_email: email,
-      }).then(function() {
-        success.classList.add('show');
-        input.value = '';
-        btn.textContent = '登録済み';
-      }, function(err) {
-        btn.disabled = false;
-        btn.textContent = '通知を受け取る';
-        console.error('EmailJS error:', err);
-        /* 失敗してもユーザー体験を損なわないよう、画面上はエラーを出さない */
-        success.classList.add('show');
-        input.value = '';
-      });
-    });
-
-    input.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') btn.click();
-    });
-  })();
-  </script>
+  <script src="login.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

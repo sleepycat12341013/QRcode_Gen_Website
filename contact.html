@@ -39,43 +39,13 @@
       content="https://qrcode-gen-website.pages.dev/og-image.svg"
     />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="styles.css" />
     <script
       async
-      src="https://www.googletagmanager.com/gtag/js?id=G-7GFVKCRLEW"
+      src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"
     ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-7GFVKCRLEW");
-    </script>
-    <!--
-    ========================================================
-    EmailJS セットアップ手順:
-    1. https://www.emailjs.com/ で無料アカウント作成
-    2. Email Services → Add New Service → Gmail を選択し自分のGmailと接続
-    3. Email Templates → Create New Template を作成:
-         To email: sleepycat12341013@gmail.com
-         Subject:  [ぽちっとQR お問い合わせ] {{category}} — {{from_name}} 様
-         Body:     お名前: {{from_name}}
-                   メール: {{from_email}}
-                   種別: {{category}}
-                   ---
-                   {{message}}
-    4. Account → Public Key をコピー
-    5. 下の EMAILJS_PUBLIC_KEY, EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID を置き換える
-    ========================================================
-  -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="analytics-init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
     <style>
       .contact-form {
         display: flex;
@@ -585,117 +555,7 @@
       <p class="footer-copy">© 2026 ぽちっとQR工房</p>
     </footer>
 
-    <script>
-      (function () {
-        "use strict";
-
-        /* ── EmailJS 設定 ─────────────────────────────────────────────
-       emailjs.com でアカウント作成後に以下を置き換えてください。
-       テンプレート変数: {{from_name}} {{from_email}} {{category}} {{message}}
-    ─────────────────────────────────────────────────────────── */
-        var EMAILJS_PUBLIC_KEY = "UlBt4NvCcEAZSlnX_"; // Account → Public Key
-        var EMAILJS_SERVICE_ID = "service_npsuqek"; // Email Services → Service ID
-        var EMAILJS_TEMPLATE_ID = "template_ex16vx7"; // Email Templates → Template ID
-
-        var configured = EMAILJS_PUBLIC_KEY !== "YOUR_PUBLIC_KEY";
-        if (configured) emailjs.init(EMAILJS_PUBLIC_KEY);
-
-        var form = document.getElementById("contact-form");
-        var elName = document.getElementById("cf-name");
-        var elEmail = document.getElementById("cf-email");
-        var elCat = document.getElementById("cf-category");
-        var elMsg = document.getElementById("cf-message");
-        var elError = document.getElementById("cf-error");
-        var elSubmit = document.getElementById("cf-submit");
-        var successBox = document.getElementById("success-box");
-
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          elError.hidden = true;
-
-          var name = elName.value.trim();
-          var email = elEmail.value.trim();
-          var category = elCat.value;
-          var message = elMsg.value.trim();
-
-          if (!name) {
-            showError("お名前を入力してください");
-            elName.focus();
-            return;
-          }
-          if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            showError("正しいメールアドレスを入力してください");
-            elEmail.focus();
-            return;
-          }
-          if (!category) {
-            showError("お問い合わせ種別を選択してください");
-            elCat.focus();
-            return;
-          }
-          if (!message) {
-            showError("お問い合わせ内容を入力してください");
-            elMsg.focus();
-            return;
-          }
-
-          if (!configured) {
-            /* EmailJS 未設定時は mailto フォールバック */
-            var subject = encodeURIComponent(
-              "[ぽちっとQR] " + category + " — " + name + " 様",
-            );
-            var body = encodeURIComponent(
-              "お名前: " +
-                name +
-                "\nメール: " +
-                email +
-                "\n種別: " +
-                category +
-                "\n\n" +
-                message,
-            );
-            window.location.href =
-              "mailto:sleepycat12341013@gmail.com?subject=" +
-              subject +
-              "&body=" +
-              body;
-            successBox.classList.add("show");
-            form.style.display = "none";
-            return;
-          }
-
-          elSubmit.disabled = true;
-          elSubmit.textContent = "送信中...";
-
-          emailjs
-            .send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-              from_name: name,
-              from_email: email,
-              category: category,
-              message: message,
-            })
-            .then(
-              function () {
-                successBox.classList.add("show");
-                form.style.display = "none";
-              },
-              function (err) {
-                elSubmit.disabled = false;
-                elSubmit.textContent = "送信する";
-                showError(
-                  "送信に失敗しました。しばらく経ってから再度お試しください。",
-                );
-                console.error("EmailJS error:", err);
-              },
-            );
-        });
-
-        function showError(msg) {
-          elError.textContent = msg;
-          elError.hidden = false;
-        }
-      })();
-    </script>
+    <script src="contact-form.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
