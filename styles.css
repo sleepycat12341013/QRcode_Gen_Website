@@ -302,6 +302,9 @@ body {
   border-radius: 0;
 }
 .sidebar-link:hover { background: var(--red-pale); color: var(--red); }
+/* ログイン必須のダミー項目はロック表示（クリックでログインへ＝解放動線） */
+.sidebar-link[href="login.html"], .right-panel-link[href="login.html"] { color: var(--fg-faint); }
+.sidebar-link[href="login.html"]::after { content: "🔒"; margin-left: auto; font-size: 10px; opacity: .5; }
 .sidebar-link--active {
   background: var(--red-light);
   color: var(--red);
@@ -542,6 +545,33 @@ body {
 .btn-secondary:hover:not(:disabled) .pro-badge {
   background: rgba(255, 255, 255, .22);
   color: #fff;
+}
+
+/* Pro限定でロックされたボタン（クリックで料金プランへ誘導） */
+.btn-secondary--locked {
+  border-style: dashed;
+  border-color: var(--border);
+  color: var(--fg-muted);
+  cursor: pointer;
+}
+.btn-secondary--locked:hover:not(:disabled) {
+  background: var(--red-pale);
+  color: var(--red);
+  border-color: var(--red);
+}
+.btn-secondary--locked:hover:not(:disabled) .pro-badge {
+  background: rgba(185, 28, 28, .12);
+  color: var(--red);
+}
+
+.color-warn {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b45309;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: var(--radius-sm);
+  padding: 7px 11px;
 }
 
 /* ── Color swatches ── */

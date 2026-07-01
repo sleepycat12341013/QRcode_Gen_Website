@@ -15,3 +15,13 @@ Thumbs.db
 # Local-only docs (contains account info)
 RECOVERY.md
 DEVICE_SECURITY.md
+ROADMAP.md
+MARKETING.md
+CLAUDE.md
+SECURITY.md
+DEVLOG.md
+
+CodehawksStartingGuide.md
+
+# Research / competitive intelligence reports (internal strategy)
+Research_*.md

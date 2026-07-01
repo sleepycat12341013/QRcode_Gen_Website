@@ -10,13 +10,13 @@
   <meta property="og:url" content="https://qrcode-gen-website.pages.dev/">
   <meta property="og:title" content="ぽちっとQR工房 — 無料QRコード即時生成">
   <meta property="og:description" content="URLを入力するだけで高品質なQRコードを無料・即時生成。ダウンロードもワンクリック。">
-  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/og-image.svg">
+  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/og-image.png">
   <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ぽちっとQR工房 — 無料QRコード即時生成">
   <meta name="twitter:description" content="URLを入力するだけで高品質なQRコードを無料・即時生成。ダウンロードもワンクリック。">
-  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/og-image.svg">
+  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/og-image.png">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
@@ -80,7 +80,7 @@
     <div class="mnav-section">
       <p class="mnav-section-label">QR作成</p>
       <a href="index.html" class="mnav-link mnav-link--active">＋ 新規QR作成</a>
-      <a href="login.html" class="mnav-link">⊞ ダッシュボード</a>
+      <a href="dashboard.html" class="mnav-link">⊞ ダッシュボード</a>
       <a href="url-shortener.html" class="mnav-link">🔗 短縮URL</a>
       <a href="text-qr.html" class="mnav-link">📝 テキスト変換</a>
       <a href="contact-management.html" class="mnav-link">👥 連絡先管理</a>
@@ -117,7 +117,7 @@
         <p class="sidebar-group-label">QR作成</p>
         <nav>
           <a href="index.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">＋</span>新規QR作成</a>
-          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
+          <a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
           <a href="url-shortener.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
           <a href="text-qr.html" class="sidebar-link"><span class="sidebar-icon">📝</span>テキスト変換</a>
           <a href="contact-management.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
@@ -292,6 +292,7 @@
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
             </label>
           </div>
+          <p id="color-warn" class="color-warn" role="status" hidden>⚠ この色は明るすぎて、スキャンできないQRになる場合があります。濃い色を推奨します。</p>
         </div>
 
         <div class="qr-preview-area">
@@ -317,7 +318,7 @@
               <span>入力して「生成する」を押すと<br>ここに表示されます</span>
             </div>
           </div>
-          <p id="qr-url-label" class="qr-url-label" hidden></p>
+          <p id="qr-url-label" class="qr-url-label" aria-live="polite" hidden></p>
         </div>
 
         <div class="download-row">
@@ -325,8 +326,8 @@
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             PNGダウンロード
           </button>
-          <button id="btn-download-svg" class="btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <button id="btn-download-svg" class="btn-secondary btn-secondary--locked" title="Pro限定機能です。料金プランで解放できます" aria-label="SVGダウンロード（Pro限定機能・料金プランへ）">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
             SVGダウンロード
             <span class="pro-badge"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg>Pro</span>
           </button>

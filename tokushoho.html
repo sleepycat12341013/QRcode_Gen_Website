@@ -3,41 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>お問い合わせ — ぽちっとQR工房</title>
+    <title>特定商取引法に基づく表記 — ぽちっとQR工房</title>
     <meta
       name="description"
-      content="ぽちっとQR工房へのお問い合わせはこちら。ご質問・ご要望・不具合報告など、お気軽にご連絡ください。"
+      content="ぽちっとQR工房 の特定商取引法に基づく表記ページです。"
     />
-    <link
-      rel="canonical"
-      href="https://qrcode-gen-website.pages.dev/contact.html"
-    />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:url"
-      content="https://qrcode-gen-website.pages.dev/contact.html"
-    />
-    <meta property="og:title" content="お問い合わせ — ぽちっとQR工房" />
-    <meta
-      property="og:description"
-      content="ぽちっとQR工房へのお問い合わせはこちら。ご質問・ご要望などお気軽にどうぞ。"
-    />
-    <meta
-      property="og:image"
-      content="https://qrcode-gen-website.pages.dev/og-image.png"
-    />
-    <meta property="og:site_name" content="ぽちっとQR工房" />
-    <meta property="og:locale" content="ja_JP" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="お問い合わせ — ぽちっとQR工房" />
-    <meta
-      name="twitter:description"
-      content="ぽちっとQR工房へのお問い合わせはこちら。ご質問・ご要望などお気軽にどうぞ。"
-    />
-    <meta
-      name="twitter:image"
-      content="https://qrcode-gen-website.pages.dev/og-image.png"
-    />
+    <meta name="robots" content="noindex" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <script
@@ -45,87 +16,34 @@
       src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"
     ></script>
     <script src="analytics-init.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/dist/email.min.js" integrity="sha384-SALc35EccAf6RzGw4iNsyj7kTPr33K7RoGzYu+7heZhT8s0GZouafRiCg1qy44AS" crossorigin="anonymous"></script>
     <style>
-      .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-      }
-      .contact-field {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-      .contact-field label {
-        font-size: 13px;
-        font-weight: 600;
-        color: var(--fg);
-      }
-      .contact-field input,
-      .contact-field textarea,
-      .contact-field select {
+      .legal-table {
         width: 100%;
-        padding: 10px 13px;
-        border: 1.5px solid var(--border);
-        border-radius: var(--radius-sm);
-        font-family: inherit;
+        border-collapse: collapse;
         font-size: 14px;
-        color: var(--fg);
-        background: var(--bg);
-        outline: none;
-        transition:
-          border-color 0.15s,
-          background 0.15s;
       }
-      .contact-field input:focus,
-      .contact-field textarea:focus,
-      .contact-field select:focus {
-        border-color: var(--border-focus);
-        background: var(--surface);
-        box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.1);
+      .legal-table th,
+      .legal-table td {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: top;
       }
-      .contact-field textarea {
-        resize: vertical;
-        min-height: 130px;
-        line-height: 1.6;
-      }
-      .contact-field input::placeholder,
-      .contact-field textarea::placeholder {
-        color: var(--fg-faint);
-      }
-      .required-mark {
-        color: var(--red);
-        margin-left: 4px;
-      }
-      .contact-note {
-        font-size: 12px;
-        color: var(--fg-faint);
-        line-height: 1.6;
-      }
-      .success-box {
-        display: none;
-        background: #dcfce7;
-        border: 1.5px solid #86efac;
-        border-radius: var(--radius-sm);
-        padding: 20px;
-        text-align: center;
-      }
-      .success-box.show {
-        display: block;
-      }
-      .success-box p {
-        color: #166534;
+      .legal-table th {
+        width: 32%;
+        color: var(--fg-muted);
         font-weight: 600;
-        margin-bottom: 6px;
+        background: var(--bg);
+        white-space: nowrap;
       }
-      .success-box small {
-        color: #166534;
+      .legal-table td {
+        color: var(--fg);
+      }
+      .legal-note {
         font-size: 12px;
-      }
-      .btn-sending {
-        opacity: 0.6;
-        cursor: not-allowed;
+        color: var(--fg-faint);
+        margin-top: 16px;
+        line-height: 1.7;
       }
     </style>
   </head>
@@ -228,9 +146,7 @@
         <a href="how-to.html" class="mnav-link">使い方</a>
         <a href="about.html" class="mnav-link">会社案内</a>
         <a href="faq.html" class="mnav-link">サポート窓口</a>
-        <a href="contact.html" class="mnav-link mnav-link--active"
-          >お問い合わせ</a
-        >
+        <a href="contact.html" class="mnav-link">お問い合わせ</a>
       </div>
       <hr class="mnav-divider" />
       <div class="mnav-section">
@@ -271,7 +187,7 @@
         <section class="sidebar-group">
           <p class="sidebar-group-label">カスタマイズ</p>
           <nav>
-            <a href="login.html" class="sidebar-link"
+            <a href="templates.html" class="sidebar-link"
               ><span class="sidebar-icon">☰</span>テンプレート一覧</a
             >
             <a href="login.html" class="sidebar-link"
@@ -325,7 +241,7 @@
             <a href="how-to.html" class="sidebar-link"
               ><span class="sidebar-icon">📖</span>ガイドブック</a
             >
-            <a href="contact.html" class="sidebar-link sidebar-link--active"
+            <a href="contact.html" class="sidebar-link"
               ><span class="sidebar-icon">📩</span>お問い合わせ</a
             >
           </nav>
@@ -334,108 +250,66 @@
 
       <main class="main-content">
         <div class="page-heading">
-          <h1 class="page-title">お問い合わせ</h1>
-          <p class="page-subtitle">
-            ご質問・ご要望・不具合報告などお気軽にどうぞ
-          </p>
+          <h1 class="page-title">特定商取引法に基づく表記</h1>
+          <p class="page-subtitle">最終更新: 2026年5月</p>
         </div>
 
-        <section class="card" aria-labelledby="contact-before-title">
-          <div class="card-header">
-            <h2 class="card-title" id="contact-before-title">
-              お問い合わせの前に
-            </h2>
-          </div>
-          <p
-            style="
-              font-size: 13px;
-              color: var(--fg-muted);
-              line-height: 1.7;
-              margin-bottom: 10px;
-            "
-          >
-            よくあるご質問は<a href="faq.html" style="color: var(--red)"
-              >FAQページ</a
-            >で解決できる場合があります。まずご確認ください。
+        <section class="card">
+          <table class="legal-table">
+            <tbody>
+              <tr>
+                <th>販売者名</th>
+                <td>ぽちっとQR工房 運営事務局</td>
+              </tr>
+              <tr>
+                <th>所在地</th>
+                <td>〒100-0001 東京都千代田区サンプル町1-2-3</td>
+              </tr>
+              <tr>
+                <th>電話番号</th>
+                <td>03-1234-5678（受付：平日 10:00〜18:00）</td>
+              </tr>
+              <tr>
+                <th>メールアドレス</th>
+                <td>support@example.com</td>
+              </tr>
+              <tr>
+                <th>販売価格</th>
+                <td>各商品・プランのページに表示された金額（税込）</td>
+              </tr>
+              <tr>
+                <th>支払方法</th>
+                <td>
+                  クレジットカード（Visa・Mastercard・American Express・JCB）
+                </td>
+              </tr>
+              <tr>
+                <th>支払時期</th>
+                <td>クレジットカード決済は注文確定時に即時決済</td>
+              </tr>
+              <tr>
+                <th>役務の提供時期</th>
+                <td>決済完了後、即時にサービスを利用可能</td>
+              </tr>
+              <tr>
+                <th>返品・キャンセル</th>
+                <td>
+                  デジタルコンテンツの性質上、購入後の返品・キャンセルは原則として承っておりません。<br />ただし、サービスに重大な瑕疵がある場合はご連絡ください。
+                </td>
+              </tr>
+              <tr>
+                <th>動作環境</th>
+                <td>
+                  インターネット接続環境、最新版のWebブラウザ（Chrome・Firefox・Safari・Edge）
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="legal-note">
+            ※ 本ページはポートフォリオ向けのサンプル表記です。記載の販売者名・所在地・電話番号・メールアドレスは実在しません。<br />
+            ※ 現在、ぽちっとQR工房
+            の無料プランはアカウント登録不要で利用できます。有料プラン開始時に本表記を正式な内容へ更新します。
           </p>
-          <p style="font-size: 13px; color: var(--fg-muted); line-height: 1.7">
-            使い方については<a href="how-to.html" style="color: var(--red)"
-              >使い方ガイド</a
-            >もご参照ください。
-          </p>
-        </section>
-
-        <section class="card" aria-labelledby="form-title">
-          <div class="card-header">
-            <h2 class="card-title" id="form-title">お問い合わせフォーム</h2>
-          </div>
-
-          <div id="success-box" class="success-box">
-            <p>送信が完了しました！</p>
-            <small>通常2〜3営業日以内にご返信します。</small>
-          </div>
-
-          <form class="contact-form" id="contact-form" novalidate>
-            <div class="contact-field">
-              <label for="cf-name"
-                >お名前<span class="required-mark">*</span></label
-              >
-              <input
-                type="text"
-                id="cf-name"
-                placeholder="山田 太郎"
-                autocomplete="name"
-                required
-              />
-            </div>
-            <div class="contact-field">
-              <label for="cf-email"
-                >メールアドレス<span class="required-mark">*</span></label
-              >
-              <input
-                type="email"
-                id="cf-email"
-                placeholder="example@email.com"
-                autocomplete="email"
-                required
-              />
-            </div>
-            <div class="contact-field">
-              <label for="cf-category"
-                >お問い合わせ種別<span class="required-mark">*</span></label
-              >
-              <select id="cf-category" required>
-                <option value="" disabled selected>選択してください</option>
-                <option value="使い方について">使い方について</option>
-                <option value="不具合・エラー報告">不具合・エラー報告</option>
-                <option value="機能のご要望">機能のご要望</option>
-                <option value="料金プランについて">料金プランについて</option>
-                <option value="その他">その他</option>
-              </select>
-            </div>
-            <div class="contact-field">
-              <label for="cf-message"
-                >お問い合わせ内容<span class="required-mark">*</span></label
-              >
-              <textarea
-                id="cf-message"
-                placeholder="ご質問・ご要望の詳細をご記入ください。"
-                required
-              ></textarea>
-            </div>
-            <p id="cf-error" class="error-msg" role="alert" hidden></p>
-            <p class="contact-note">
-              送信後、通常2〜3営業日以内にご返信します。
-            </p>
-            <button
-              type="submit"
-              class="btn-primary"
-              id="cf-submit"
-              style="align-self: flex-start"
-            >
-              送信する
-            </button>
-          </form>
         </section>
       </main>
 
@@ -443,52 +317,6 @@
         <a href="login.html" class="btn-login btn-login--mobile"
           >新規登録 / ログイン</a
         >
-        <section class="right-panel">
-          <p class="right-panel-title">QR管理</p>
-          <a href="login.html" class="right-panel-link">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <rect
-                x="1"
-                y="1"
-                width="14"
-                height="4"
-                rx="1"
-                stroke="currentColor"
-                stroke-width="1.2"
-              />
-              <rect
-                x="1"
-                y="7"
-                width="14"
-                height="4"
-                rx="1"
-                stroke="currentColor"
-                stroke-width="1.2"
-              />
-              <rect
-                x="1"
-                y="13"
-                width="8"
-                height="2"
-                rx="1"
-                stroke="currentColor"
-                stroke-width="1.2"
-              />
-            </svg>
-            マイQR一覧
-          </a>
-          <a href="login.html" class="right-panel-link">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M1 12V5l5-3 4 2 4-2v9l-4 2-4-2-5 2z"
-                stroke="currentColor"
-                stroke-width="1.2"
-                stroke-linejoin="round"
-              />
-            </svg>
-            アクセスレポート
-          </a>
-        </section>
         <section class="right-panel right-panel--promo">
           <div class="promo-content">
             <p class="promo-text">
@@ -498,45 +326,64 @@
           </div>
         </section>
         <section class="right-panel">
-          <p class="right-panel-title">よくある質問</p>
-          <a href="faq.html" class="right-panel-link">
+          <p class="right-panel-title">関連リンク</p>
+          <a href="privacy.html" class="right-panel-link">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <circle
-                cx="7"
-                cy="7"
-                r="5.5"
-                stroke="currentColor"
-                stroke-width="1.2"
-              />
               <path
-                d="M5.5 5.5a1.5 1.5 0 012.8.7c0 1-1.3 1.3-1.3 2.3"
+                d="M7 1a4 4 0 014 4v1H3V5a4 4 0 014-4z"
                 stroke="currentColor"
                 stroke-width="1.2"
-                stroke-linecap="round"
               />
-              <circle cx="7" cy="10.5" r=".5" fill="currentColor" />
+              <rect
+                x="1.5"
+                y="6"
+                width="11"
+                height="7"
+                rx="1.5"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
             </svg>
-            FAQ一覧を見る
+            個人情報の取り扱い
           </a>
-          <a href="how-to.html" class="right-panel-link">
+          <a href="terms.html" class="right-panel-link">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <rect
-                x="2"
-                y="2"
-                width="10"
-                height="10"
+                x="1.5"
+                y="1.5"
+                width="11"
+                height="11"
                 rx="1.5"
                 stroke="currentColor"
                 stroke-width="1.2"
               />
               <path
-                d="M4 5h6M4 7.5h4"
+                d="M4 5h6M4 7.5h6M4 10h4"
                 stroke="currentColor"
                 stroke-width="1.2"
                 stroke-linecap="round"
               />
             </svg>
-            使い方ガイド
+            利用規約
+          </a>
+          <a href="contact.html" class="right-panel-link">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <rect
+                x="1.5"
+                y="3"
+                width="11"
+                height="8"
+                rx="1.5"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+              <path
+                d="M1.5 5l5.5 3.5L12.5 5"
+                stroke="currentColor"
+                stroke-width="1.2"
+              />
+            </svg>
+            お問い合わせ
           </a>
         </section>
       </aside>
@@ -555,7 +402,6 @@
       <p class="footer-copy">© 2026 ぽちっとQR工房</p>
     </footer>
 
-    <script src="contact-form.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

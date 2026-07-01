@@ -69,6 +69,7 @@
         label = content.length > 32 ? content.slice(0, 32) + '…' : content;
       }
       renderQR(content, label);
+      if (lastContent && window.QRHistory) QRHistory.add({ type: activeTab, content: lastContent, label: label, color: currentColor });
     }
 
     function renderQR(text, label) {
@@ -118,19 +119,37 @@
       if (lastContent) renderQR(lastContent, lastContent);
     }
 
+    // 画面は180pxだが、印刷・マーケ用途のため1024pxで再描画して保存
+    const DOWNLOAD_SIZE = 1024;
     btnDownload.addEventListener('click', () => {
+      if (!lastContent) return;
+      const holder = document.createElement('div');
+      holder.style.cssText = 'position:fixed;left:-9999px;top:0;';
+      document.body.appendChild(holder);
+      try {
+        new QRCode(holder, {
+          text: lastContent, width: DOWNLOAD_SIZE, height: DOWNLOAD_SIZE,
+          colorDark: currentColor, colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M,
+        });
+      } catch (e) {
+        document.body.removeChild(holder);
+        const c = elQrcode.querySelector('canvas');
+        if (c) save(c);
+        return;
+      }
       setTimeout(() => {
-        const canvas = elQrcode.querySelector('canvas');
-        const img    = elQrcode.querySelector('img');
+        const canvas = holder.querySelector('canvas');
+        const img    = holder.querySelector('img');
         if (canvas) save(canvas);
         else if (img) {
           const tmp = document.createElement('canvas');
-          tmp.width = img.naturalWidth || 180;
-          tmp.height = img.naturalHeight || 180;
-          tmp.getContext('2d').drawImage(img, 0, 0);
+          tmp.width = DOWNLOAD_SIZE; tmp.height = DOWNLOAD_SIZE;
+          tmp.getContext('2d').drawImage(img, 0, 0, DOWNLOAD_SIZE, DOWNLOAD_SIZE);
           save(tmp);
         }
-      }, 100);
+        document.body.removeChild(holder);
+      }, 60);
     });
 
     function save(canvas) {
