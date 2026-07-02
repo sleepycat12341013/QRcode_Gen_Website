@@ -40,13 +40,18 @@
   }
   const qr = new QRCodeStyling(qrOptions());
   let qrImg = null;
+  // blob: URL は本番CSP(img-src)で不許可のため data: URL で読み込む
   function blobToImage(blob) {
     return new Promise((res, rej) => {
-      const url = URL.createObjectURL(blob);
-      const im = new Image();
-      im.onload = () => { URL.revokeObjectURL(url); res(im); };
-      im.onerror = rej;
-      im.src = url;
+      const fr = new FileReader();
+      fr.onload = () => {
+        const im = new Image();
+        im.onload = () => res(im);
+        im.onerror = rej;
+        im.src = fr.result;
+      };
+      fr.onerror = rej;
+      fr.readAsDataURL(blob);
     });
   }
   async function regen() {
