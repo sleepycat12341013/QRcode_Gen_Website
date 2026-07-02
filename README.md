@@ -1,5 +1,7 @@
 # ぽちっとQR工房
 
+![ぽちっとQR工房 スクリーンショット](img/screenshot.png)
+
 URLを入力するだけでQRコードを即時生成・ダウンロードできる静的Webアプリ。  
 **本番URL**: https://qrcode-gen-website.pages.dev/
 
