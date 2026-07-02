@@ -25,3 +25,7 @@ CodehawksStartingGuide.md
 
 # Research / competitive intelligence reports (internal strategy)
 Research_*.md
+
+# All markdown is local-only except the public README
+*.md
+!README.md
