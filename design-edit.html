@@ -10,18 +10,18 @@
   <meta property="og:url" content="https://qrcode-gen-website.pages.dev/design-edit.html">
   <meta property="og:title" content="デザイン編集 — ぽちっとQR工房">
   <meta property="og:description" content="色・ドット・コーナーの形を変えてオリジナルQRコードを無料作成。">
-  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/og-image.png">
+  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
   <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="デザイン編集 — ぽちっとQR工房">
   <meta name="twitter:description" content="色・ドット・コーナーの形を変えてオリジナルQRコードを無料作成。">
-  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/og-image.png">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
-  <script src="analytics-init.js"></script>
-  <script src="qr-code-styling.js"></script>
+  <script src="js/analytics-init.js"></script>
+  <script src="js/vendor/qr-code-styling.js"></script>
   <style>
     .de-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 560px) { .de-controls { grid-template-columns: 1fr; } }
@@ -211,7 +211,7 @@
             </select>
           </div>
         </div>
-        <p id="de-warn" class="color-warn" role="status" hidden>⚠ 前景色が明るすぎると、スキャンできないQRになる場合があります。濃い色を推奨します。</p>
+        <p id="de-warn" class="color-warn" role="status" hidden>⚠ この配色ではQRを読み取れない可能性があります（コントラスト不足・明暗の反転）。背景より濃い前景色を推奨します。</p>
 
         <div class="qr-preview-area">
           <div class="qr-frame has-qr" id="de-frame">
@@ -297,7 +297,7 @@
     <p class="footer-copy">© 2026 ぽちっとQR工房</p>
   </footer>
 
-  <script src="script.js"></script>
-  <script src="design-edit.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/design-edit.js"></script>
 </body>
 </html>

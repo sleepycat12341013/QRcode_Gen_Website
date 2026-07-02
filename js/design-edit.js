@@ -46,6 +46,14 @@
     return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
   }
 
+  // 前景と背景のコントラストが低い／明暗が反転していると読み取れない
+  function isUnreadable() {
+    const Lf = relLuminance(elFg.value);
+    const Lb = relLuminance(elBg.value);
+    const ratio = (Math.max(Lf, Lb) + 0.05) / (Math.min(Lf, Lb) + 0.05);
+    return ratio < 3 || Lf > Lb;   // 低コントラスト or 反転（前景が背景より明るい）
+  }
+
   function render() {
     const has = elContent.value.trim().length > 0;
     elEmpty.style.display = has ? 'none' : '';
@@ -54,7 +62,7 @@
     if (!has) { elQr.innerHTML = ''; qr = null; return; }
     if (!qr) { qr = new QRCodeStyling(options(PREVIEW)); qr.append(elQr); }
     else     { qr.update(options(PREVIEW)); }
-    elWarn.hidden = relLuminance(elFg.value) <= 0.5;
+    elWarn.hidden = !isUnreadable();
   }
 
   [elContent, elFg, elBg, elDot, elCorner].forEach(el => {
