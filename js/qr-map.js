@@ -14,7 +14,7 @@
     var elQrFrame   = document.getElementById('qr-frame');
     var elUrlLabel  = document.getElementById('qr-url-label');
     var elDownload = document.getElementById('btn-download');
-    document.getElementById('btn-download-svg').addEventListener('click', function() { window.location.href = 'pricing.html'; });
+    document.getElementById('btn-download-svg').addEventListener('click', function() { if (window.trackQR) trackQR('pro_gate_click', { tool: 'qr-map', feature: 'svg_download' });  window.location.href = 'pricing.html'; });
     var swatches    = document.querySelectorAll('.swatch:not(.swatch--custom)');
     var customColor = document.getElementById('custom-color');
 
@@ -132,6 +132,7 @@
       a.download = 'qrcode_map_' + ts + '.png';
       a.href = canvas.toDataURL('image/png');
       a.click();
+      if (window.trackQR) trackQR('qr_download', { tool: 'qr-map', format: 'png' });
     }
 
     function showError(msg) { elErrorMsg.textContent = msg; elErrorMsg.hidden = false; }

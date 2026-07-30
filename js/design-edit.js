@@ -70,14 +70,22 @@
     el.addEventListener('change', render);
   });
 
+  // 形の変更のみ計測（文字入力ごとに送ると計測が汚れる）
+  [elDot, elCorner].forEach(el => {
+    el.addEventListener('change', () => {
+      if (window.trackQR) trackQR('qr_customize', { tool: 'design-edit', dot_style: elDot.value, corner_style: elCorner.value });
+    });
+  });
+
   // ダウンロードは印刷用途のため 1024px で再生成して保存
   btnPng.addEventListener('click', () => {
     if (!elContent.value.trim()) return;
     const ts = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
     new QRCodeStyling(options(HIRES)).download({ name: `qrcode_${ts}`, extension: 'png' });
+    if (window.trackQR) trackQR('qr_download', { tool: 'design-edit', format: 'png', dot_style: elDot.value, corner_style: elCorner.value });
   });
 
-  if (btnSvg) btnSvg.addEventListener('click', () => { window.location.href = 'pricing.html'; });
+  if (btnSvg) btnSvg.addEventListener('click', () => { if (window.trackQR) trackQR('pro_gate_click', { tool: 'design-edit', feature: 'svg_download' });  window.location.href = 'pricing.html'; });
 
   render();
 })();

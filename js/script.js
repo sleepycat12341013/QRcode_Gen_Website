@@ -51,7 +51,7 @@ if (document.getElementById('panel-link')) {
   const btnGenerate = document.getElementById('btn-generate');
   const btnDownload    = document.getElementById('btn-download');
   const btnDownloadSvg = document.getElementById('btn-download-svg');
-  btnDownloadSvg.addEventListener('click', () => { window.location.href = 'pricing.html'; });
+  btnDownloadSvg.addEventListener('click', () => { if (window.trackQR) trackQR('pro_gate_click', { tool: 'index', feature: 'svg_download' });  window.location.href = 'pricing.html'; });
   const swatches    = document.querySelectorAll('.swatch:not(.swatch--custom)');
   const customColor = document.getElementById('custom-color');
 
@@ -195,7 +195,10 @@ if (document.getElementById('panel-link')) {
 
     if (content) {
       renderQR(content, label);
-      if (lastContent) QRHistory.add({ type: activeTab, content: content, label: label, color: currentColor });
+      if (lastContent) {
+        QRHistory.add({ type: activeTab, content: content, label: label, color: currentColor });
+        if (window.trackQR) trackQR('qr_generate', { tool: 'index', qr_type: activeTab });
+      }
     }
   }
 
@@ -309,6 +312,7 @@ if (document.getElementById('panel-link')) {
     a.download = `qrcode_${ts}.png`;
     a.href = canvas.toDataURL('image/png');
     a.click();
+    if (window.trackQR) trackQR('qr_download', { tool: 'index', format: 'png' });
   }
 
   function clearQR() {

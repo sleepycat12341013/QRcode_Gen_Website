@@ -13,7 +13,7 @@
     const btnGenerate   = document.getElementById('btn-generate');
     const btnDownload    = document.getElementById('btn-download');
     const btnDownloadSvg = document.getElementById('btn-download-svg');
-    btnDownloadSvg.addEventListener('click', () => { window.location.href = 'pricing.html'; });
+    btnDownloadSvg.addEventListener('click', () => { if (window.trackQR) trackQR('pro_gate_click', { tool: 'text-qr', feature: 'svg_download' });  window.location.href = 'pricing.html'; });
     const swatches      = document.querySelectorAll('.swatch:not(.swatch--custom)');
     const customColor   = document.getElementById('custom-color');
     const MAX = 500;
@@ -158,6 +158,7 @@
       link.download = `qrcode_${ts}.png`;
       link.href = canvas.toDataURL('image/png');
       link.click();
+      if (window.trackQR) trackQR('qr_download', { tool: 'text-qr', format: 'png' });
     }
 
     function showError(msg) { elErrorMsg.textContent = msg; elErrorMsg.hidden = false; }

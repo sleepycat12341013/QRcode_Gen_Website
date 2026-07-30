@@ -101,6 +101,7 @@
       btn.classList.add('ico-btn--active');
       btn.setAttribute('aria-pressed', 'true');
       render();
+      if (window.trackQR) trackQR('qr_customize', { tool: 'icon-library', icon: ico.key });
     });
     elGrid.appendChild(btn);
   });
@@ -115,9 +116,10 @@
     if (!elContent.value.trim()) return;
     const ts = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
     new QRCodeStyling(options(HIRES)).download({ name: `qrcode_${ts}`, extension: 'png' });
+    if (window.trackQR) trackQR('qr_download', { tool: 'icon-library', format: 'png', has_icon: selected ? 'yes' : 'no' });
   });
 
-  if (btnSvg) btnSvg.addEventListener('click', () => { window.location.href = 'pricing.html'; });
+  if (btnSvg) btnSvg.addEventListener('click', () => { if (window.trackQR) trackQR('pro_gate_click', { tool: 'icon-library', feature: 'svg_download' });  window.location.href = 'pricing.html'; });
 
   render();
 })();

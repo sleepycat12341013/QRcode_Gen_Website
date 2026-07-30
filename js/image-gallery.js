@@ -143,6 +143,7 @@
         t.btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       });
       render(false);
+      if (window.trackQR) trackQR('qr_customize', { tool: 'image-gallery', frame: fr.key });
     });
     elGrid.appendChild(btn);
     thumbs.push({ fr, canvas: c, btn });
@@ -176,9 +177,10 @@
     a.download = `qrcode_${ts}.png`;
     a.href = off.toDataURL('image/png');
     a.click();
+    if (window.trackQR) trackQR('qr_download', { tool: 'image-gallery', format: 'png', frame: selected });
   });
 
-  if (btnSvg) btnSvg.addEventListener('click', () => { window.location.href = 'pricing.html'; });
+  if (btnSvg) btnSvg.addEventListener('click', () => { if (window.trackQR) trackQR('pro_gate_click', { tool: 'image-gallery', feature: 'svg_download' });  window.location.href = 'pricing.html'; });
 
   render(true);
 })();
