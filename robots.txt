@@ -1,4 +1,4 @@
-﻿User-agent: *
+User-agent: *
 Allow: /
 
 # Cloudflare Pages 移行後にURLを実際のドメインに更新してください
