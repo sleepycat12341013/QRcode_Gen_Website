@@ -156,7 +156,7 @@
       const ts = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
       const link = document.createElement('a');
       link.download = `qrcode_${ts}.png`;
-      link.href = canvas.toDataURL('image/png');
+      link.href = (window.withQuietZone ? withQuietZone(canvas) : canvas).toDataURL('image/png');
       link.click();
       if (window.trackQR) trackQR('qr_download', { tool: 'text-qr', format: 'png' });
     }

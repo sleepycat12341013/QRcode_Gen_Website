@@ -42,7 +42,7 @@
       if (src) {
         const a = document.createElement('a');
         a.download = 'qrcode_' + item.ts.slice(0, 19).replace(/[:.]/g, '-') + '.png';
-        a.href = src.toDataURL('image/png');
+        a.href = (window.withQuietZone ? withQuietZone(src) : src).toDataURL('image/png');
         a.click();
       }
       document.body.removeChild(holder);

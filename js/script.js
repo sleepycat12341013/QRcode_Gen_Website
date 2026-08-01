@@ -34,6 +34,21 @@ window.QRHistory = (function () {
   };
 })();
 
+// ─── 保存用に余白（クワイエットゾーン）を足す ──────────────────────
+// qrcodejs は余白を描かないため、そのまま保存するとセルの細かいQRが
+// 読み取り機で境界を判定できず失敗する。保存時に規格相当の余白を足す。
+window.withQuietZone = function (canvas) {
+  const pad = Math.round(canvas.width * 0.08);
+  const out = document.createElement('canvas');
+  out.width  = canvas.width  + pad * 2;
+  out.height = canvas.height + pad * 2;
+  const ctx = out.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0, 0, out.width, out.height);
+  ctx.drawImage(canvas, pad, pad);
+  return out;
+};
+
 // ─── index.html: タブ切り替え + QR生成 ─────────────────────────────
 if (document.getElementById('panel-link')) {
 
@@ -310,7 +325,7 @@ if (document.getElementById('panel-link')) {
     const ts = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
     const a  = document.createElement('a');
     a.download = `qrcode_${ts}.png`;
-    a.href = canvas.toDataURL('image/png');
+    a.href = (window.withQuietZone ? withQuietZone(canvas) : canvas).toDataURL('image/png');
     a.click();
     if (window.trackQR) trackQR('qr_download', { tool: 'index', format: 'png' });
   }

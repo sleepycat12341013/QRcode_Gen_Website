@@ -110,7 +110,7 @@
       var ts = new Date().toISOString().slice(0, 19).replace(/[:.]/g, '-');
       var a  = document.createElement('a');
       a.download = 'qrcode_email_' + ts + '.png';
-      a.href = canvas.toDataURL('image/png');
+      a.href = (window.withQuietZone ? withQuietZone(canvas) : canvas).toDataURL('image/png');
       a.click();
       if (window.trackQR) trackQR('qr_download', { tool: 'qr-email', format: 'png' });
     }
