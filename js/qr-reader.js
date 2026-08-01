@@ -36,28 +36,37 @@
     elText.textContent = '';
   }
 
-  // 画像を canvas に描いて ImageData を得る。大きい画像は縮小する
-  function toImageData(img) {
+  // 画像を canvas に描いて ImageData を得る。
+  // pad は周囲に足す白余白の比率。余白ゼロで書き出されたQRは、
+  // クワイエットゾーンが無く境界を検出できないため補ってやる必要がある。
+  function toImageData(img, pad) {
     let w = img.naturalWidth, h = img.naturalHeight;
     const scale = Math.min(1, MAX_EDGE / Math.max(w, h));
     w = Math.round(w * scale);
     h = Math.round(h * scale);
+    const p = Math.round(Math.max(w, h) * (pad || 0));
     const c = document.createElement('canvas');
-    c.width = w; c.height = h;
+    c.width = w + p * 2;
+    c.height = h + p * 2;
     const ctx = c.getContext('2d', { willReadFrequently: true });
-    ctx.drawImage(img, 0, 0, w, h);
-    return ctx.getImageData(0, 0, w, h);
+    if (p > 0) {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, c.width, c.height);
+    }
+    ctx.drawImage(img, p, p, w, h);
+    return ctx.getImageData(0, 0, c.width, c.height);
   }
 
-  // 反転したQR（白地に黒の逆）も拾えるよう2通り試す
-  function decode(imageData) {
-    const opts = [
-      { inversionAttempts: 'dontInvert' },
-      { inversionAttempts: 'attemptBoth' },
-    ];
-    for (const o of opts) {
-      const r = jsQR(imageData.data, imageData.width, imageData.height, o);
-      if (r && r.data) return r.data;
+  // 反転QR（白黒逆）と、余白なしQRの両方を拾えるよう組み合わせて試す
+  function decode(img) {
+    const pads = [0, 0.08, 0.2];   // 余白なし → 標準 → 広め
+    const inversions = ['dontInvert', 'attemptBoth'];
+    for (const pad of pads) {
+      const d = toImageData(img, pad);
+      for (const inv of inversions) {
+        const r = jsQR(d.data, d.width, d.height, { inversionAttempts: inv });
+        if (r && r.data) return r.data;
+      }
     }
     return null;
   }
@@ -116,7 +125,7 @@
 
         let text = null;
         try {
-          text = decode(toImageData(img));
+          text = decode(img);
         } catch (e) {
           showError('画像の解析に失敗しました。別の画像でお試しください。');
           return;
@@ -125,7 +134,7 @@
         if (text) {
           render(text);
         } else {
-          showError('QRコードを読み取れませんでした。ピントが合った、QR全体が写っている画像でお試しください。');
+          showError('QRコードを読み取れませんでした。QRコード全体が写っているか、小さすぎたりぼやけたりしていないかご確認ください。画面を撮影した写真は、反射で読み取れないことがあります。');
         }
       };
       img.src = fr.result;
