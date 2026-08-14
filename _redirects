@@ -1,5 +1,29 @@
-# 旧ドメイン(.pages.dev)から新ドメイン(cmalu.com/qr/)へ恒久リダイレクト
-# 検索評価を引き継ぐため 301 を使う
+# 旧構成（ルート直下にQRサイトがあった頃）のURLを /qr/ 配下へ恒久リダイレクト。
+# 既存の被リンクや検索インデックスを新しいパスへ引き継ぐ。
+# ※ ドメイン単位の切り替え（pages.dev → cmalu.com）は Cloudflare の
+#    リダイレクトルールで行う。_redirects はパス単位のみ扱える。
 
-https://qrcode-gen-website.pages.dev/  https://cmalu.com/qr/  301
-https://qrcode-gen-website.pages.dev/*  https://cmalu.com/qr/:splat  301
+/index.html            /qr/                     301
+/text-qr.html          /qr/text-qr.html         301
+/qr-email.html         /qr/qr-email.html        301
+/qr-map.html           /qr/qr-map.html          301
+/contact-management.html /qr/contact-management.html 301
+/dashboard.html        /qr/dashboard.html       301
+/design-edit.html      /qr/design-edit.html     301
+/icon-library.html     /qr/icon-library.html    301
+/image-gallery.html    /qr/image-gallery.html   301
+/qr-reader.html        /qr/qr-reader.html       301
+/templates.html        /qr/templates.html       301
+/url-shortener.html    /qr/url-shortener.html   301
+/how-to.html           /qr/how-to.html          301
+/faq.html              /qr/faq.html             301
+/pricing.html          /qr/pricing.html         301
+/news.html             /qr/news.html            301
+/about.html            /qr/about.html           301
+/contact.html          /qr/contact.html         301
+/use-cases.html        /qr/use-cases.html       301
+/marketing.html        /qr/marketing.html       301
+/login.html            /qr/login.html           301
+/privacy.html          /qr/privacy.html         301
+/terms.html            /qr/terms.html           301
+/tokushoho.html        /qr/tokushoho.html       301
