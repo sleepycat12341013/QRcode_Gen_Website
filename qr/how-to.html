@@ -4,44 +4,39 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>メール作成QRコード — ぽちっとQR工房</title>
-  <meta name="description" content="メールアドレス・件名・本文を入力するだけでメール作成QRコードを無料生成。スキャンするとメールアプリが自動で開きます。">
-  <link rel="canonical" href="https://qrcode-gen-website.pages.dev/qr-email.html">
+  <title>使い方ガイド — ぽちっとQR工房</title>
+  <meta name="description" content="ぽちっとQR工房でQRコードを作成する方法を解説。URL・テキストに対応。3ステップで簡単に高品質なQRコードを生成できます。">
+  <link rel="canonical" href="https://cmalu.com/qr/how-to.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://qrcode-gen-website.pages.dev/qr-email.html">
-  <meta property="og:title" content="メール作成QRコード — ぽちっとQR工房">
-  <meta property="og:description" content="メールアドレス・件名・本文からメール作成QRを無料生成。スキャンするとメールアプリが開きます。">
-  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta property="og:url" content="https://cmalu.com/qr/how-to.html">
+  <meta property="og:title" content="使い方ガイド — ぽちっとQR工房">
+  <meta property="og:description" content="ぽちっとQR工房でQRコードを作成する方法を解説。3ステップで簡単に高品質なQRコードを生成できます。">
+  <meta property="og:image" content="https://cmalu.com/qr/img/og-image.png">
   <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="メール作成QRコード — ぽちっとQR工房">
-  <meta name="twitter:description" content="メールアドレス・件名・本文からメール作成QRを無料生成。スキャンするとメールアプリが開きます。">
-  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta name="twitter:title" content="使い方ガイド — ぽちっとQR工房">
+  <meta name="twitter:description" content="ぽちっとQR工房でQRコードを作成する方法を解説。3ステップで簡単に高品質なQRコードを生成できます。">
+  <meta name="twitter:image" content="https://cmalu.com/qr/img/og-image.png">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
   <script src="js/analytics-init.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" integrity="sha384-3zSEDfvllQohrq0PHL1fOXJuC/jSOO34H46t6UQfobFOmxE5BpjjaIJY5F2/bMnU" crossorigin="anonymous"></script>
   <style>
-    .email-form { display: flex; flex-direction: column; gap: 14px; }
-    .email-field { display: flex; flex-direction: column; gap: 6px; }
-    .email-field label { font-size: 13px; font-weight: 600; color: var(--fg); }
-    .email-field input, .email-field textarea {
-      width: 100%; padding: 10px 13px;
-      border: 1.5px solid var(--border); border-radius: var(--radius-sm);
-      font-family: inherit; font-size: 14px; color: var(--fg);
-      background: var(--bg); outline: none;
-      transition: border-color .15s, background .15s;
-    }
-    .email-field input:focus, .email-field textarea:focus {
-      border-color: var(--border-focus); background: var(--surface);
-      box-shadow: 0 0 0 3px rgba(185,28,28,.1);
-    }
-    .email-field input::placeholder, .email-field textarea::placeholder { color: var(--fg-faint); }
-    .email-field textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
-    .required-mark { color: var(--red); margin-left: 4px; }
-    .optional-mark { font-size: 11px; color: var(--fg-faint); margin-left: 4px; font-weight: 400; }
+    .how-to-step { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .how-to-step:last-child { border-bottom: none; padding-bottom: 0; }
+    .how-to-step-body { flex: 1; }
+    .how-to-step-title { font-size: 15px; font-weight: 700; color: var(--fg); margin-bottom: 6px; }
+    .how-to-step-desc { font-size: 13px; color: var(--fg-muted); line-height: 1.7; }
+    .type-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .type-table th { text-align: left; padding: 8px 12px; background: var(--bg); color: var(--fg-muted); font-weight: 600; border-bottom: 2px solid var(--border); }
+    .type-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--fg); }
+    .type-table tr:last-child td { border-bottom: none; }
+    .badge-ready { background: #DCFCE7; color: #166534; padding: 2px 10px; border-radius: 99px; font-size: 11px; font-weight: 700; }
+    .badge-soon { background: var(--bg); color: var(--fg-faint); padding: 2px 10px; border-radius: 99px; font-size: 11px; }
+    .tip-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .tip-list li { display: flex; gap: 10px; font-size: 13px; color: var(--fg-muted); line-height: 1.6; }
+    .tip-list li::before { content: "💡"; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -92,7 +87,7 @@
       <a href="url-shortener.html" class="mnav-link">🔗 短縮URL</a>
       <a href="text-qr.html" class="mnav-link">📝 テキスト変換</a>
       <a href="contact-management.html" class="mnav-link">👥 連絡先管理</a>
-      <a href="qr-email.html" class="mnav-link mnav-link--active">✉️ メール作成</a>
+      <a href="qr-email.html" class="mnav-link">✉️ メール作成</a>
       <a href="qr-map.html" class="mnav-link">📍 地図リンク</a>
     </div>
     <hr class="mnav-divider">
@@ -106,7 +101,7 @@
       <p class="mnav-section-label">情報・サポート</p>
       <a href="news.html" class="mnav-link">新着情報</a>
       <a href="pricing.html" class="mnav-link">料金プラン</a>
-      <a href="how-to.html" class="mnav-link">使い方</a>
+      <a href="how-to.html" class="mnav-link mnav-link--active">使い方</a>
       <a href="about.html" class="mnav-link">会社案内</a>
       <a href="faq.html" class="mnav-link">サポート窓口</a>
       <a href="contact.html" class="mnav-link">お問い合わせ</a>
@@ -128,7 +123,7 @@
           <a href="url-shortener.html" class="sidebar-link "><span class="sidebar-icon">🔗</span>短縮URL</a>
           <a href="text-qr.html" class="sidebar-link "><span class="sidebar-icon">📝</span>テキスト変換</a>
           <a href="contact-management.html" class="sidebar-link "><span class="sidebar-icon">👥</span>連絡先管理</a>
-          <a href="qr-email.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">✉️</span>メール作成</a>
+          <a href="qr-email.html" class="sidebar-link "><span class="sidebar-icon">✉️</span>メール作成</a>
           <a href="qr-map.html" class="sidebar-link "><span class="sidebar-icon">📍</span>地図リンク</a>
         </nav>
       </section>
@@ -163,7 +158,7 @@
         <nav>
           <a href="faq.html" class="sidebar-link "><span class="sidebar-icon">❓</span>ヘルプセンター</a>
           <a href="faq.html" class="sidebar-link "><span class="sidebar-icon">💬</span>よくある質問</a>
-          <a href="how-to.html" class="sidebar-link "><span class="sidebar-icon">📖</span>ガイドブック</a>
+          <a href="how-to.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">📖</span>ガイドブック</a>
           <a href="contact.html" class="sidebar-link"><span class="sidebar-icon">📩</span>お問い合わせ</a>
         </nav>
       </section>
@@ -171,94 +166,95 @@
 
     <main class="main-content">
       <div class="page-heading">
-        <h1 class="page-title">メール作成QRコード</h1>
-        <p class="page-subtitle">スキャンするとメールアプリが自動で開きます</p>
+        <h1 class="page-title">使い方ガイド</h1>
+        <p class="page-subtitle">3ステップでQRコードを簡単作成</p>
       </div>
 
-      <section class="card" aria-labelledby="step1-title">
+      <section class="card" aria-labelledby="steps-title">
         <div class="card-header">
+          <h2 class="card-title" id="steps-title">基本の使い方</h2>
+        </div>
+
+        <div class="how-to-step">
           <span class="step-badge">1</span>
-          <h2 class="card-title" id="step1-title">メール情報を入力</h2>
-        </div>
-        <div class="email-form">
-          <div class="email-field">
-            <label for="email-to">宛先メールアドレス<span class="required-mark">*</span></label>
-            <input type="email" id="email-to" placeholder="contact@example.com" autocomplete="off" spellcheck="false">
-          </div>
-          <div class="email-field">
-            <label for="email-subject">件名<span class="optional-mark">(任意)</span></label>
-            <input type="text" id="email-subject" placeholder="お問い合わせ / ご予約 など">
-          </div>
-          <div class="email-field">
-            <label for="email-body">本文<span class="optional-mark">(任意)</span></label>
-            <textarea id="email-body" placeholder="メールの本文をあらかじめ入れておくことができます"></textarea>
+          <div class="how-to-step-body">
+            <p class="how-to-step-title">URLまたはテキストを入力する</p>
+            <p class="how-to-step-desc">トップページの入力欄にQRコード化したいURLを貼り付けます。テキストをQRコードにしたい場合は<a href="text-qr.html" style="color:var(--red);">テキストQR作成ページ</a>をご利用ください。「生成する」ボタンを押すかEnterキーで即座に生成されます。</p>
           </div>
         </div>
-        <p id="error-msg" class="error-msg" role="alert" hidden></p>
-        <button id="btn-generate" class="btn-primary btn-full">生成する</button>
-      </section>
 
-      <section class="card" aria-labelledby="step2-title">
-        <div class="card-header">
+        <div class="how-to-step">
           <span class="step-badge">2</span>
-          <h2 class="card-title" id="step2-title">デザインをカスタマイズ</h2>
-        </div>
-        <div class="customize-block">
-          <p class="customize-label">メインカラー</p>
-          <div class="color-swatches" role="group" aria-label="QRコードの色を選択">
-            <button class="swatch swatch--active" data-color="#B91C1C" aria-label="深紅" style="background:#B91C1C;"></button>
-            <button class="swatch" data-color="#1D4ED8" aria-label="青" style="background:#1D4ED8;"></button>
-            <button class="swatch" data-color="#15803D" aria-label="緑" style="background:#15803D;"></button>
-            <button class="swatch" data-color="#7C3AED" aria-label="紫" style="background:#7C3AED;"></button>
-            <button class="swatch" data-color="#0F172A" aria-label="黒" style="background:#0F172A;"></button>
-            <label class="swatch swatch--custom" aria-label="カスタムカラーを選択">
-              <input type="color" id="custom-color" value="#B91C1C" aria-label="カスタムカラー">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </label>
+          <div class="how-to-step-body">
+            <p class="how-to-step-title">カラーをカスタマイズ（任意）</p>
+            <p class="how-to-step-desc">5色のプリセットカラー、またはカラーピッカーで任意の色を選択できます。ブランドカラーに合わせたQRコードが作成できます。色を変えると即座にプレビューに反映されます。</p>
           </div>
         </div>
-        <div class="qr-preview-area">
-          <div class="qr-frame" id="qr-frame">
-            <div id="qrcode"></div>
-            <div class="qr-empty" id="qr-empty">
-              <svg width="52" height="52" viewBox="0 0 48 48" fill="none" opacity=".2">
-                <rect x="2" y="2" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
-                <rect x="28" y="2" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
-                <rect x="2" y="28" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
-                <rect x="6" y="6" width="10" height="10" fill="#111"/>
-                <rect x="32" y="6" width="10" height="10" fill="#111"/>
-                <rect x="6" y="32" width="10" height="10" fill="#111"/>
-                <rect x="28" y="28" width="5" height="5" fill="#111"/>
-                <rect x="35" y="28" width="5" height="5" fill="#111"/>
-                <rect x="28" y="35" width="5" height="5" fill="#111"/>
-              </svg>
-              <span>入力して「生成する」を押すと<br>ここに表示されます</span>
-            </div>
+
+        <div class="how-to-step">
+          <span class="step-badge">3</span>
+          <div class="how-to-step-body">
+            <p class="how-to-step-title">PNGダウンロード</p>
+            <p class="how-to-step-desc">「PNGダウンロード」ボタンをクリックすると、高品質なPNG画像をすぐに保存できます。印刷物・SNS・ウェブサイトなど、あらゆる用途に対応しています。</p>
           </div>
-          <p id="qr-url-label" class="qr-url-label" hidden></p>
         </div>
-        <div class="download-row">
-          <button id="btn-download" class="btn-primary" disabled>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            PNGダウンロード
-          </button>
-          <button id="btn-download-svg" class="btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            SVGダウンロード
-            <span class="pro-badge"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg>Pro</span>
-          </button>
-        </div>
+
+        <a href="index.html" class="btn-primary" style="align-self:flex-start;">今すぐQRコードを作成する</a>
       </section>
 
-      <section class="card" aria-labelledby="info-title">
+      <section class="card" aria-labelledby="types-title">
         <div class="card-header">
-          <h2 class="card-title" id="info-title">メール作成QRとは？</h2>
+          <h2 class="card-title" id="types-title">対応コンテンツタイプ</h2>
         </div>
-        <div style="font-size:13px;color:var(--fg-muted);line-height:1.8;display:flex;flex-direction:column;gap:8px;">
-          <p>スキャンするとスマートフォンのメールアプリが自動で開き、宛先・件名・本文が自動入力された状態になります（<code style="font-size:12px;background:var(--bg);padding:1px 5px;border-radius:3px;">mailto:</code> リンクを使用）。</p>
-          <p><strong style="color:var(--fg);">活用例：</strong> お問い合わせ先QR（チラシ・名刺・POPに印刷）、レビュー依頼QR、申し込み窓口QR</p>
-          <p><strong style="color:var(--fg);">注意：</strong> 本文が長いとQRコードが複雑になり読み取りにくくなります。本文は短めにするか省略することをおすすめします。</p>
+        <table class="type-table">
+          <thead>
+            <tr>
+              <th>コンテンツ</th>
+              <th>用途例</th>
+              <th>状態</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>URLリンク</td>
+              <td>ウェブサイト・SNSプロフィール・商品ページ</td>
+              <td><span class="badge-ready">利用可能</span></td>
+            </tr>
+            <tr>
+              <td>テキスト・メッセージ</td>
+              <td>メモ・メッセージ・WiFiパスワード</td>
+              <td><span class="badge-ready">利用可能</span></td>
+            </tr>
+            <tr>
+              <td>連絡先 (vCard)</td>
+              <td>名刺・電話番号・メールアドレス</td>
+              <td><span class="badge-soon">近日公開</span></td>
+            </tr>
+            <tr>
+              <td>動画リンク</td>
+              <td>YouTube・動画コンテンツ</td>
+              <td><span class="badge-soon">近日公開</span></td>
+            </tr>
+            <tr>
+              <td>ファイル共有</td>
+              <td>PDF・資料配布</td>
+              <td><span class="badge-soon">近日公開</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="card" aria-labelledby="tips-title">
+        <div class="card-header">
+          <h2 class="card-title" id="tips-title">活用のヒント</h2>
         </div>
+        <ul class="tip-list">
+          <li>印刷時は最低2cm × 2cmのサイズを確保すると読み取り精度が上がります。</li>
+          <li>背景色と QRコードのコントラストを明確にすることで、読み取りやすくなります。</li>
+          <li>URLが長い場合は短縮URLサービスを利用すると、QRコードがシンプルになります。</li>
+          <li>スマートフォンのカメラアプリで読み取れない場合は、専用QRリーダーアプリをお試しください。</li>
+          <li>ブランドカラーに合わせたQRコードは、名刺やチラシの印象を高めます。</li>
+        </ul>
       </section>
     </main>
 
@@ -286,9 +282,18 @@
       <section class="right-panel right-panel--account">
         <p class="right-panel-title">アカウント情報</p>
         <div class="account-info">
-          <div class="account-row"><span class="account-key">プラン</span><span class="account-val account-val--empty">ログインして確認</span></div>
-          <div class="account-row"><span class="account-key">残り作成数</span><span class="account-val account-val--empty">—</span></div>
-          <div class="account-row"><span class="account-key">有効期限</span><span class="account-val account-val--empty">—</span></div>
+          <div class="account-row">
+            <span class="account-key">プラン</span>
+            <span class="account-val account-val--empty">ログインして確認</span>
+          </div>
+          <div class="account-row">
+            <span class="account-key">残り作成数</span>
+            <span class="account-val account-val--empty">—</span>
+          </div>
+          <div class="account-row">
+            <span class="account-key">有効期限</span>
+            <span class="account-val account-val--empty">—</span>
+          </div>
         </div>
       </section>
       <section class="right-panel right-panel--promo">
@@ -298,23 +303,23 @@
         </div>
       </section>
       <section class="right-panel">
-        <p class="right-panel-title">他のQRツール</p>
-        <a href="index.html" class="right-panel-link">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M8 8l-2 2a2.5 2.5 0 003.5 3.5l3-3A2.5 2.5 0 008 7l-.5.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M6 6l2-2a2.5 2.5 0 00-3.5-3.5l-3 3A2.5 2.5 0 006 7l.5-.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          URLのQRを作成
+        <p class="right-panel-title">おすすめリンク</p>
+        <a href="how-to.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          デザインのコツ
         </a>
-        <a href="text-qr.html" class="right-panel-link">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="3" width="10" height="1.5" rx=".5" fill="currentColor"/><rect x="2" y="6.5" width="7" height="1.5" rx=".5" fill="currentColor"/><rect x="2" y="10" width="9" height="1.5" rx=".5" fill="currentColor"/></svg>
-          テキストQRを作成
+        <a href="use-cases.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 6h6M4 8.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          活用事例集
         </a>
-        <a href="qr-map.html" class="right-panel-link">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5C4.8 1.5 3 3.3 3 5.5c0 3 4 7 4 7s4-4 4-7c0-2.2-1.8-4-4-4z" stroke="currentColor" stroke-width="1.2"/><circle cx="7" cy="5.5" r="1.5" stroke="currentColor" stroke-width="1.2"/></svg>
-          地図リンクQRを作成
+        <a href="marketing.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10V5l4-3 3 2 3-2v7l-3 1-3-2-4 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          マーケティング情報
         </a>
       </section>
       <a href="contact.html" class="btn-chat">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 3h12a1 1 0 011 1v8a1 1 0 01-1 1H6l-4 3V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        お問い合わせ
+        メールで相談
       </a>
     </aside>
 
@@ -331,7 +336,6 @@
     <p class="footer-copy">© 2026 ぽちっとQR工房</p>
   </footer>
 
-  <script src="js/qr-email.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>

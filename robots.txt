@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Cloudflare Pages 移行後にURLを実際のドメインに更新してください
-Sitemap: https://qrcode-gen-website.pages.dev/sitemap.xml
+Sitemap: https://cmalu.com/qr/sitemap.xml

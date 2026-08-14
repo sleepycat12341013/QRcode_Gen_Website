@@ -4,36 +4,49 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ロゴ入りQRコードを無料作成｜中央にアイコンを埋め込み - ぽちっとQR工房</title>
-  <meta name="description" content="QRコードの中央にロゴやアイコンを入れて無料作成。WiFi・ショップ・電話など8種類から選ぶだけ。誤り訂正を自動で最大にするので読み取りやすく、登録不要でPNG保存できます。">
-  <link rel="canonical" href="https://qrcode-gen-website.pages.dev/icon-library.html">
+  <title>テキストQRコード作成 — ぽちっとQR工房</title>
+  <meta name="description" content="テキスト・メッセージ・メモをQRコードに変換。URLだけでなく自由なテキストをQR化できます。無料・即時・ブラウザ完結。">
+  <link rel="canonical" href="https://cmalu.com/qr/text-qr.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://qrcode-gen-website.pages.dev/icon-library.html">
-  <meta property="og:title" content="ロゴ入りQRコードを無料作成｜中央にアイコンを埋め込み — ぽちっとQR工房">
-  <meta property="og:description" content="QRコードの中央にロゴ・アイコンを入れて無料作成。読み取りやすさも自動で確保。">
-  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta property="og:url" content="https://cmalu.com/qr/text-qr.html">
+  <meta property="og:title" content="テキストQRコード作成 — ぽちっとQR工房">
+  <meta property="og:description" content="テキスト・メッセージをQRコードに変換。無料・即時・ブラウザ完結。">
+  <meta property="og:image" content="https://cmalu.com/qr/img/og-image.png">
   <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ロゴ入りQRコードを無料作成｜中央にアイコンを埋め込み — ぽちっとQR工房">
-  <meta name="twitter:description" content="QRコードの中央にロゴ・アイコンを入れて無料作成。読み取りやすさも自動で確保。">
-  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta name="twitter:title" content="テキストQRコード作成 — ぽちっとQR工房">
+  <meta name="twitter:description" content="テキスト・メッセージをQRコードに変換。無料・即時・ブラウザ完結。">
+  <meta name="twitter:image" content="https://cmalu.com/qr/img/og-image.png">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
   <script src="js/analytics-init.js"></script>
-  <script src="js/vendor/qr-code-styling.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" integrity="sha384-3zSEDfvllQohrq0PHL1fOXJuC/jSOO34H46t6UQfobFOmxE5BpjjaIJY5F2/bMnU" crossorigin="anonymous"></script>
   <style>
-    .ico-field { display: flex; flex-direction: column; gap: 6px; }
-    .ico-color { width: 100%; height: 44px; padding: 4px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; cursor: pointer; }
-    .ico-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 10px; margin-top: 6px; }
-    .ico-btn { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1.5px solid #e5e7eb; border-radius: 10px; background: #fff; color: #374151; cursor: pointer; transition: border-color .15s, color .15s; }
-    .ico-btn:hover { border-color: #B91C1C; }
-    .ico-btn--active { border-color: #B91C1C; color: #B91C1C; box-shadow: inset 0 0 0 1px #B91C1C; }
-    .ico-btn--none { font-size: 12px; color: #6b7280; }
-    .ico-hint { font-size: 12px; color: var(--fg-faint); margin-top: 10px; }
-    #ico-qr canvas, #ico-qr svg { display: block; }
-    .qr-preview-area .qr-frame { width: auto; height: auto; max-width: 100%; overflow: visible; padding: 14px; box-sizing: border-box; }
+    .text-input {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--fg);
+      background: var(--bg);
+      outline: none;
+      resize: vertical;
+      min-height: 110px;
+      transition: border-color .15s, background .15s;
+    }
+    .text-input::placeholder { color: var(--fg-faint); }
+    .text-input:focus {
+      border-color: var(--border-focus);
+      background: var(--surface);
+      box-shadow: 0 0 0 3px rgba(185,28,28,.1);
+    }
+    .char-row { display: flex; justify-content: flex-end; margin-top: 4px; }
+    .char-count { font-size: 11px; color: var(--fg-faint); }
+    .char-count.over { color: var(--red); font-weight: 600; }
   </style>
 </head>
 <body>
@@ -82,7 +95,7 @@
       <a href="index.html" class="mnav-link">＋ 新規QR作成</a>
       <a href="dashboard.html" class="mnav-link">⊞ ダッシュボード</a>
       <a href="url-shortener.html" class="mnav-link">🔗 短縮URL</a>
-      <a href="text-qr.html" class="mnav-link">📝 テキスト変換</a>
+      <a href="text-qr.html" class="mnav-link mnav-link--active">📝 テキスト変換</a>
       <a href="contact-management.html" class="mnav-link">👥 連絡先管理</a>
       <a href="qr-email.html" class="mnav-link">✉️ メール作成</a>
       <a href="qr-map.html" class="mnav-link">📍 地図リンク</a>
@@ -92,7 +105,6 @@
       <p class="mnav-section-label">カスタマイズ</p>
       <a href="templates.html" class="mnav-link">☰ テンプレート一覧</a>
       <a href="design-edit.html" class="mnav-link">✏️ デザイン編集</a>
-      <a href="icon-library.html" class="mnav-link mnav-link--active">🖼 アイコンライブラリ</a>
     </div>
     <hr class="mnav-divider">
     <div class="mnav-section">
@@ -102,7 +114,6 @@
       <a href="how-to.html" class="mnav-link">使い方</a>
       <a href="about.html" class="mnav-link">会社案内</a>
       <a href="faq.html" class="mnav-link">サポート窓口</a>
-      <a href="marketing.html" class="mnav-link">📣 マーケティング情報</a>
       <a href="contact.html" class="mnav-link">お問い合わせ</a>
     </div>
     <hr class="mnav-divider">
@@ -120,7 +131,7 @@
           <a href="index.html" class="sidebar-link"><span class="sidebar-icon">＋</span>新規QR作成</a>
           <a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
           <a href="url-shortener.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
-          <a href="text-qr.html" class="sidebar-link"><span class="sidebar-icon">📝</span>テキスト変換</a>
+          <a href="text-qr.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">📝</span>テキスト変換</a>
           <a href="contact-management.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
           <a href="qr-email.html" class="sidebar-link"><span class="sidebar-icon">✉️</span>メール作成</a>
           <a href="qr-map.html" class="sidebar-link"><span class="sidebar-icon">📍</span>地図リンク</a>
@@ -131,7 +142,7 @@
         <nav>
           <a href="templates.html" class="sidebar-link"><span class="sidebar-icon">☰</span>テンプレート一覧</a>
           <a href="design-edit.html" class="sidebar-link"><span class="sidebar-icon">✏️</span>デザイン編集</a>
-          <a href="icon-library.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
+          <a href="icon-library.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
           <a href="image-gallery.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>画像ギャラリー</a>
         </nav>
       </section>
@@ -158,7 +169,6 @@
           <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">❓</span>ヘルプセンター</a>
           <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">💬</span>よくある質問</a>
           <a href="how-to.html" class="sidebar-link"><span class="sidebar-icon">📖</span>ガイドブック</a>
-          <a href="marketing.html" class="sidebar-link"><span class="sidebar-icon">📣</span>マーケティング情報</a>
           <a href="contact.html" class="sidebar-link"><span class="sidebar-icon">📩</span>お問い合わせ</a>
         </nav>
       </section>
@@ -166,56 +176,115 @@
 
     <main class="main-content">
       <div class="page-heading">
-        <h1 class="page-title">ロゴ入りQRコードを無料作成</h1>
-        <p class="page-subtitle">QRコードの中央にロゴ・アイコンを埋め込んで、目を引くデザインに（登録不要）</p>
+        <h1 class="page-title">テキストQRコード作成</h1>
+        <p class="page-subtitle">メッセージ・メモ・WiFiパスワードなど自由なテキストをQR化</p>
       </div>
 
-      <!-- Step 1 -->
-      <section class="card" aria-labelledby="ico-step1-title">
+      <section class="card" aria-labelledby="step1-title">
         <div class="card-header">
           <span class="step-badge">1</span>
-          <h2 class="card-title" id="ico-step1-title">内容を入力</h2>
-        </div>
-        <div class="input-area">
-          <label for="ico-content" class="input-label">URL・テキスト</label>
-          <input type="text" id="ico-content" class="url-input" placeholder="https://example.com" autocomplete="off" spellcheck="false" value="https://qrcode-gen-website.pages.dev/">
-        </div>
-      </section>
-
-      <!-- Step 2 -->
-      <section class="card" aria-labelledby="ico-step2-title">
-        <div class="card-header">
-          <span class="step-badge">2</span>
-          <h2 class="card-title" id="ico-step2-title">アイコンを選ぶ</h2>
+          <h2 class="card-title" id="step1-title">テキストを入力</h2>
         </div>
 
-        <div class="ico-field">
-          <label class="customize-label" for="ico-fg">色</label>
-          <input type="color" id="ico-fg" class="ico-color" value="#B91C1C">
+        <div class="input-type-tabs" role="tablist" aria-label="入力タイプ">
+          <button class="tab-btn" role="tab" aria-selected="false" data-tab="link">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 12l-2 2a3 3 0 004.243 4.243l4-4A3 3 0 0010 10l-1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 8l2-2a3 3 0 00-4.243-4.243l-4 4A3 3 0 0010 10l1-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            リンク
+          </button>
+          <button class="tab-btn tab-btn--active" role="tab" aria-selected="true" data-tab="text">
+          <button class="tab-btn tab-btn--active" role="tab" aria-selected="true" data-tab="text">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="4" width="14" height="2" rx="1" fill="currentColor"/><rect x="3" y="9" width="10" height="2" rx="1" fill="currentColor"/><rect x="3" y="14" width="12" height="2" rx="1" fill="currentColor"/></svg>
+            文字入力
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" disabled title="近日公開予定">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 16c0-2.5 2.2-4 5-4s5 1.5 5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            連絡先
+          </button>
+          <button class="tab-btn" role="tab" aria-selected="false" disabled title="近日公開予定">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="5" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M14 8l4-2v8l-4-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            動画
+          </button>
         </div>
 
-        <p class="customize-label" style="margin-top:16px;">アイコン</p>
-        <div id="ico-grid" class="ico-grid" role="group" aria-label="埋め込むアイコンを選択"></div>
-        <p class="ico-hint">※ アイコン入りQRは読み取りにくくなることがあります。誤り訂正は自動で最大にしていますが、公開前に必ず実機でスキャン確認してください。</p>
-
-        <p id="ico-warn" class="color-warn" role="status" hidden>⚠ この色は背景（白）とのコントラストが低く、読み取れない場合があります。濃い色を推奨します。</p>
-
-        <div class="qr-preview-area">
-          <div class="qr-frame has-qr" id="ico-frame">
-            <div id="ico-qr"></div>
-            <div class="qr-empty" id="ico-empty" style="display:none;">
-              <span>内容を入力するとここに表示されます</span>
-            </div>
+        <div class="input-area" id="panel-link-tq" hidden>
+          <label for="input-url-tq" class="input-label">URL</label>
+          <div class="input-wrapper">
+            <input type="url" id="input-url-tq" class="url-input" placeholder="https://example.com" autocomplete="url">
           </div>
         </div>
 
+        <div class="input-area" id="panel-text-tq">
+          <label for="input-text" class="input-label">テキスト内容</label>
+          <textarea
+            id="input-text"
+            class="text-input"
+            placeholder="QRコードにしたいテキストを入力してください&#10;例: こんにちは！私のウェブサイトはhttps://example.comです。"
+            maxlength="500"
+          ></textarea>
+          <div class="char-row">
+            <span id="char-count" class="char-count">0 / 500</span>
+          </div>
+          <p id="error-msg" class="error-msg" role="alert" hidden></p>
+        </div>
+        </div>
+
+        <button id="btn-generate" class="btn-primary btn-full">生成する</button>
+      </section>
+
+      <section class="card" aria-labelledby="step2-title">
+        <div class="card-header">
+          <span class="step-badge">2</span>
+          <h2 class="card-title" id="step2-title">デザインをカスタマイズ</h2>
+        </div>
+
+        <div class="customize-block">
+          <p class="customize-label">メインカラー</p>
+          <div class="color-swatches" role="group" aria-label="QRコードの色を選択">
+            <button class="swatch swatch--active" data-color="#B91C1C" aria-label="深紅" style="background:#B91C1C;"></button>
+            <button class="swatch" data-color="#1D4ED8" aria-label="青" style="background:#1D4ED8;"></button>
+            <button class="swatch" data-color="#15803D" aria-label="緑" style="background:#15803D;"></button>
+            <button class="swatch" data-color="#7C3AED" aria-label="紫" style="background:#7C3AED;"></button>
+            <button class="swatch" data-color="#0F172A" aria-label="黒" style="background:#0F172A;"></button>
+            <label class="swatch swatch--custom" aria-label="カスタムカラーを選択">
+              <input type="color" id="custom-color" value="#B91C1C" aria-label="カスタムカラー">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </label>
+          </div>
+        </div>
+
+        <div class="qr-preview-area">
+          <div class="qr-frame" id="qr-frame">
+            <div id="qrcode"></div>
+            <div class="qr-empty" id="qr-empty">
+              <svg width="52" height="52" viewBox="0 0 48 48" fill="none" opacity=".2">
+                <rect x="2" y="2" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
+                <rect x="28" y="2" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
+                <rect x="2" y="28" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
+                <rect x="6" y="6" width="10" height="10" fill="#111"/>
+                <rect x="32" y="6" width="10" height="10" fill="#111"/>
+                <rect x="6" y="32" width="10" height="10" fill="#111"/>
+                <rect x="28" y="28" width="5" height="5" fill="#111"/>
+                <rect x="35" y="28" width="5" height="5" fill="#111"/>
+                <rect x="28" y="35" width="5" height="5" fill="#111"/>
+                <rect x="28" y="41" width="5" height="5" fill="#111"/>
+                <rect x="35" y="41" width="5" height="5" fill="#111"/>
+                <rect x="41" y="41" width="5" height="5" fill="#111"/>
+                <rect x="41" y="35" width="5" height="5" fill="#111"/>
+                <rect x="41" y="28" width="5" height="5" fill="#111"/>
+              </svg>
+              <span>テキストを入力して<br>「生成する」を押すと<br>ここに表示されます</span>
+            </div>
+          </div>
+          <p id="qr-url-label" class="qr-url-label" hidden></p>
+        </div>
+
         <div class="download-row">
-          <button id="ico-download-png" class="btn-primary">
+          <button id="btn-download" class="btn-primary" disabled>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             PNGダウンロード
           </button>
-          <button id="ico-download-svg" class="btn-secondary btn-secondary--locked" title="Pro限定機能です。料金プランで解放できます" aria-label="SVGダウンロード（Pro限定機能・料金プランへ）">
-            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
+          <button id="btn-download-svg" class="btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             SVGダウンロード
             <span class="pro-badge"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg>Pro</span>
           </button>
@@ -243,6 +312,23 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1 12V5l5-3 4 2 4-2v9l-4 2-4-2-5 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
           アクセスレポート
         </a>
+      </section>
+      <section class="right-panel right-panel--account">
+        <p class="right-panel-title">アカウント情報</p>
+        <div class="account-info">
+          <div class="account-row">
+            <span class="account-key">プラン</span>
+            <span class="account-val account-val--empty">ログインして確認</span>
+          </div>
+          <div class="account-row">
+            <span class="account-key">残り作成数</span>
+            <span class="account-val account-val--empty">—</span>
+          </div>
+          <div class="account-row">
+            <span class="account-key">有効期限</span>
+            <span class="account-val account-val--empty">—</span>
+          </div>
+        </div>
       </section>
       <section class="right-panel right-panel--promo">
         <div class="promo-content">
@@ -285,6 +371,6 @@
   </footer>
 
   <script src="js/script.js"></script>
-  <script src="js/icon-library.js"></script>
+  <script src="js/text-qr.js"></script>
 </body>
 </html>

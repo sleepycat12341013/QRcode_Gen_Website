@@ -4,32 +4,35 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>おしゃれなQRコードを無料作成｜色・形を変えるデザイン編集 - ぽちっとQR工房</title>
-  <meta name="description" content="QRコードの色や形を自由に変えて、おしゃれなオリジナルQRコードを無料作成。ドットを丸くしたり、好きな色に変更したり、登録不要でその場でPNG保存できます。">
-  <link rel="canonical" href="https://qrcode-gen-website.pages.dev/design-edit.html">
+  <title>ロゴ入りQRコードを無料作成｜中央にアイコンを埋め込み - ぽちっとQR工房</title>
+  <meta name="description" content="QRコードの中央にロゴやアイコンを入れて無料作成。WiFi・ショップ・電話など8種類から選ぶだけ。誤り訂正を自動で最大にするので読み取りやすく、登録不要でPNG保存できます。">
+  <link rel="canonical" href="https://cmalu.com/qr/icon-library.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://qrcode-gen-website.pages.dev/design-edit.html">
-  <meta property="og:title" content="おしゃれなQRコードを無料作成｜色・形を変えるデザイン編集 — ぽちっとQR工房">
-  <meta property="og:description" content="QRコードの色や形を自由に変えて、おしゃれなオリジナルQRを無料作成。登録不要でPNG保存。">
-  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta property="og:url" content="https://cmalu.com/qr/icon-library.html">
+  <meta property="og:title" content="ロゴ入りQRコードを無料作成｜中央にアイコンを埋め込み — ぽちっとQR工房">
+  <meta property="og:description" content="QRコードの中央にロゴ・アイコンを入れて無料作成。読み取りやすさも自動で確保。">
+  <meta property="og:image" content="https://cmalu.com/qr/img/og-image.png">
   <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="おしゃれなQRコードを無料作成｜色・形を変えるデザイン編集 — ぽちっとQR工房">
-  <meta name="twitter:description" content="QRコードの色や形を自由に変えて、おしゃれなオリジナルQRを無料作成。登録不要でPNG保存。">
-  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta name="twitter:title" content="ロゴ入りQRコードを無料作成｜中央にアイコンを埋め込み — ぽちっとQR工房">
+  <meta name="twitter:description" content="QRコードの中央にロゴ・アイコンを入れて無料作成。読み取りやすさも自動で確保。">
+  <meta name="twitter:image" content="https://cmalu.com/qr/img/og-image.png">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
   <script src="js/analytics-init.js"></script>
   <script src="js/vendor/qr-code-styling.js"></script>
   <style>
-    .de-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 560px) { .de-controls { grid-template-columns: 1fr; } }
-    .de-field { display: flex; flex-direction: column; gap: 6px; }
-    .de-color { width: 100%; height: 44px; padding: 4px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; cursor: pointer; }
-    .de-select { width: 100%; height: 44px; padding: 0 10px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; font-size: 14px; cursor: pointer; }
-    #de-qr canvas, #de-qr svg { display: block; }
+    .ico-field { display: flex; flex-direction: column; gap: 6px; }
+    .ico-color { width: 100%; height: 44px; padding: 4px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; cursor: pointer; }
+    .ico-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 10px; margin-top: 6px; }
+    .ico-btn { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1.5px solid #e5e7eb; border-radius: 10px; background: #fff; color: #374151; cursor: pointer; transition: border-color .15s, color .15s; }
+    .ico-btn:hover { border-color: #B91C1C; }
+    .ico-btn--active { border-color: #B91C1C; color: #B91C1C; box-shadow: inset 0 0 0 1px #B91C1C; }
+    .ico-btn--none { font-size: 12px; color: #6b7280; }
+    .ico-hint { font-size: 12px; color: var(--fg-faint); margin-top: 10px; }
+    #ico-qr canvas, #ico-qr svg { display: block; }
     .qr-preview-area .qr-frame { width: auto; height: auto; max-width: 100%; overflow: visible; padding: 14px; box-sizing: border-box; }
   </style>
 </head>
@@ -88,7 +91,8 @@
     <div class="mnav-section">
       <p class="mnav-section-label">カスタマイズ</p>
       <a href="templates.html" class="mnav-link">☰ テンプレート一覧</a>
-      <a href="design-edit.html" class="mnav-link mnav-link--active">✏️ デザイン編集</a>
+      <a href="design-edit.html" class="mnav-link">✏️ デザイン編集</a>
+      <a href="icon-library.html" class="mnav-link mnav-link--active">🖼 アイコンライブラリ</a>
     </div>
     <hr class="mnav-divider">
     <div class="mnav-section">
@@ -126,8 +130,8 @@
         <p class="sidebar-group-label">カスタマイズ</p>
         <nav>
           <a href="templates.html" class="sidebar-link"><span class="sidebar-icon">☰</span>テンプレート一覧</a>
-          <a href="design-edit.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">✏️</span>デザイン編集</a>
-          <a href="icon-library.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
+          <a href="design-edit.html" class="sidebar-link"><span class="sidebar-icon">✏️</span>デザイン編集</a>
+          <a href="icon-library.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
           <a href="image-gallery.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>画像ギャラリー</a>
         </nav>
       </section>
@@ -162,75 +166,55 @@
 
     <main class="main-content">
       <div class="page-heading">
-        <h1 class="page-title">おしゃれなQRコードを無料作成</h1>
-        <p class="page-subtitle">色とドット・コーナーの形を変えて、オリジナルQRコードを作成（登録不要）</p>
+        <h1 class="page-title">ロゴ入りQRコードを無料作成</h1>
+        <p class="page-subtitle">QRコードの中央にロゴ・アイコンを埋め込んで、目を引くデザインに（登録不要）</p>
       </div>
 
       <!-- Step 1 -->
-      <section class="card" aria-labelledby="de-step1-title">
+      <section class="card" aria-labelledby="ico-step1-title">
         <div class="card-header">
           <span class="step-badge">1</span>
-          <h2 class="card-title" id="de-step1-title">内容を入力</h2>
+          <h2 class="card-title" id="ico-step1-title">内容を入力</h2>
         </div>
         <div class="input-area">
-          <label for="de-content" class="input-label">URL・テキスト</label>
-          <input type="text" id="de-content" class="url-input" placeholder="https://example.com" autocomplete="off" spellcheck="false" value="https://qrcode-gen-website.pages.dev/">
+          <label for="ico-content" class="input-label">URL・テキスト</label>
+          <input type="text" id="ico-content" class="url-input" placeholder="https://example.com" autocomplete="off" spellcheck="false" value="https://cmalu.com/qr/">
         </div>
       </section>
 
       <!-- Step 2 -->
-      <section class="card" aria-labelledby="de-step2-title">
+      <section class="card" aria-labelledby="ico-step2-title">
         <div class="card-header">
           <span class="step-badge">2</span>
-          <h2 class="card-title" id="de-step2-title">デザインを編集</h2>
+          <h2 class="card-title" id="ico-step2-title">アイコンを選ぶ</h2>
         </div>
 
-        <div class="de-controls">
-          <div class="de-field">
-            <label class="customize-label" for="de-fg">前景色（ドット）</label>
-            <input type="color" id="de-fg" class="de-color" value="#B91C1C">
-          </div>
-          <div class="de-field">
-            <label class="customize-label" for="de-bg">背景色</label>
-            <input type="color" id="de-bg" class="de-color" value="#ffffff">
-          </div>
-          <div class="de-field">
-            <label class="customize-label" for="de-dot">ドットの形</label>
-            <select id="de-dot" class="de-select">
-              <option value="square">四角（標準）</option>
-              <option value="rounded">角丸</option>
-              <option value="dots">ドット</option>
-              <option value="classy">クラシー</option>
-              <option value="classy-rounded">クラシー（丸）</option>
-              <option value="extra-rounded">まる</option>
-            </select>
-          </div>
-          <div class="de-field">
-            <label class="customize-label" for="de-corner">目（コーナー）の形</label>
-            <select id="de-corner" class="de-select">
-              <option value="square">四角</option>
-              <option value="dot">丸</option>
-              <option value="extra-rounded">角丸</option>
-            </select>
-          </div>
+        <div class="ico-field">
+          <label class="customize-label" for="ico-fg">色</label>
+          <input type="color" id="ico-fg" class="ico-color" value="#B91C1C">
         </div>
-        <p id="de-warn" class="color-warn" role="status" hidden>⚠ この配色ではQRを読み取れない可能性があります（コントラスト不足・明暗の反転）。背景より濃い前景色を推奨します。</p>
+
+        <p class="customize-label" style="margin-top:16px;">アイコン</p>
+        <div id="ico-grid" class="ico-grid" role="group" aria-label="埋め込むアイコンを選択"></div>
+        <p class="ico-hint">※ アイコン入りQRは読み取りにくくなることがあります。誤り訂正は自動で最大にしていますが、公開前に必ず実機でスキャン確認してください。</p>
+
+        <p id="ico-warn" class="color-warn" role="status" hidden>⚠ この色は背景（白）とのコントラストが低く、読み取れない場合があります。濃い色を推奨します。</p>
 
         <div class="qr-preview-area">
-          <div class="qr-frame has-qr" id="de-frame">
-            <div id="de-qr"></div>
-            <div class="qr-empty" id="de-empty" style="display:none;">
+          <div class="qr-frame has-qr" id="ico-frame">
+            <div id="ico-qr"></div>
+            <div class="qr-empty" id="ico-empty" style="display:none;">
               <span>内容を入力するとここに表示されます</span>
             </div>
           </div>
         </div>
 
         <div class="download-row">
-          <button id="de-download-png" class="btn-primary">
+          <button id="ico-download-png" class="btn-primary">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             PNGダウンロード
           </button>
-          <button id="de-download-svg" class="btn-secondary btn-secondary--locked" title="Pro限定機能です。料金プランで解放できます" aria-label="SVGダウンロード（Pro限定機能・料金プランへ）">
+          <button id="ico-download-svg" class="btn-secondary btn-secondary--locked" title="Pro限定機能です。料金プランで解放できます" aria-label="SVGダウンロード（Pro限定機能・料金プランへ）">
             <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
             SVGダウンロード
             <span class="pro-badge"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg>Pro</span>
@@ -301,6 +285,6 @@
   </footer>
 
   <script src="js/script.js"></script>
-  <script src="js/design-edit.js"></script>
+  <script src="js/icon-library.js"></script>
 </body>
 </html>

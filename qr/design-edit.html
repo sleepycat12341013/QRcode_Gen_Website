@@ -4,37 +4,33 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>QRコード活用事例集 — ぽちっとQR工房</title>
-  <meta name="description" content="QRコードの活用事例を業種・用途別に紹介。飲食店・イベント・名刺・店舗・EC・教育など、QRコードを効果的に使う方法を解説します。">
-  <link rel="canonical" href="https://qrcode-gen-website.pages.dev/use-cases.html">
+  <title>おしゃれなQRコードを無料作成｜色・形を変えるデザイン編集 - ぽちっとQR工房</title>
+  <meta name="description" content="QRコードの色や形を自由に変えて、おしゃれなオリジナルQRコードを無料作成。ドットを丸くしたり、好きな色に変更したり、登録不要でその場でPNG保存できます。">
+  <link rel="canonical" href="https://cmalu.com/qr/design-edit.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://qrcode-gen-website.pages.dev/use-cases.html">
-  <meta property="og:title" content="QRコード活用事例集 — ぽちっとQR工房">
-  <meta property="og:description" content="飲食店・イベント・名刺・店舗・EC・教育など、QRコードを効果的に使う方法を業種別に紹介。">
-  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta property="og:url" content="https://cmalu.com/qr/design-edit.html">
+  <meta property="og:title" content="おしゃれなQRコードを無料作成｜色・形を変えるデザイン編集 — ぽちっとQR工房">
+  <meta property="og:description" content="QRコードの色や形を自由に変えて、おしゃれなオリジナルQRを無料作成。登録不要でPNG保存。">
+  <meta property="og:image" content="https://cmalu.com/qr/img/og-image.png">
   <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="QRコード活用事例集 — ぽちっとQR工房">
-  <meta name="twitter:description" content="飲食店・イベント・名刺・店舗・EC・教育など、QRコードを効果的に使う方法を業種別に紹介。">
-  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta name="twitter:title" content="おしゃれなQRコードを無料作成｜色・形を変えるデザイン編集 — ぽちっとQR工房">
+  <meta name="twitter:description" content="QRコードの色や形を自由に変えて、おしゃれなオリジナルQRを無料作成。登録不要でPNG保存。">
+  <meta name="twitter:image" content="https://cmalu.com/qr/img/og-image.png">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
   <script src="js/analytics-init.js"></script>
+  <script src="js/vendor/qr-code-styling.js"></script>
   <style>
-    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media (max-width: 640px) { .case-grid { grid-template-columns: 1fr; } }
-    .case-card { background: var(--bg); border: 1.5px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 10px; }
-    .case-header { display: flex; align-items: center; gap: 10px; }
-    .case-emoji { font-size: 28px; }
-    .case-industry { font-size: 11px; font-weight: 700; color: var(--fg-faint); text-transform: uppercase; letter-spacing: .05em; }
-    .case-title { font-size: 15px; font-weight: 700; color: var(--fg); }
-    .case-desc { font-size: 13px; color: var(--fg-muted); line-height: 1.7; }
-    .case-uses { list-style: none; display: flex; flex-direction: column; gap: 5px; }
-    .case-uses li { font-size: 12px; color: var(--fg-muted); display: flex; gap: 7px; }
-    .case-uses li::before { content: "→"; color: var(--red); flex-shrink: 0; }
-    .case-cta { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--red); }
+    .de-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 560px) { .de-controls { grid-template-columns: 1fr; } }
+    .de-field { display: flex; flex-direction: column; gap: 6px; }
+    .de-color { width: 100%; height: 44px; padding: 4px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; cursor: pointer; }
+    .de-select { width: 100%; height: 44px; padding: 0 10px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; font-size: 14px; cursor: pointer; }
+    #de-qr canvas, #de-qr svg { display: block; }
+    .qr-preview-area .qr-frame { width: auto; height: auto; max-width: 100%; overflow: visible; padding: 14px; box-sizing: border-box; }
   </style>
 </head>
 <body>
@@ -92,7 +88,7 @@
     <div class="mnav-section">
       <p class="mnav-section-label">カスタマイズ</p>
       <a href="templates.html" class="mnav-link">☰ テンプレート一覧</a>
-      <a href="design-edit.html" class="mnav-link">✏️ デザイン編集</a>
+      <a href="design-edit.html" class="mnav-link mnav-link--active">✏️ デザイン編集</a>
     </div>
     <hr class="mnav-divider">
     <div class="mnav-section">
@@ -102,6 +98,7 @@
       <a href="how-to.html" class="mnav-link">使い方</a>
       <a href="about.html" class="mnav-link">会社案内</a>
       <a href="faq.html" class="mnav-link">サポート窓口</a>
+      <a href="marketing.html" class="mnav-link">📣 マーケティング情報</a>
       <a href="contact.html" class="mnav-link">お問い合わせ</a>
     </div>
     <hr class="mnav-divider">
@@ -129,7 +126,7 @@
         <p class="sidebar-group-label">カスタマイズ</p>
         <nav>
           <a href="templates.html" class="sidebar-link"><span class="sidebar-icon">☰</span>テンプレート一覧</a>
-          <a href="design-edit.html" class="sidebar-link"><span class="sidebar-icon">✏️</span>デザイン編集</a>
+          <a href="design-edit.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">✏️</span>デザイン編集</a>
           <a href="icon-library.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
           <a href="image-gallery.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>画像ギャラリー</a>
         </nav>
@@ -157,6 +154,7 @@
           <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">❓</span>ヘルプセンター</a>
           <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">💬</span>よくある質問</a>
           <a href="how-to.html" class="sidebar-link"><span class="sidebar-icon">📖</span>ガイドブック</a>
+          <a href="marketing.html" class="sidebar-link"><span class="sidebar-icon">📣</span>マーケティング情報</a>
           <a href="contact.html" class="sidebar-link"><span class="sidebar-icon">📩</span>お問い合わせ</a>
         </nav>
       </section>
@@ -164,127 +162,80 @@
 
     <main class="main-content">
       <div class="page-heading">
-        <h1 class="page-title">活用事例集</h1>
-        <p class="page-subtitle">業種・用途別QRコード活用アイデア</p>
+        <h1 class="page-title">おしゃれなQRコードを無料作成</h1>
+        <p class="page-subtitle">色とドット・コーナーの形を変えて、オリジナルQRコードを作成（登録不要）</p>
       </div>
 
-      <section class="card" aria-labelledby="cases-title">
+      <!-- Step 1 -->
+      <section class="card" aria-labelledby="de-step1-title">
         <div class="card-header">
-          <h2 class="card-title" id="cases-title">こんな場面で使われています</h2>
+          <span class="step-badge">1</span>
+          <h2 class="card-title" id="de-step1-title">内容を入力</h2>
         </div>
-        <div class="case-grid">
-
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-emoji">🍽️</span>
-              <span class="case-industry">飲食店</span>
-            </div>
-            <p class="case-title">メニュー・予約・SNS誘導</p>
-            <p class="case-desc">テーブルにQRコードを置くだけで、デジタルメニューや予約ページへ誘導。印刷物を減らしながら最新情報を常に提供できます。</p>
-            <ul class="case-uses">
-              <li>卓上カードにメニューQRを印刷</li>
-              <li>テイクアウト袋にSNSのQRを貼付</li>
-              <li>食べログ・Googleマップのレビューページへ誘導</li>
-            </ul>
-            <a href="index.html" class="case-cta">このQRを今すぐ作成 →</a>
-          </div>
-
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-emoji">🎫</span>
-              <span class="case-industry">イベント・展示会</span>
-            </div>
-            <p class="case-title">資料配布・アンケート・SNS</p>
-            <p class="case-desc">当日配布の紙資料にQRコードを載せて、詳細資料やアンケートフォームへ誘導。参加者のエンゲージメントを高めます。</p>
-            <ul class="case-uses">
-              <li>登壇資料のスライドにQRを掲載</li>
-              <li>名刺代わりのコネクトQRコード</li>
-              <li>アンケートURLをQR化して回収率アップ</li>
-            </ul>
-            <a href="index.html" class="case-cta">このQRを今すぐ作成 →</a>
-          </div>
-
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-emoji">👔</span>
-              <span class="case-industry">ビジネス・営業</span>
-            </div>
-            <p class="case-title">名刺・連絡先共有</p>
-            <p class="case-desc">名刺にQRコードを印刷して、連絡先をスマホに即座に保存。スキャンするだけでvCardが取り込まれ、入力ミスを防ぎます。</p>
-            <ul class="case-uses">
-              <li>名刺裏面にvCard QRを印刷</li>
-              <li>会社サイト・LinkedIn プロフィールへ誘導</li>
-              <li>見積書・請求書にサポートページQR</li>
-            </ul>
-            <a href="index.html" class="case-cta">連絡先QRを作成 →</a>
-          </div>
-
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-emoji">🛍️</span>
-              <span class="case-industry">小売・EC</span>
-            </div>
-            <p class="case-title">商品ページ・レビュー・クーポン</p>
-            <p class="case-desc">商品パッケージや店頭POPにQRコードを貼り、詳細ページやクーポンへ誘導。オフラインとオンラインをシームレスにつなぎます。</p>
-            <ul class="case-uses">
-              <li>商品パッケージに詳細ページQR</li>
-              <li>レシートにレビュー依頼QR</li>
-              <li>チラシにクーポンコードQR</li>
-            </ul>
-            <a href="index.html" class="case-cta">このQRを今すぐ作成 →</a>
-          </div>
-
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-emoji">🎓</span>
-              <span class="case-industry">教育・学校</span>
-            </div>
-            <p class="case-title">教材・動画・参考資料</p>
-            <p class="case-desc">プリント教材にQRコードを掲載して、補足動画や追加資料へ誘導。授業の理解度を深め、自学をサポートします。</p>
-            <ul class="case-uses">
-              <li>プリントに解説動画QRを掲載</li>
-              <li>図書室の本にあらすじ・レビューQR</li>
-              <li>校内案内図にQRコードリンク</li>
-            </ul>
-            <a href="index.html" class="case-cta">このQRを今すぐ作成 →</a>
-          </div>
-
-          <div class="case-card">
-            <div class="case-header">
-              <span class="case-emoji">📱</span>
-              <span class="case-industry">SNS・個人クリエイター</span>
-            </div>
-            <p class="case-title">フォロワー獲得・配信告知</p>
-            <p class="case-desc">YouTube・Instagram・TikTokなどのプロフィールURLをQR化。名刺・チラシ・ステッカーに印刷してフォロワーを増やします。</p>
-            <ul class="case-uses">
-              <li>インスタのフォローQRをチラシに印刷</li>
-              <li>YouTube登録ページへ誘導</li>
-              <li>ライブ配信の視聴URLをQR化</li>
-            </ul>
-            <a href="index.html" class="case-cta">SNS用QRを今すぐ作成 →</a>
-          </div>
-
+        <div class="input-area">
+          <label for="de-content" class="input-label">URL・テキスト</label>
+          <input type="text" id="de-content" class="url-input" placeholder="https://example.com" autocomplete="off" spellcheck="false" value="https://cmalu.com/qr/">
         </div>
       </section>
 
-      <section class="card" aria-labelledby="tips-title">
+      <!-- Step 2 -->
+      <section class="card" aria-labelledby="de-step2-title">
         <div class="card-header">
-          <h2 class="card-title" id="tips-title">QRコードを効果的に使うコツ</h2>
+          <span class="step-badge">2</span>
+          <h2 class="card-title" id="de-step2-title">デザインを編集</h2>
         </div>
-        <div style="font-size:13px;color:var(--fg-muted);line-height:1.8;display:flex;flex-direction:column;gap:10px;">
-          <p><strong style="color:var(--fg);">サイズは2cm以上に</strong> — 小さすぎるQRコードは読み取りにくくなります。印刷する場合は最低2×2cmを確保しましょう。</p>
-          <p><strong style="color:var(--fg);">余白（クワイエットゾーン）を確保</strong> — QRコードの周囲に十分な余白がないとスキャンしにくくなります。</p>
-          <p><strong style="color:var(--fg);">コントラストを高く</strong> — 背景色と本体色の差が大きいほど読み取りやすくなります。明るい背景に暗い色が基本です。</p>
-          <p><strong style="color:var(--fg);">CTAを添える</strong> — 「スキャンしてメニューを見る」など、QRコードの近くにアクション誘導文を入れると読み取り率が上がります。</p>
-        </div>
-      </section>
 
-      <section class="card">
-        <div class="card-header">
-          <h2 class="card-title">今すぐ無料で作成</h2>
+        <div class="de-controls">
+          <div class="de-field">
+            <label class="customize-label" for="de-fg">前景色（ドット）</label>
+            <input type="color" id="de-fg" class="de-color" value="#B91C1C">
+          </div>
+          <div class="de-field">
+            <label class="customize-label" for="de-bg">背景色</label>
+            <input type="color" id="de-bg" class="de-color" value="#ffffff">
+          </div>
+          <div class="de-field">
+            <label class="customize-label" for="de-dot">ドットの形</label>
+            <select id="de-dot" class="de-select">
+              <option value="square">四角（標準）</option>
+              <option value="rounded">角丸</option>
+              <option value="dots">ドット</option>
+              <option value="classy">クラシー</option>
+              <option value="classy-rounded">クラシー（丸）</option>
+              <option value="extra-rounded">まる</option>
+            </select>
+          </div>
+          <div class="de-field">
+            <label class="customize-label" for="de-corner">目（コーナー）の形</label>
+            <select id="de-corner" class="de-select">
+              <option value="square">四角</option>
+              <option value="dot">丸</option>
+              <option value="extra-rounded">角丸</option>
+            </select>
+          </div>
         </div>
-        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:16px;">URLを入力するだけで、あなたのビジネスに合ったQRコードを今すぐ作成できます。</p>
-        <a href="index.html" class="btn-primary" style="align-self:flex-start;">QRコードを作成する</a>
+        <p id="de-warn" class="color-warn" role="status" hidden>⚠ この配色ではQRを読み取れない可能性があります（コントラスト不足・明暗の反転）。背景より濃い前景色を推奨します。</p>
+
+        <div class="qr-preview-area">
+          <div class="qr-frame has-qr" id="de-frame">
+            <div id="de-qr"></div>
+            <div class="qr-empty" id="de-empty" style="display:none;">
+              <span>内容を入力するとここに表示されます</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="download-row">
+          <button id="de-download-png" class="btn-primary">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            PNGダウンロード
+          </button>
+          <button id="de-download-svg" class="btn-secondary btn-secondary--locked" title="Pro限定機能です。料金プランで解放できます" aria-label="SVGダウンロード（Pro限定機能・料金プランへ）">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2" stroke="currentColor" stroke-width="1.5"/></svg>
+            SVGダウンロード
+            <span class="pro-badge"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg>Pro</span>
+          </button>
+        </div>
       </section>
     </main>
 
@@ -309,14 +260,6 @@
           アクセスレポート
         </a>
       </section>
-      <section class="right-panel right-panel--account">
-        <p class="right-panel-title">アカウント情報</p>
-        <div class="account-info">
-          <div class="account-row"><span class="account-key">プラン</span><span class="account-val account-val--empty">ログインして確認</span></div>
-          <div class="account-row"><span class="account-key">残り作成数</span><span class="account-val account-val--empty">—</span></div>
-          <div class="account-row"><span class="account-key">有効期限</span><span class="account-val account-val--empty">—</span></div>
-        </div>
-      </section>
       <section class="right-panel right-panel--promo">
         <div class="promo-content">
           <p class="promo-text">プレミアムプランで<br><strong>もっと便利に！</strong></p>
@@ -324,23 +267,23 @@
         </div>
       </section>
       <section class="right-panel">
-        <p class="right-panel-title">関連情報</p>
+        <p class="right-panel-title">おすすめリンク</p>
+        <a href="how-to.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          デザインのコツ
+        </a>
+        <a href="use-cases.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="2.5" width="11" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M4 6h6M4 8.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          活用事例集
+        </a>
         <a href="marketing.html" class="right-panel-link">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 10V5l4-3 3 2 3-2v7l-3 1-3-2-4 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
           マーケティング情報
         </a>
-        <a href="how-to.html" class="right-panel-link">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-          使い方ガイド
-        </a>
-        <a href="faq.html" class="right-panel-link">
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 5.5a1.5 1.5 0 012.8.7c0 1-1.3 1.3-1.3 2.3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="10.5" r=".5" fill="currentColor"/></svg>
-          よくある質問
-        </a>
       </section>
       <a href="contact.html" class="btn-chat">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 3h12a1 1 0 011 1v8a1 1 0 01-1 1H6l-4 3V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-        お問い合わせ
+        メールで相談
       </a>
     </aside>
 
@@ -358,5 +301,6 @@
   </footer>
 
   <script src="js/script.js"></script>
+  <script src="js/design-edit.js"></script>
 </body>
 </html>

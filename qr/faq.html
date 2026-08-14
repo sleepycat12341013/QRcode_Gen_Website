@@ -4,49 +4,67 @@
   <meta charset="UTF-8">
   <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>テキストQRコード作成 — ぽちっとQR工房</title>
-  <meta name="description" content="テキスト・メッセージ・メモをQRコードに変換。URLだけでなく自由なテキストをQR化できます。無料・即時・ブラウザ完結。">
-  <link rel="canonical" href="https://qrcode-gen-website.pages.dev/text-qr.html">
+  <title>よくある質問 — ぽちっとQR工房</title>
+  <meta name="description" content="ぽちっとQR工房のよくある質問。無料で使えるか、QRコードの有効期限、スマートフォン対応、データのプライバシーについてお答えします。">
+  <link rel="canonical" href="https://cmalu.com/qr/faq.html">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://qrcode-gen-website.pages.dev/text-qr.html">
-  <meta property="og:title" content="テキストQRコード作成 — ぽちっとQR工房">
-  <meta property="og:description" content="テキスト・メッセージをQRコードに変換。無料・即時・ブラウザ完結。">
-  <meta property="og:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta property="og:url" content="https://cmalu.com/qr/faq.html">
+  <meta property="og:title" content="よくある質問 — ぽちっとQR工房">
+  <meta property="og:description" content="ぽちっとQR工房のよくある質問。無料で使えるか、QRコードの有効期限、スマートフォン対応についてお答えします。">
+  <meta property="og:image" content="https://cmalu.com/qr/img/og-image.png">
   <meta property="og:site_name" content="ぽちっとQR工房">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="テキストQRコード作成 — ぽちっとQR工房">
-  <meta name="twitter:description" content="テキスト・メッセージをQRコードに変換。無料・即時・ブラウザ完結。">
-  <meta name="twitter:image" content="https://qrcode-gen-website.pages.dev/img/og-image.png">
+  <meta name="twitter:title" content="よくある質問 — ぽちっとQR工房">
+  <meta name="twitter:description" content="ぽちっとQR工房のよくある質問。無料で使えるか、QRコードの有効期限についてお答えします。">
+  <meta name="twitter:image" content="https://cmalu.com/qr/img/og-image.png">
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
   <script src="js/analytics-init.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js" integrity="sha384-3zSEDfvllQohrq0PHL1fOXJuC/jSOO34H46t6UQfobFOmxE5BpjjaIJY5F2/bMnU" crossorigin="anonymous"></script>
   <style>
-    .text-input {
-      width: 100%;
-      padding: 10px 13px;
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      font-family: inherit;
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-item summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 4px;
+      cursor: pointer;
+      font-weight: 600;
       font-size: 14px;
       color: var(--fg);
-      background: var(--bg);
-      outline: none;
-      resize: vertical;
-      min-height: 110px;
-      transition: border-color .15s, background .15s;
+      list-style: none;
+      gap: 12px;
     }
-    .text-input::placeholder { color: var(--fg-faint); }
-    .text-input:focus {
-      border-color: var(--border-focus);
-      background: var(--surface);
-      box-shadow: 0 0 0 3px rgba(185,28,28,.1);
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      background: var(--red-light);
+      color: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 400;
+      transition: transform .2s;
     }
-    .char-row { display: flex; justify-content: flex-end; margin-top: 4px; }
-    .char-count { font-size: 11px; color: var(--fg-faint); }
-    .char-count.over { color: var(--red); font-weight: 600; }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item summary:hover { color: var(--red); }
+    .faq-answer {
+      padding: 0 4px 16px 4px;
+      font-size: 13px;
+      color: var(--fg-muted);
+      line-height: 1.75;
+    }
+    .faq-answer a { color: var(--red); }
+    .contact-box { text-align: center; padding: 8px 0; }
+    .contact-box p { font-size: 13px; color: var(--fg-muted); margin-bottom: 14px; }
   </style>
 </head>
 <body>
@@ -95,7 +113,7 @@
       <a href="index.html" class="mnav-link">＋ 新規QR作成</a>
       <a href="dashboard.html" class="mnav-link">⊞ ダッシュボード</a>
       <a href="url-shortener.html" class="mnav-link">🔗 短縮URL</a>
-      <a href="text-qr.html" class="mnav-link mnav-link--active">📝 テキスト変換</a>
+      <a href="text-qr.html" class="mnav-link">📝 テキスト変換</a>
       <a href="contact-management.html" class="mnav-link">👥 連絡先管理</a>
       <a href="qr-email.html" class="mnav-link">✉️ メール作成</a>
       <a href="qr-map.html" class="mnav-link">📍 地図リンク</a>
@@ -113,7 +131,7 @@
       <a href="pricing.html" class="mnav-link">料金プラン</a>
       <a href="how-to.html" class="mnav-link">使い方</a>
       <a href="about.html" class="mnav-link">会社案内</a>
-      <a href="faq.html" class="mnav-link">サポート窓口</a>
+      <a href="faq.html" class="mnav-link mnav-link--active">サポート窓口</a>
       <a href="contact.html" class="mnav-link">お問い合わせ</a>
     </div>
     <hr class="mnav-divider">
@@ -128,13 +146,13 @@
       <section class="sidebar-group">
         <p class="sidebar-group-label">QR作成</p>
         <nav>
-          <a href="index.html" class="sidebar-link"><span class="sidebar-icon">＋</span>新規QR作成</a>
-          <a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
-          <a href="url-shortener.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
-          <a href="text-qr.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">📝</span>テキスト変換</a>
-          <a href="contact-management.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
-          <a href="qr-email.html" class="sidebar-link"><span class="sidebar-icon">✉️</span>メール作成</a>
-          <a href="qr-map.html" class="sidebar-link"><span class="sidebar-icon">📍</span>地図リンク</a>
+          <a href="index.html" class="sidebar-link "><span class="sidebar-icon">＋</span>新規QR作成</a>
+          <a href="dashboard.html" class="sidebar-link "><span class="sidebar-icon">⊞</span>ダッシュボード</a>
+          <a href="url-shortener.html" class="sidebar-link "><span class="sidebar-icon">🔗</span>短縮URL</a>
+          <a href="text-qr.html" class="sidebar-link "><span class="sidebar-icon">📝</span>テキスト変換</a>
+          <a href="contact-management.html" class="sidebar-link "><span class="sidebar-icon">👥</span>連絡先管理</a>
+          <a href="qr-email.html" class="sidebar-link "><span class="sidebar-icon">✉️</span>メール作成</a>
+          <a href="qr-map.html" class="sidebar-link "><span class="sidebar-icon">📍</span>地図リンク</a>
         </nav>
       </section>
       <section class="sidebar-group">
@@ -166,9 +184,9 @@
       <section class="sidebar-group">
         <p class="sidebar-group-label">サポート</p>
         <nav>
-          <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">❓</span>ヘルプセンター</a>
-          <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">💬</span>よくある質問</a>
-          <a href="how-to.html" class="sidebar-link"><span class="sidebar-icon">📖</span>ガイドブック</a>
+          <a href="faq.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">❓</span>ヘルプセンター</a>
+          <a href="faq.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">💬</span>よくある質問</a>
+          <a href="how-to.html" class="sidebar-link "><span class="sidebar-icon">📖</span>ガイドブック</a>
           <a href="contact.html" class="sidebar-link"><span class="sidebar-icon">📩</span>お問い合わせ</a>
         </nav>
       </section>
@@ -176,118 +194,83 @@
 
     <main class="main-content">
       <div class="page-heading">
-        <h1 class="page-title">テキストQRコード作成</h1>
-        <p class="page-subtitle">メッセージ・メモ・WiFiパスワードなど自由なテキストをQR化</p>
+        <h1 class="page-title">よくある質問</h1>
+        <p class="page-subtitle">ぽちっとQR工房に関するよくある疑問をまとめました</p>
       </div>
 
-      <section class="card" aria-labelledby="step1-title">
+      <section class="card" aria-labelledby="faq-title">
         <div class="card-header">
-          <span class="step-badge">1</span>
-          <h2 class="card-title" id="step1-title">テキストを入力</h2>
+          <h2 class="card-title" id="faq-title">よくある質問</h2>
         </div>
+        <div class="faq-list">
 
-        <div class="input-type-tabs" role="tablist" aria-label="入力タイプ">
-          <button class="tab-btn" role="tab" aria-selected="false" data-tab="link">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M8 12l-2 2a3 3 0 004.243 4.243l4-4A3 3 0 0010 10l-1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 8l2-2a3 3 0 00-4.243-4.243l-4 4A3 3 0 0010 10l1-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            リンク
-          </button>
-          <button class="tab-btn tab-btn--active" role="tab" aria-selected="true" data-tab="text">
-          <button class="tab-btn tab-btn--active" role="tab" aria-selected="true" data-tab="text">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="4" width="14" height="2" rx="1" fill="currentColor"/><rect x="3" y="9" width="10" height="2" rx="1" fill="currentColor"/><rect x="3" y="14" width="12" height="2" rx="1" fill="currentColor"/></svg>
-            文字入力
-          </button>
-          <button class="tab-btn" role="tab" aria-selected="false" disabled title="近日公開予定">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="9" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 16c0-2.5 2.2-4 5-4s5 1.5 5 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            連絡先
-          </button>
-          <button class="tab-btn" role="tab" aria-selected="false" disabled title="近日公開予定">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="2" y="5" width="12" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M14 8l4-2v8l-4-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-            動画
-          </button>
-        </div>
+          <details class="faq-item">
+            <summary>無料で使えますか？</summary>
+            <div class="faq-answer">
+              はい、QRコードの生成（URL・テキスト）、カラーカスタマイズ、PNGダウンロードはすべて無料でご利用いただけます。登録不要でブラウザからすぐに使えます。
+            </div>
+          </details>
 
-        <div class="input-area" id="panel-link-tq" hidden>
-          <label for="input-url-tq" class="input-label">URL</label>
-          <div class="input-wrapper">
-            <input type="url" id="input-url-tq" class="url-input" placeholder="https://example.com" autocomplete="url">
-          </div>
-        </div>
+          <details class="faq-item">
+            <summary>作成したQRコードはいつまで使えますか？</summary>
+            <div class="faq-answer">
+              ダウンロードしたQRコード画像は永続的に使用できます。すべての処理はブラウザ内で完結しているため、サーバー側での有効期限はありません。ただし、QRコードに埋め込んだURLが削除・変更された場合、そのURLは機能しなくなります。
+            </div>
+          </details>
 
-        <div class="input-area" id="panel-text-tq">
-          <label for="input-text" class="input-label">テキスト内容</label>
-          <textarea
-            id="input-text"
-            class="text-input"
-            placeholder="QRコードにしたいテキストを入力してください&#10;例: こんにちは！私のウェブサイトはhttps://example.comです。"
-            maxlength="500"
-          ></textarea>
-          <div class="char-row">
-            <span id="char-count" class="char-count">0 / 500</span>
-          </div>
-          <p id="error-msg" class="error-msg" role="alert" hidden></p>
-        </div>
-        </div>
+          <details class="faq-item">
+            <summary>スマートフォンでも使えますか？</summary>
+            <div class="faq-answer">
+              はい、スマートフォン・タブレット・PCすべてのデバイスに対応しています。レスポンシブデザインを採用しているため、画面サイズに関わらず快適にご利用いただけます。
+            </div>
+          </details>
 
-        <button id="btn-generate" class="btn-primary btn-full">生成する</button>
+          <details class="faq-item">
+            <summary>QRコードに含められる情報量はどのくらいですか？</summary>
+            <div class="faq-answer">
+              URLや短いテキストであれば問題ありません。テキストが長くなるほどQRコードのパターンが複雑になり、読み取りにくくなる場合があります。URLの場合は短縮URLサービスの利用をおすすめします。テキストQRは最大500文字まで対応しています。
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>ダウンロードできるファイル形式は？</summary>
+            <div class="faq-answer">
+              現在はPNG形式でダウンロードできます。印刷・デジタル媒体の両方に対応しています。SVGなど高解像度形式への対応はプレミアムプラン（<a href="pricing.html">近日公開</a>）で提供予定です。
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>入力したURLやテキストはサーバーに保存されますか？</summary>
+            <div class="faq-answer">
+              いいえ。すべての処理はブラウザ内（ローカル）で完結しています。入力したURL・テキストはサーバーに一切送信されません。プライバシーを重視した設計になっています。
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>QRコードが読み取れない場合はどうすればいいですか？</summary>
+            <div class="faq-answer">
+              以下をご確認ください：<br>
+              • 印刷サイズが最低2cm × 2cm以上あるか<br>
+              • QRコードと背景のコントラストが十分か（薄い色は避けてください）<br>
+              • カメラのピントが合っているか<br>
+              • スマートフォンの標準カメラで読み取れない場合は、専用QRリーダーアプリをお試しください。
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>カスタムカラーを使っても読み取れますか？</summary>
+            <div class="faq-answer">
+              通常は問題なく読み取れます。ただし、明るすぎる色（薄い黄色・白に近い色など）はコントラストが不足して読み取りにくくなる場合があります。暗めの色を推奨します。背景色は白のまま変更しないことで読み取り精度を保てます。
+            </div>
+          </details>
+
+        </div>
       </section>
 
-      <section class="card" aria-labelledby="step2-title">
-        <div class="card-header">
-          <span class="step-badge">2</span>
-          <h2 class="card-title" id="step2-title">デザインをカスタマイズ</h2>
-        </div>
-
-        <div class="customize-block">
-          <p class="customize-label">メインカラー</p>
-          <div class="color-swatches" role="group" aria-label="QRコードの色を選択">
-            <button class="swatch swatch--active" data-color="#B91C1C" aria-label="深紅" style="background:#B91C1C;"></button>
-            <button class="swatch" data-color="#1D4ED8" aria-label="青" style="background:#1D4ED8;"></button>
-            <button class="swatch" data-color="#15803D" aria-label="緑" style="background:#15803D;"></button>
-            <button class="swatch" data-color="#7C3AED" aria-label="紫" style="background:#7C3AED;"></button>
-            <button class="swatch" data-color="#0F172A" aria-label="黒" style="background:#0F172A;"></button>
-            <label class="swatch swatch--custom" aria-label="カスタムカラーを選択">
-              <input type="color" id="custom-color" value="#B91C1C" aria-label="カスタムカラー">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 5v6M5 8h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-            </label>
-          </div>
-        </div>
-
-        <div class="qr-preview-area">
-          <div class="qr-frame" id="qr-frame">
-            <div id="qrcode"></div>
-            <div class="qr-empty" id="qr-empty">
-              <svg width="52" height="52" viewBox="0 0 48 48" fill="none" opacity=".2">
-                <rect x="2" y="2" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
-                <rect x="28" y="2" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
-                <rect x="2" y="28" width="18" height="18" rx="3" stroke="#111" stroke-width="2"/>
-                <rect x="6" y="6" width="10" height="10" fill="#111"/>
-                <rect x="32" y="6" width="10" height="10" fill="#111"/>
-                <rect x="6" y="32" width="10" height="10" fill="#111"/>
-                <rect x="28" y="28" width="5" height="5" fill="#111"/>
-                <rect x="35" y="28" width="5" height="5" fill="#111"/>
-                <rect x="28" y="35" width="5" height="5" fill="#111"/>
-                <rect x="28" y="41" width="5" height="5" fill="#111"/>
-                <rect x="35" y="41" width="5" height="5" fill="#111"/>
-                <rect x="41" y="41" width="5" height="5" fill="#111"/>
-                <rect x="41" y="35" width="5" height="5" fill="#111"/>
-                <rect x="41" y="28" width="5" height="5" fill="#111"/>
-              </svg>
-              <span>テキストを入力して<br>「生成する」を押すと<br>ここに表示されます</span>
-            </div>
-          </div>
-          <p id="qr-url-label" class="qr-url-label" hidden></p>
-        </div>
-
-        <div class="download-row">
-          <button id="btn-download" class="btn-primary" disabled>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            PNGダウンロード
-          </button>
-          <button id="btn-download-svg" class="btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            SVGダウンロード
-            <span class="pro-badge"><svg width="9" height="10" viewBox="0 0 9 10" fill="none" aria-hidden="true"><rect x="1.5" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M3 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg>Pro</span>
-          </button>
+      <section class="card">
+        <div class="contact-box">
+          <p>お探しの回答が見つからない場合は、お気軽にご相談ください。</p>
+          <a href="contact.html" class="btn-primary" style="display:inline-flex;">お問い合わせ</a>
         </div>
       </section>
     </main>
@@ -371,6 +354,5 @@
   </footer>
 
   <script src="js/script.js"></script>
-  <script src="js/text-qr.js"></script>
 </body>
 </html>
