@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Cloudflare Pages 移行後にURLを実際のドメインに更新してください
-Sitemap: https://cmalu.com/qr/sitemap.xml
+Sitemap: https://cmalu.com/sitemap.xml
