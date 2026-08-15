@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画像を圧縮・リサイズ（無料）｜アップロード不要でブラウザ内処理 - cmalu ractu</title>
+  <meta name="description" content="画像をアップロードせずにブラウザ内で圧縮・リサイズできる無料ツール。JPEG・PNG・WebPに対応し、複数枚を一度に処理できます。登録不要、画像は外部に送信されません。">
+  <link rel="canonical" href="https://cmalu.com/img/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cmalu.com/img/">
+  <meta property="og:title" content="画像を圧縮・リサイズ（無料）｜アップロード不要でブラウザ内処理">
+  <meta property="og:description" content="画像を外部に送らずに圧縮・リサイズ。JPEG・PNG・WebP対応、複数枚まとめて処理できます。">
+  <meta property="og:site_name" content="cmalu ractu">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/qr/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
+  <script src="js/analytics-init.js"></script>
+</head>
+<body>
+
+  <header class="hd">
+    <div class="hd-inner">
+      <a href="/" class="hd-logo">cmalu ractu</a>
+      <nav class="hd-nav">
+        <a href="/qr/">QRコード</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="head">
+      <h1>画像を圧縮・リサイズ</h1>
+      <p class="sub">アップロード不要。画像はブラウザの中だけで処理され、外部に送信されません（登録不要・無料）</p>
+    </div>
+
+    <!-- Step 1 -->
+    <section class="card">
+      <div class="card-hd"><span class="step">1</span><h2>画像を選ぶ</h2></div>
+
+      <div id="drop" class="drop" tabindex="0" role="button" aria-label="画像を選択、またはドラッグ＆ドロップ">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true" opacity=".35">
+          <rect x="4" y="8" width="40" height="32" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M4 32l10-9 7 6 9-11 14 14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="16" cy="18" r="3" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        <p><strong>クリックして画像を選ぶ</strong>、またはここにドラッグ＆ドロップ</p>
+        <p class="hint">複数枚まとめて選べます（JPEG / PNG / WebP）</p>
+        <p class="hint">貼り付け（Ctrl+V）にも対応しています</p>
+      </div>
+      <input type="file" id="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      <p id="err" class="err" role="alert" hidden></p>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="card">
+      <div class="card-hd"><span class="step">2</span><h2>設定</h2></div>
+
+      <div class="fields">
+        <div class="field">
+          <label for="quality">画質 <span id="quality-val" class="val">80%</span></label>
+          <input type="range" id="quality" min="30" max="100" value="80" step="5">
+          <p class="note">下げるほど軽くなります。80%前後が目安です</p>
+        </div>
+
+        <div class="field">
+          <label for="maxw">最大の幅</label>
+          <select id="maxw">
+            <option value="0">変更しない</option>
+            <option value="1920">1920px（フルHD・Web掲載向け）</option>
+            <option value="1280" selected>1280px（ブログ・SNS向け）</option>
+            <option value="800">800px（軽さ優先）</option>
+            <option value="400">400px（サムネイル）</option>
+          </select>
+          <p class="note">元の画像より大きくは引き伸ばしません</p>
+        </div>
+
+        <div class="field">
+          <label for="format">保存形式</label>
+          <select id="format">
+            <option value="image/jpeg" selected>JPEG（写真向け・軽い）</option>
+            <option value="image/webp">WebP（さらに軽い・新しい形式）</option>
+            <option value="image/png">PNG（透過を保つ・重い）</option>
+          </select>
+          <p class="note">写真ならJPEG、透過が必要ならPNGを選んでください</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="card" id="result-card" hidden>
+      <div class="card-hd"><span class="step">3</span><h2>結果</h2></div>
+
+      <div class="summary" id="summary" aria-live="polite"></div>
+      <div class="list" id="list"></div>
+
+      <div class="actions">
+        <button id="dl-all" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          すべてダウンロード
+        </button>
+        <button id="clear" class="btn btn-ghost">クリア</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-hd"><h2>このツールについて</h2></div>
+      <p class="about">
+        選んだ画像は、お使いのブラウザの中だけで処理されます。<strong>サーバーへの送信・保存は一切行いません。</strong>
+        そのため、社外に出せない資料の画像や、個人が写った写真でも安全に扱えます。<br>
+        画像の枚数やサイズに制限はありませんが、非常に大きな画像を大量に処理すると、お使いの端末の性能によっては時間がかかることがあります。
+      </p>
+    </section>
+  </main>
+
+  <footer class="ft">
+    <p>すべての処理はブラウザ内で完結します。画像はサーバーに送信されません。</p>
+    <p class="copy">© 2026 cmalu ractu</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
