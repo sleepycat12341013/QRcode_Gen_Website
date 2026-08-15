@@ -20,6 +20,7 @@
   }
 
   function download(item) {
+    if (item.redacted || !item.content) return;   // 中身を保存していないので再生成できない
     const holder = document.createElement('div');
     holder.style.cssText = 'position:fixed;left:-9999px;top:0;';
     document.body.appendChild(holder);
@@ -55,13 +56,21 @@
 
     const qr = document.createElement('div');
     qr.className = 'dash-qr';
-    try {
-      new QRCode(qr, {
-        text: item.content, width: 132, height: 132,
-        colorDark: item.color || '#B91C1C', colorLight: '#ffffff',
-        correctLevel: QRCode.CorrectLevel.M,
-      });
-    } catch (e) { qr.textContent = '⚠'; }
+    if (item.redacted || !item.content) {
+      // 連絡先QRは中身を保存していないため再表示できない
+      const note = document.createElement('p');
+      note.style.cssText = 'font-size:11px;color:#9ca3af;text-align:center;line-height:1.7;margin:0;padding:8px;';
+      note.textContent = '内容は端末に保存していないため再表示できません';
+      qr.appendChild(note);
+    } else {
+      try {
+        new QRCode(qr, {
+          text: item.content, width: 132, height: 132,
+          colorDark: item.color || '#B91C1C', colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M,
+        });
+      } catch (e) { qr.textContent = '⚠'; }
+    }
 
     const meta = document.createElement('div');
     meta.className = 'dash-meta';
@@ -79,15 +88,20 @@
 
     const actions = document.createElement('div');
     actions.className = 'dash-actions';
-    const dl = document.createElement('button');
-    dl.className = 'btn-secondary dash-btn';
-    dl.textContent = 'PNG保存';
-    dl.addEventListener('click', function () { download(item); });
     const del = document.createElement('button');
     del.className = 'dash-btn dash-btn--del';
     del.textContent = '削除';
     del.addEventListener('click', function () { QRHistory.remove(item.ts); render(); });
-    actions.append(dl, del);
+
+    if (item.redacted || !item.content) {
+      actions.append(del);   // 再生成できないので保存ボタンは出さない
+    } else {
+      const dl = document.createElement('button');
+      dl.className = 'btn-secondary dash-btn';
+      dl.textContent = 'PNG保存';
+      dl.addEventListener('click', function () { download(item); });
+      actions.append(dl, del);
+    }
 
     el.append(qr, meta, actions);
     return el;

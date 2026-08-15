@@ -1,30 +1,53 @@
 'use strict';
 
 // ─── QR履歴（localStorage・端末内のみ／QR画像は保存せず「内容＋設定」だけ保持） ───
+// 連絡先QRの中身（氏名・電話番号・メール等を含むvCard全文）は保存しない。
+// localStorage はオリジン単位で共有されるため、将来この端末で別のツールに
+// 不具合が出た場合でも、名刺相当の情報が読み出せる状態にはしない。
 window.QRHistory = (function () {
   const KEY = 'qrHistory';
   const CAP = 100;
+  const MAX_LEN = 2048;   // 1件あたりの上限。壊れた値で膨らむのを防ぐ
+
+  // 中身を保存しない種別。復元はできないが、作った記録だけ残す
+  const SENSITIVE = { contact: true };
+
   function read() {
-    try { return JSON.parse(localStorage.getItem(KEY)) || []; }
+    let raw;
+    try { raw = JSON.parse(localStorage.getItem(KEY)); }
     catch (e) { return []; }
+    if (!Array.isArray(raw)) return [];   // 壊れた値・別の型で入っていた場合
+    return raw.filter(function (x) {
+      return x && typeof x === 'object' && typeof x.ts === 'string';
+    });
   }
   function write(list) {
     try { localStorage.setItem(KEY, JSON.stringify(list.slice(0, CAP))); }
     catch (e) { /* 容量超過・プライベートモード等は黙って無視 */ }
   }
+  function trim(s) {
+    return typeof s === 'string' ? s.slice(0, MAX_LEN) : '';
+  }
   return {
     CAP: CAP,
     add: function (item) {
       if (!item || !item.content) return;
+      const type = item.content && item.type ? item.type : 'link';
+      const redacted = !!SENSITIVE[type];
+      const content = redacted ? '' : trim(item.content);
       const list = read().filter(function (x) {
-        return !(x.content === item.content && x.type === item.type);
+        // 中身を保存しない種別は内容で重複判定できないため、表示名で見る
+        return redacted
+          ? !(x.type === type && x.label === item.label)
+          : !(x.content === content && x.type === type);
       });
       list.unshift({
-        type:    item.type || 'link',
-        content: item.content,
-        label:   item.label || item.content,
-        color:   item.color || '#B91C1C',
-        ts:      new Date().toISOString(),
+        type:     type,
+        content:  content,
+        redacted: redacted,   // true なら再生成できない（中身を持っていない）
+        label:    trim(item.label || item.content),
+        color:    typeof item.color === 'string' ? item.color.slice(0, 32) : '#B91C1C',
+        ts:       new Date().toISOString(),
       });
       write(list);
     },
