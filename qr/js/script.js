@@ -34,6 +34,25 @@ window.QRHistory = (function () {
   };
 })();
 
+// ─── 入力の検証・エスケープ ────────────────────────────────────────
+// QRは読み取った端末がそのまま実行に移すため、危険なスキームを入り口で弾く。
+// javascript: や data: を含んだQRを作れてしまうと、それを配布する手段になる。
+window.isSafeUrl = function (text) {
+  let u;
+  try { u = new URL(text); } catch (e) { return false; }
+  return u.protocol === 'http:' || u.protocol === 'https:';
+};
+
+// vCard の値エスケープ（RFC 6350）。改行をそのまま入れると
+// UIに存在しない URL: や NOTE: の行を差し込めてしまうため必ず通す。
+window.escapeVCard = function (value) {
+  return String(value)
+    .replace(/\\/g, '\\\\')
+    .replace(/;/g, '\\;')
+    .replace(/,/g, '\\,')
+    .replace(/\r\n|\r|\n/g, '\\n');
+};
+
 // ─── 保存用に余白（クワイエットゾーン）を足す ──────────────────────
 // qrcodejs は余白を描かないため、そのまま保存するとセルの細かいQRが
 // 読み取り機で境界を判定できず失敗する。保存時に規格相当の余白を足す。
@@ -162,7 +181,7 @@ if (document.getElementById('panel-link')) {
     if (activeTab === 'link') {
       content = elUrlInput.value.trim();
       if (!content) { showError('URLを入力してください'); return; }
-      try { new URL(content); } catch { showError('URLの形式が正しくありません（例: https://example.com）'); return; }
+      if (!window.isSafeUrl || !isSafeUrl(content)) { showError('httpまたはhttpsで始まるURLを入力してください（例: https://example.com）'); return; }
       label = content;
 
     } else if (activeTab === 'text') {
@@ -191,12 +210,13 @@ if (document.getElementById('panel-link')) {
       }
       if (hasError) { showError('入力内容を確認してください'); return; }
 
+      const esc = window.escapeVCard || (v => v);
       let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
-      vcard += `FN:${name}\n`;
-      if (phone) vcard += `TEL;TYPE=CELL:${phone}\n`;
-      if (email) vcard += `EMAIL:${email}\n`;
-      if (org)   vcard += `ORG:${org}\n`;
-      if (url)   vcard += `URL:${url}\n`;
+      vcard += `FN:${esc(name)}\n`;
+      if (phone) vcard += `TEL;TYPE=CELL:${esc(phone)}\n`;
+      if (email) vcard += `EMAIL:${esc(email)}\n`;
+      if (org)   vcard += `ORG:${esc(org)}\n`;
+      if (url)   vcard += `URL:${esc(url)}\n`;
       vcard += 'END:VCARD';
       content = vcard;
       label = `連絡先: ${name}`;
@@ -204,7 +224,7 @@ if (document.getElementById('panel-link')) {
     } else if (activeTab === 'video') {
       content = elVideoInput.value.trim();
       if (!content) { showError('動画URLを入力してください'); return; }
-      try { new URL(content); } catch { showError('URLの形式が正しくありません'); return; }
+      if (!window.isSafeUrl || !isSafeUrl(content)) { showError('httpまたはhttpsで始まるURLを入力してください'); return; }
       label = content;
     }
 

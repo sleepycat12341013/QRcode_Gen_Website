@@ -51,7 +51,7 @@
       } else {
         var url = elMapUrl.value.trim();
         if (!url) { showError('Google Maps URLを入力してください'); elMapUrl.focus(); return; }
-        try { new URL(url); } catch(e) { showError('正しいURLの形式で入力してください'); elMapUrl.focus(); return; }
+        if (!window.isSafeUrl || !isSafeUrl(url)) { showError('httpまたはhttpsで始まるURLを入力してください'); elMapUrl.focus(); return; }
         mapsUrl = url;
         label = '地図リンク';
       }

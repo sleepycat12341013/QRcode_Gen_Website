@@ -60,7 +60,7 @@
       if (activeTab === 'link') {
         content = elUrlInput.value.trim();
         if (!content) { showError('URLを入力してください'); return; }
-        try { new URL(content); } catch { showError('URLの形式が正しくありません（例: https://example.com）'); return; }
+        if (!window.isSafeUrl || !isSafeUrl(content)) { showError('httpまたはhttpsで始まるURLを入力してください（例: https://example.com）'); return; }
         label = content;
       } else {
         content = elTextarea.value.trim();
