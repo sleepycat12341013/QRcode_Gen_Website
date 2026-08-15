@@ -14,6 +14,8 @@
   <meta property="og:site_name" content="cmalu ractu">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary">
+  <!-- このページは外部CDNもフォーム送信も使わないため、共通ヘッダーより厳しく絞る -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-ancestors 'none'; base-uri 'self'; form-action 'none'; object-src 'none'">
   <link rel="icon" href="/qr/img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/style.css">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
