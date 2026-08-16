@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDFを結合・並べ替え（無料）｜アップロード不要でブラウザ内処理 - cmalu ractu</title>
+  <meta name="description" content="複数のPDFを1つにまとめる無料ツール。ページの並べ替えや不要ページの削除もできます。ファイルをアップロードせずブラウザ内だけで処理するため、社外に出せない書類でも安全に扱えます。登録不要。">
+  <link rel="canonical" href="https://cmalu.com/pdf/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cmalu.com/pdf/">
+  <meta property="og:title" content="PDFを結合・並べ替え（無料）｜アップロード不要でブラウザ内処理">
+  <meta property="og:description" content="複数のPDFを1つにまとめ、ページの並べ替えや削除もできます。ファイルは外部に送信されません。">
+  <meta property="og:site_name" content="cmalu ractu">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="/qr/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
+  <script src="js/analytics-init.js"></script>
+</head>
+<body>
+
+  <header class="hd">
+    <div class="hd-inner">
+      <a href="/" class="hd-logo">cmalu ractu</a>
+      <nav class="hd-nav">
+        <a href="/qr/">QRコード</a>
+        <a href="/img/">画像圧縮</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="head">
+      <h1>PDFを結合・並べ替え</h1>
+      <p class="sub">アップロード不要。ファイルはブラウザの中だけで処理され、外部に送信されません（登録不要・無料）</p>
+    </div>
+
+    <!-- Step 1 -->
+    <section class="card">
+      <div class="card-hd"><span class="step">1</span><h2>PDFを選ぶ</h2></div>
+
+      <div id="drop" class="drop" tabindex="0" role="button" aria-label="PDFファイルを選択、またはドラッグ＆ドロップ">
+        <svg width="40" height="40" viewBox="0 0 48 48" fill="none" aria-hidden="true" opacity=".35">
+          <path d="M10 6a3 3 0 013-3h16l11 11v28a3 3 0 01-3 3H13a3 3 0 01-3-3V6z" stroke="currentColor" stroke-width="2"/>
+          <path d="M29 3v11h11" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M17 26h14M17 33h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <p><strong>クリックしてPDFを選ぶ</strong>、またはここにドラッグ＆ドロップ</p>
+        <p class="hint">複数のファイルをまとめて選べます</p>
+        <p class="hint">あとから追加することもできます</p>
+      </div>
+      <input type="file" id="file" accept="application/pdf,.pdf" multiple hidden>
+      <p id="err" class="err" role="alert" hidden></p>
+      <p id="loading" class="loading" hidden>読み込んでいます…</p>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="card" id="pages-card" hidden>
+      <div class="card-hd"><span class="step">2</span><h2>ページを並べ替える</h2></div>
+
+      <p class="note-lead">
+        ドラッグして順番を入れ替えられます。不要なページは「除外」を押すと結合対象から外れます。
+      </p>
+
+      <div class="toolbar">
+        <span id="summary" class="summary" aria-live="polite"></span>
+        <span class="toolbar-sp"></span>
+        <button id="select-all" class="btn btn-ghost btn-sm">すべて戻す</button>
+        <button id="clear" class="btn btn-ghost btn-sm">最初からやり直す</button>
+      </div>
+
+      <div id="pages" class="pages"></div>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="card" id="out-card" hidden>
+      <div class="card-hd"><span class="step">3</span><h2>結合して保存</h2></div>
+
+      <div class="field">
+        <label for="filename">ファイル名</label>
+        <div class="filename-row">
+          <input type="text" id="filename" value="merged" spellcheck="false">
+          <span class="ext">.pdf</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="merge" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v9m0 0L4.5 7M8 10l3.5-3M1.5 14h13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          結合してダウンロード
+        </button>
+      </div>
+
+      <p id="done" class="done" hidden></p>
+    </section>
+
+    <section class="card">
+      <div class="card-hd"><h2>このツールについて</h2></div>
+      <p class="about">
+        選んだPDFは、お使いのブラウザの中だけで処理されます。<strong>サーバーへの送信・保存は一切行いません。</strong>
+        そのため、社外に出せない資料や、個人情報を含む書類でも安全に扱えます。<br>
+        処理はお使いの端末で行うため、端末が重くならないよう上限を設けています。<strong>一度に20ファイル・合計300ページまで、1ファイルあたり100MBまで</strong>です。<br>
+        パスワードで保護されたPDFは開けません。保護を解除してからお試しください。
+      </p>
+    </section>
+  </main>
+
+  <footer class="ft">
+    <p>すべての処理はブラウザ内で完結します。ファイルはサーバーに送信されません。</p>
+    <p class="copy">© 2026 cmalu ractu</p>
+  </footer>
+
+  <script src="js/vendor/pdf-lib.min.js"></script>
+  <script src="js/vendor/pdf.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
