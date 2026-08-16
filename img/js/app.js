@@ -17,6 +17,12 @@
   const MAX_FILES = 50;
   const MAX_BYTES = 30 * 1024 * 1024;   // 1枚あたり30MB
 
+  // ファイル容量だけでは端末を守れない。canvas は1画素あたり4バイト確保するため、
+  // 圧縮の効く画像（単色の巨大PNG等）は数百KBでも数GBのメモリを要求できてしまう。
+  // 画素数そのものに上限を設ける。
+  const MAX_PIXELS       = 40_000_000;    // 1枚 40MP（約 7300×5500・一般的な一眼を超える）
+  const MAX_TOTAL_PIXELS = 150_000_000;   // まとめて処理する合計 150MP
+
   let results = [];   // { name, blobUrl(dataURL), before, after, w, h }
 
   function showError(msg) { elErr.textContent = msg; elErr.hidden = false; }
@@ -156,13 +162,22 @@
     const quality = parseInt(elQuality.value, 10) / 100;
 
     results = [];
-    let skipped = 0;
+    let tooLarge = 0;   // 容量または画素数の上限を超えた
+    let failed   = 0;   // 読み込み・変換に失敗した
+    let overflow = 0;   // 合計の画素数が上限に達して打ち切った
+    let totalPixels = 0;
 
     for (const f of list) {
-      if (f.size > MAX_BYTES) { skipped++; continue; }
+      if (f.size > MAX_BYTES) { tooLarge++; continue; }
       try {
         const src = await readAsDataURL(f);
         const img = await loadImage(src);
+
+        const pixels = img.naturalWidth * img.naturalHeight;
+        if (pixels > MAX_PIXELS) { tooLarge++; continue; }
+        if (totalPixels + pixels > MAX_TOTAL_PIXELS) { overflow++; continue; }
+        totalPixels += pixels;
+
         const out = compress(img, maxW, mime, quality);
         results.push({
           name: renameExt(f.name, mime),
@@ -172,18 +187,27 @@
           w: out.w,
           h: out.h,
         });
+        // 大量処理でUIが固まらないよう、1枚ごとに描画の隙間をつくる
+        await new Promise(r => setTimeout(r, 0));
       } catch (e) {
-        skipped++;
+        failed++;
       }
     }
 
     if (!results.length) {
-      showError('画像を処理できませんでした。別のファイルでお試しください。');
+      if (tooLarge > 0) {
+        showError(`画像が大きすぎるため処理できませんでした（1枚あたり ${MAX_BYTES / 1024 / 1024}MB・${MAX_PIXELS / 1000000}メガピクセルまで）`);
+      } else {
+        showError('画像を処理できませんでした。別のファイルでお試しください。');
+      }
       return;
     }
-    if (skipped > 0) {
-      showError(`${skipped}枚は処理できませんでした（サイズが大きすぎるか、読み込みに失敗しました）`);
-    }
+    // 処理できなかったものがあれば、理由がわかる形で伝える
+    const notes = [];
+    if (tooLarge > 0) notes.push(`${tooLarge}枚は大きすぎるため処理できませんでした（1枚あたり ${MAX_BYTES / 1024 / 1024}MB・${MAX_PIXELS / 1000000}メガピクセルまで）`);
+    if (overflow > 0) notes.push(`${overflow}枚は一度の上限を超えたため見送りました。残りは分けてお試しください`);
+    if (failed   > 0) notes.push(`${failed}枚は読み込みに失敗しました`);
+    if (notes.length) showError(notes.join('／'));
 
     render();
     if (window.track) {
