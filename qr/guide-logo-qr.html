@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="FVZxi19vVrqxhZYDat3FnOtBmIqny_Flad3_cwqzqo8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ロゴ入りQRコードが読み取れない原因と対策｜印刷前に確認すること - ぽちっとQR工房</title>
+  <meta name="description" content="ロゴを入れたQRコードが読み取れなくなる原因を、誤り訂正の仕組みから解説します。ロゴの大きさは20〜25%まで、色は背景より濃く、印刷は2cm角以上が目安。チラシやPOPの刷り直しを防ぐための確認方法をまとめました。">
+  <link rel="canonical" href="https://cmalu.com/qr/guide-logo-qr.html">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://cmalu.com/qr/guide-logo-qr.html">
+  <meta property="og:title" content="ロゴ入りQRコードが読み取れない原因と対策｜印刷前に確認すること">
+  <meta property="og:description" content="ロゴの大きさと色の選び方で、QRコードは読み取れなくなります。誤り訂正の仕組みから対策まで解説。">
+  <meta property="og:image" content="https://cmalu.com/qr/img/og-image.png">
+  <meta property="og:site_name" content="ぽちっとQR工房">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ロゴ入りQRコードが読み取れない原因と対策｜印刷前に確認すること">
+  <meta name="twitter:description" content="ロゴの大きさと色の選び方で、QRコードは読み取れなくなります。誤り訂正の仕組みから対策まで解説。">
+  <meta name="twitter:image" content="https://cmalu.com/qr/img/og-image.png">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G6VC4NMYL"></script>
+  <script src="js/analytics-init.js"></script>
+  <style>
+    .article { max-width: 100%; }
+    .article p { font-size: 14px; line-height: 2; color: var(--fg); margin: 0 0 18px; }
+    .article h2 {
+      font-size: 18px; font-weight: 700; margin: 40px 0 18px; padding-top: 28px;
+      border-top: 1px solid var(--border); line-height: 1.6;
+    }
+    .article h2:first-of-type { margin-top: 8px; padding-top: 0; border-top: none; }
+    .article ul, .article ol { margin: 0 0 20px; padding-left: 1.4em; }
+    .article li { font-size: 14px; line-height: 2; margin-bottom: 8px; }
+    .article strong { font-weight: 700; }
+    .article table { width: 100%; border-collapse: collapse; margin: 0 0 22px; font-size: 14px; }
+    .article th, .article td { padding: 10px 14px; border-bottom: 1px solid var(--border); text-align: left; }
+    .article th { background: var(--bg); font-weight: 600; color: var(--fg-muted); }
+    .article tr.is-key td { background: #fef2f2; font-weight: 700; }
+    .lead { font-size: 15px; line-height: 2; }
+    .points { background: var(--bg); border-radius: var(--radius-md); padding: 20px 22px; margin: 0 0 24px; }
+    .points ul { margin: 0; }
+    .points li:last-child { margin-bottom: 0; }
+    .tool-link {
+      display: block; padding: 14px 18px; margin: 0 0 12px;
+      border: 1.5px solid var(--border); border-radius: var(--radius-md);
+      text-decoration: none; color: inherit; transition: border-color .15s;
+    }
+    .tool-link:hover { border-color: var(--red); }
+    .tool-link-t { font-size: 14px; font-weight: 700; color: var(--red); margin: 0 0 3px; }
+    .tool-link-d { font-size: 12px; color: var(--fg-muted); margin: 0; }
+    .credit { font-size: 12px; color: var(--fg-faint); line-height: 1.9; margin: 0; }
+    @media (max-width: 560px) {
+      .article h2 { font-size: 16px; margin-top: 32px; padding-top: 22px; }
+      .article p, .article li { font-size: 13.5px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="index.html" class="site-logo">
+        <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="16.5" y="1.5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="1.5" y="16.5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+          <rect x="4" y="4" width="5" height="5" fill="currentColor"/>
+          <rect x="19" y="4" width="5" height="5" fill="currentColor"/>
+          <rect x="4" y="19" width="5" height="5" fill="currentColor"/>
+          <rect x="17" y="17" width="4" height="4" fill="currentColor"/>
+          <rect x="23" y="17" width="4" height="4" fill="currentColor"/>
+          <rect x="17" y="23" width="4" height="4" fill="currentColor"/>
+          <rect x="23" y="23" width="4" height="4" fill="currentColor"/>
+        </svg>
+        ぽちっとQR工房
+      </a>
+      <nav class="header-nav" aria-label="メインナビ">
+        <a href="news.html" class="nav-link">新着情報</a>
+        <a href="pricing.html" class="nav-link">料金プラン</a>
+        <a href="how-to.html" class="nav-link">使い方</a>
+        <a href="about.html" class="nav-link">会社案内</a>
+        <a href="faq.html" class="nav-link">サポート窓口</a>
+      </nav>
+      <div class="header-actions">
+        <a href="login.html" class="btn-login">新規登録 / ログイン</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-nav-backdrop" aria-hidden="true"></div>
+  <nav class="mobile-nav" aria-label="モバイルナビ">
+    <div class="mnav-header">
+      <span class="mnav-logo">ぽちっとQR工房</span>
+      <button class="mobile-nav-close" aria-label="閉じる">✕</button>
+    </div>
+    <div class="mnav-section">
+      <p class="mnav-section-label">QR作成</p>
+      <a href="index.html" class="mnav-link">＋ 新規QR作成</a>
+      <a href="dashboard.html" class="mnav-link">⊞ ダッシュボード</a>
+      <a href="url-shortener.html" class="mnav-link">🔗 短縮URL</a>
+      <a href="text-qr.html" class="mnav-link">📝 テキスト変換</a>
+      <a href="contact-management.html" class="mnav-link">👥 連絡先管理</a>
+      <a href="qr-email.html" class="mnav-link">✉️ メール作成</a>
+      <a href="qr-map.html" class="mnav-link">📍 地図リンク</a>
+    </div>
+    <hr class="mnav-divider">
+    <div class="mnav-section">
+      <p class="mnav-section-label">カスタマイズ</p>
+      <a href="templates.html" class="mnav-link">☰ テンプレート一覧</a>
+      <a href="design-edit.html" class="mnav-link">✏️ デザイン編集</a>
+      <a href="icon-library.html" class="mnav-link">🖼 アイコンライブラリ</a>
+      <a href="image-gallery.html" class="mnav-link">🖼 画像ギャラリー</a>
+    </div>
+    <hr class="mnav-divider">
+    <div class="mnav-section">
+      <p class="mnav-section-label">便利ツール</p>
+      <a href="qr-reader.html" class="mnav-link">🔍 QR読み取り</a>
+    </div>
+    <hr class="mnav-divider">
+    <div class="mnav-section">
+      <p class="mnav-section-label">情報・サポート</p>
+      <a href="news.html" class="mnav-link">新着情報</a>
+      <a href="pricing.html" class="mnav-link">料金プラン</a>
+      <a href="how-to.html" class="mnav-link">使い方</a>
+      <a href="about.html" class="mnav-link">会社案内</a>
+      <a href="faq.html" class="mnav-link">サポート窓口</a>
+      <a href="marketing.html" class="mnav-link">📣 マーケティング情報</a>
+      <a href="contact.html" class="mnav-link">お問い合わせ</a>
+    </div>
+    <hr class="mnav-divider">
+    <div class="mnav-section">
+      <a href="login.html" class="mnav-link mnav-link--primary">新規登録 / ログイン</a>
+    </div>
+  </nav>
+
+  <div class="layout">
+
+    <aside class="sidebar sidebar--left">
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">QR作成</p>
+        <nav>
+          <a href="index.html" class="sidebar-link"><span class="sidebar-icon">＋</span>新規QR作成</a>
+          <a href="dashboard.html" class="sidebar-link"><span class="sidebar-icon">⊞</span>ダッシュボード</a>
+          <a href="url-shortener.html" class="sidebar-link"><span class="sidebar-icon">🔗</span>短縮URL</a>
+          <a href="text-qr.html" class="sidebar-link"><span class="sidebar-icon">📝</span>テキスト変換</a>
+          <a href="contact-management.html" class="sidebar-link"><span class="sidebar-icon">👥</span>連絡先管理</a>
+          <a href="qr-email.html" class="sidebar-link"><span class="sidebar-icon">✉️</span>メール作成</a>
+          <a href="qr-map.html" class="sidebar-link"><span class="sidebar-icon">📍</span>地図リンク</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">カスタマイズ</p>
+        <nav>
+          <a href="templates.html" class="sidebar-link"><span class="sidebar-icon">☰</span>テンプレート一覧</a>
+          <a href="design-edit.html" class="sidebar-link"><span class="sidebar-icon">✏️</span>デザイン編集</a>
+          <a href="icon-library.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>アイコンライブラリ</a>
+          <a href="image-gallery.html" class="sidebar-link"><span class="sidebar-icon">🖼</span>画像ギャラリー</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">設定メニュー</p>
+        <nav>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">👤</span>アカウント設定</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">🔒</span>セキュリティ</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">⚡</span>API連携設定</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">便利ツール</p>
+        <nav>
+          <a href="qr-reader.html" class="sidebar-link"><span class="sidebar-icon">🔍</span>QR読み取り</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">◈</span>ブランド管理</a>
+          <a href="login.html" class="sidebar-link"><span class="sidebar-icon">↗</span>アクセス解析</a>
+        </nav>
+      </section>
+      <section class="sidebar-group">
+        <p class="sidebar-group-label">サポート</p>
+        <nav>
+          <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">❓</span>ヘルプセンター</a>
+          <a href="faq.html" class="sidebar-link"><span class="sidebar-icon">💬</span>よくある質問</a>
+          <a href="how-to.html" class="sidebar-link"><span class="sidebar-icon">📖</span>ガイドブック</a>
+          <a href="guide-logo-qr.html" class="sidebar-link sidebar-link--active"><span class="sidebar-icon">📄</span>ロゴ入りQRの作り方</a>
+          <a href="marketing.html" class="sidebar-link"><span class="sidebar-icon">📣</span>マーケティング情報</a>
+          <a href="contact.html" class="sidebar-link"><span class="sidebar-icon">📩</span>お問い合わせ</a>
+        </nav>
+      </section>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-heading">
+        <h1 class="page-title">ロゴ入りQRコードが読み取れない原因と対策</h1>
+        <p class="page-subtitle">印刷してから気づく失敗を防ぐために</p>
+      </div>
+
+      <section class="card">
+        <div class="article">
+
+          <p class="lead">チラシやPOPを印刷したあとで、QRコードが読み取れないことに気づいた。</p>
+
+          <p>パソコンの画面では問題なく読み取れていたのに、実際に紙へ印刷してみるとお客さんのスマホがなかなか反応しない。すでに何十枚、何百枚と刷ってしまっていれば、修正して印刷し直すことになります。</p>
+
+          <p>ロゴ入りのQRコードでは、こうした失敗が起こることがあります。特に気をつけたいのが、<strong>ロゴの大きさ</strong>と<strong>色の選び方</strong>の2つです。</p>
+
+          <p>QRコードには多少欠けても読み取れる仕組みがありますが、どこまで隠しても大丈夫というわけではありません。また、デザインを優先して色を薄くしすぎると、人の目にはきれいに見えていてもスマホでは判別できなくなることがあります。</p>
+
+          <p>この記事では、ロゴ入りQRコードが読み取れなくなる理由と、印刷前にできる対策を、できるだけ専門用語を使わずに説明します。</p>
+
+          <h2>まず覚えておきたい4つのポイント</h2>
+
+          <p>細かい仕組みを読む前に、失敗を防ぐためのポイントだけ先にまとめます。</p>
+
+          <div class="points">
+            <ul>
+              <li>ロゴはQRコード全体の面積の<strong>20〜25%まで</strong>にする</li>
+              <li>QRコードの色は、背景よりも<strong>濃い色</strong>にする</li>
+              <li>三隅にある大きな四角にはロゴを重ねない</li>
+              <li>パソコンの画面だけで判断せず、<strong>実際に印刷した紙をスマホで読み取る</strong></li>
+            </ul>
+          </div>
+
+          <p>この4つを守るだけでも、読み取りトラブルはかなり防ぎやすくなります。では、なぜこのような決まりがあるのでしょうか。</p>
+
+          <h2>QRコードは、一部が隠れても読み取れるようにできています</h2>
+
+          <p>QRコードの中央にロゴを置くと、当然その部分の模様は見えなくなります。それなのに読み取れるのは、QRコードに<strong>誤り訂正</strong>という仕組みが入っているためです。</p>
+
+          <p>QRコードは、少し汚れたり欠けたりしても読み取れるように設計されています。屋外や工場など、必ずしもきれいな状態で使われるとは限らないため、最初から「一部の情報が失われても復元できる余力」が用意されているのです。</p>
+
+          <p>中央にロゴを置くというのは、この仕組みを利用して、意図的にQRコードの一部を隠している状態にあたります。つまり、ロゴを入れても読み取れるのは、見えなくなった部分を誤り訂正が補っているからです。</p>
+
+          <p>ただし、復元できる量には限界があります。<strong>ロゴが大きくなりすぎてその限界を超えると、読み取れなくなります。</strong></p>
+
+          <p>ロゴは「なんとなく小さめなら大丈夫」なのではなく、QRコードが持っている復元能力の範囲内に収める必要がある、ということです。</p>
+
+          <h2>ロゴは20〜25%程度に抑えるのが安全です</h2>
+
+          <p>QRコードの誤り訂正能力は、作成するときに4段階から選べます。</p>
+
+          <table>
+            <thead>
+              <tr><th>誤り訂正レベル</th><th>復元できる欠損の割合</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>L（Low）</td><td>最大 約7%</td></tr>
+              <tr><td>M（Medium）</td><td>最大 約15%</td></tr>
+              <tr><td>Q（Quartile）</td><td>最大 約25%</td></tr>
+              <tr class="is-key"><td>H（High）</td><td>最大 約30%</td></tr>
+            </tbody>
+          </table>
+
+          <p>ロゴを入れる場合は、最も誤り訂正能力が高い<strong>レベルH</strong>を使います。レベルHなら、QRコードの約30%が欠けても復元できます。</p>
+
+          <p>ここだけを見ると「それならロゴも30%まで大きくしていいのでは」と思うかもしれません。しかし、この30%は<strong>ロゴだけのために使える余裕ではありません。</strong></p>
+
+          <p>実際にQRコードを使うときには、ロゴ以外にもさまざまな読み取りにくさが加わります。印刷したときにインクがにじんだり、紙がかすれたり。チラシが折れたり、店頭に置いているうちに汚れたり日焼けしたりもします。</p>
+
+          <p>スマホ側の条件も毎回同じではありません。斜めから読み取ることもあれば、暗い店内で読み取ることもあります。カメラがピンボケしたり、手ぶれしたりもするでしょう。</p>
+
+          <p>もしロゴだけで誤り訂正の30%を使い切ってしまえば、こうした現実の劣化を補う余力が残りません。「パソコンの画面では読めたのに、印刷したら読めなかった」という失敗が起きるのは、このためです。</p>
+
+          <p>ディスプレイ上ではQRコードがくっきり表示され明るさも十分なので、限界ぎりぎりのデザインでも読み取れてしまうことがあるのです。</p>
+
+          <p>そのため、ロゴは限界まで大きくするのではなく、<strong>全体の面積の20〜25%程度に抑え、残りの余力を印刷や読み取り環境のために取っておく</strong>のが安全です。</p>
+
+          <h2>ロゴを置くなら中央。三隅の四角は隠さない</h2>
+
+          <p>ロゴ入りQRコードを見ると、ほとんどの場合ロゴは中央に置かれています。これは単に見た目のバランスがいいからではありません。</p>
+
+          <p>QRコードの三隅には、大きな四角い模様があります。この四角は、スマホがQRコードを見つけたときに「これはQRコードだ」「この向きで読み取ればいい」と判断するための重要な目印です。</p>
+
+          <p>そのため、<strong>三隅の大きな四角にはロゴを重ねないでください。</strong>ロゴを置くのであれば、中央付近が比較的安全です。</p>
+
+          <p>もうひとつ忘れやすいのが、QRコードの外側にある白い余白です。デザインを作っていると、QRコードを枠いっぱいまで大きくしたくなることがありますが、この余白も読み取りのために必要なものです。</p>
+
+          <p>周囲に文字やイラストをぎりぎりまで置いたり、白い余白を削ったりせず、十分なスペースを残してください。</p>
+
+          <h2>おしゃれな色にするときほど、明るさに注意してください</h2>
+
+          <p>ロゴの大きさと並んで失敗しやすいのが、QRコードの<strong>色</strong>です。</p>
+
+          <p>QRコードの読み取りでは、色の種類そのものよりも、<strong>明るい部分と暗い部分の差</strong>が重要になります。そのため、人の目には十分見えている色でも、スマホのカメラではうまく区別できないことがあります。</p>
+
+          <p>特に注意したいのが、薄いグレーや淡いパステルカラーです。白い背景に薄いピンクや水色、黄色などでQRコードを作ると、デザインとしてはやさしい印象になります。しかし背景との明るさの差が小さくなるため、読み取りに失敗しやすくなります。</p>
+
+          <p>基本は、<strong>明るい背景に、濃い色のQRコード</strong>です。QRコードは「暗いコード・明るい背景」を前提に作られているため、白い背景に黄色や明るい水色などを使うと十分なコントラストを確保できません。</p>
+
+          <p>「黒だとデザインに合わない」という場合でも、必ず黒にする必要はありません。濃いネイビー、濃いグリーン、濃いブラウンなど、背景より十分に暗い色を選べば使えます。</p>
+
+          <p>デザインに合わせて色を変えるときは、<strong>色味よりも明るさの差を優先する</strong>と考えておくと失敗しにくくなります。</p>
+
+          <h2>ロゴ入りQRコードを実際に作る方法</h2>
+
+          <p>ここまでの条件を毎回自分で設定するのが面倒な場合は、当サイトの無料ツールでもロゴ入りQRコードを作れます。登録は不要で、ブラウザだけで利用できます。入力した内容がサーバーに送信されない作りにしてあります。</p>
+
+          <p>使い方は次のとおりです。</p>
+
+          <ol>
+            <li>ツールを開く</li>
+            <li>QRコードにしたいURLを入力する</li>
+            <li>入れたいアイコンを選ぶ（WiFi・ショップ・電話・メール・地図など）</li>
+            <li>色を選ぶ</li>
+            <li>PNGでダウンロードする</li>
+          </ol>
+
+          <a class="tool-link" href="icon-library.html">
+            <p class="tool-link-t">ロゴ入りQRコードを無料で作る →</p>
+            <p class="tool-link-d">中央にアイコンを埋め込みます</p>
+          </a>
+
+          <p>このツールでは、<strong>アイコンを選んだ時点で誤り訂正レベルを自動的にH（最大）へ切り替えています。</strong>ロゴの大きさも安全な範囲に固定しているため、この記事で説明した設定を毎回手作業で調整する必要はありません。</p>
+
+          <p>また、選んだ色が背景に対して薄すぎる場合は警告が出るようにしています。実際に読み取りトラブルにつながりやすい部分だからです。</p>
+
+          <p>QRコードの色や、ドットの形を丸くするなど、見た目をもう少し細かく変更したい場合はこちらを使えます。</p>
+
+          <a class="tool-link" href="design-edit.html">
+            <p class="tool-link-t">おしゃれなQRコードを無料で作る →</p>
+            <p class="tool-link-d">色・ドット・コーナーの形を変更できます</p>
+          </a>
+
+          <p>チラシやPOPに載せるために、「スキャンしてね」などの文字と枠を付けたい場合はこちらです。</p>
+
+          <a class="tool-link" href="image-gallery.html">
+            <p class="tool-link-t">フレーム付きQRコードを無料で作る →</p>
+            <p class="tool-link-d">文字入りの枠を付けてスキャン率を高めます</p>
+          </a>
+
+          <h2>最後は、必ず「印刷した実物」で確認してください</h2>
+
+          <p>ロゴの大きさや色を正しく設定していても、最後に必ずやってほしいことがあります。それは、<strong>実際に使うサイズで印刷して、スマホで読み取ること</strong>です。</p>
+
+          <p>パソコンやスマホの画面に表示したQRコードは、印刷物よりも読み取り条件が良いことがあります。そのため、画面上で読み取れたからといって、紙でも同じように読めるとは限りません。</p>
+
+          <p>チラシに載せるのであれば、実際のチラシと同じ大きさで一度印刷してください。できれば自分のスマホだけでなく、iPhoneとAndroidなど複数の端末で試しておくと安心です。</p>
+
+          <p>店頭で使うPOPなら、お客さんが実際に立つ位置から読み取れるかも確認してみてください。屋外に設置する場合は、昼と夜で読み取りやすさが変わることもあります。</p>
+
+          <p>特に注意したいのが、名刺やチラシの隅などにQRコードを小さく載せる場合です。QRコードそのものが小さくなると、一つひとつのドットも小さくなります。印刷時につぶれたり、カメラが模様を判別できなくなったりするため、読み取りに失敗しやすくなります。</p>
+
+          <p><strong>印刷するQRコードは、2cm角以上を目安にしてください。</strong></p>
+
+          <p>「画面で読めたから大丈夫」ではなく、<strong>実際に使う紙・大きさ・場所で読めることを確認してから印刷する</strong>のが、刷り直しを防ぐ一番確実な方法です。</p>
+
+          <h2>まとめ</h2>
+
+          <p>ロゴ入りQRコードが読み取れなくなる原因として、まず確認したいのは<strong>ロゴの大きさ</strong>と<strong>色</strong>です。</p>
+
+          <p>ロゴは大きくしすぎず、QRコード全体の面積の<strong>20〜25%程度まで</strong>に抑えます。ロゴを入れる場合は誤り訂正レベルHを使い、三隅にある大きな四角は隠さないようにします。</p>
+
+          <p>色を変更するときは、背景よりもQRコードを暗くしてください。淡い色同士を組み合わせるより、明るい背景と濃いコードを組み合わせるほうが安全です。</p>
+
+          <p>そして完成したら必ず実際の大きさで印刷し、スマホで読み取れるか確認します。小さく載せる場合は<strong>2cm角以上</strong>をひとつの目安にしてください。</p>
+
+          <p>QRコードの仕組みを少し知っておけば、どの作成ツールを使う場合でも「これは危なそうだな」と判断しやすくなります。</p>
+
+          <p>チラシやPOPを大量に刷ったあとで気づくと、修正にも印刷にも余計な手間と費用がかかります。印刷ボタンを押す前のひと手間として、ロゴの大きさ、色、そして実物での読み取り確認を思い出してもらえたらと思います。</p>
+
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">この記事で紹介したツール</h2>
+        </div>
+        <p style="font-size:13px;color:var(--fg-muted);margin-bottom:16px;line-height:1.9;">いずれも無料・登録不要で、処理はすべてブラウザ内で完結します。入力したURLはサーバーに送信されません。</p>
+
+        <a class="tool-link" href="icon-library.html">
+          <p class="tool-link-t">ロゴ入りQRコードを作る</p>
+          <p class="tool-link-d">中央にアイコンを埋め込み</p>
+        </a>
+        <a class="tool-link" href="design-edit.html">
+          <p class="tool-link-t">おしゃれなQRコードを作る</p>
+          <p class="tool-link-d">色・形の変更</p>
+        </a>
+        <a class="tool-link" href="image-gallery.html">
+          <p class="tool-link-t">フレーム付きQRコードを作る</p>
+          <p class="tool-link-d">「スキャンしてね」の枠を追加</p>
+        </a>
+
+        <p class="credit" style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border);">
+          思想・アイディア・校閲・校正：cmalu ractu<br>
+          文章生成：Claude（Anthropic）／ChatGPT（OpenAI）
+        </p>
+      </section>
+    </main>
+
+    <aside class="sidebar sidebar--right">
+      <a href="login.html" class="btn-login btn-login--mobile">新規登録 / ログイン</a>
+      <section class="right-panel">
+        <p class="right-panel-title">この記事のツール</p>
+        <a href="icon-library.html" class="right-panel-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/><circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.2"/></svg>
+          ロゴ入りQRを作る
+        </a>
+        <a href="design-edit.html" class="right-panel-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M11 2l3 3-7 7-3 1 1-3 6-8z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>
+          色・形を変える
+        </a>
+        <a href="image-gallery.html" class="right-panel-link">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><rect x="4" y="12.5" width="8" height="2" rx="1" fill="currentColor"/></svg>
+          フレーム付きQR
+        </a>
+      </section>
+      <section class="right-panel right-panel--promo">
+        <div class="promo-content">
+          <p class="promo-text">プレミアムプランで<br><strong>もっと便利に！</strong></p>
+          <a href="pricing.html" class="btn-promo">詳細を見る</a>
+        </div>
+      </section>
+      <section class="right-panel">
+        <p class="right-panel-title">おすすめリンク</p>
+        <a href="how-to.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M7 4v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          使い方ガイド
+        </a>
+        <a href="qr-reader.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.2"/><path d="M9 9l4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          QRコードを読み取る
+        </a>
+        <a href="faq.html" class="right-panel-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 5.5a1.5 1.5 0 113 .5c0 1-1.5 1-1.5 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><circle cx="7" cy="10" r=".7" fill="currentColor"/></svg>
+          よくある質問
+        </a>
+      </section>
+      <a href="contact.html" class="btn-chat">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 3h12a1 1 0 011 1v8a1 1 0 01-1 1H6l-4 3V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        メールで相談
+      </a>
+    </aside>
+
+  </div>
+
+  <footer class="site-footer">
+    <p>すべての処理はブラウザ内で完結。入力内容はサーバーに送信されません。</p>
+    <nav class="footer-links">
+      <a href="tokushoho.html">特定商取引法に基づく表記</a>
+      <a href="privacy.html">個人情報の取り扱いについて</a>
+      <a href="terms.html">利用規約</a>
+      <a href="about.html">運営会社</a>
+    </nav>
+    <p class="footer-copy">© 2026 ぽちっとQR工房</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
